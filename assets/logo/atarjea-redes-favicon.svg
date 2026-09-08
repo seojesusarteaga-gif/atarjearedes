@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Atarjea Redes">
+  <title>Atarjea Redes</title>
+  <desc>Variante simplificada para tamanos pequenos: se elimina la camisa interior, que a 32px no resuelve.</desc>
+
+  <!-- Pared del conducto -->
+  <circle cx="64" cy="64" r="54" fill="none" stroke="#12455C" stroke-width="12"/>
+
+  <!-- Monograma A, ligeramente mas robusto que en el isotipo completo -->
+  <path d="M46 88 L64 38 L82 88" fill="none" stroke="#12455C" stroke-width="11"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Travesano / linea de flujo -->
+  <path d="M53 73 H75" fill="none" stroke="#C9AE8C" stroke-width="7" stroke-linecap="round"/>
+</svg>

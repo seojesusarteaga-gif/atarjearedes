@@ -1,0 +1,18 @@
+# Atarjea Redes
+#
+# ESTADO: PRE-INDEXACION. Bloqueo total deliberado.
+#
+# El sitio esta en scaffolding y desplegado en una URL temporal de Vercel.
+# Si Google indexa la URL de Vercel antes de tener dominio propio, se genera
+# contenido duplicado y un problema de migracion al mover al dominio definitivo.
+#
+# ESTE ARCHIVO SE CAMBIA EN LA FASE M6 (indexacion en Search Console),
+# despues de la auditoria final M5.6 y con el dominio propio ya conectado.
+
+User-agent: *
+Disallow: /
+
+# Al abrir en M6, sustituir por:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://DOMINIO-DEFINITIVO/sitemap-index.xml

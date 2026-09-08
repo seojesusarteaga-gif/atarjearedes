@@ -1,0 +1,27 @@
+# build
+dist/
+.astro/
+.output/
+
+# dependencias
+node_modules/
+
+# entorno: los datos privados NUNCA en el repo (regla dura del manual)
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel/
+
+# sistema
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# auditoria interna: NO va al repo publico.
+# Contiene estrategia competitiva, modelo comercial con el operador y el
+# listado de fichas a atacar por redressal. Publicarlo seria regalar el
+# playbook a la competencia. Si se quiere respaldo, repo privado aparte.
+_auditoria/

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Atarjea Redes">
+  <title>Atarjea Redes</title>
+  <desc>Sección de conducto: pared exterior, camisa interior y monograma A con línea de flujo.</desc>
+
+  <!-- Pared del conducto (sección técnica) -->
+  <circle cx="64" cy="64" r="55" fill="none" stroke="#12455C" stroke-width="9"/>
+
+  <!-- Camisa interior: el encamisado dentro de la tubería anfitriona -->
+  <circle cx="64" cy="64" r="39" fill="none" stroke="#C9AE8C" stroke-width="3"/>
+
+  <!-- Monograma A -->
+  <path d="M50 84 L64 43 L78 84" fill="none" stroke="#12455C" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Travesaño de la A = línea de flujo laminar -->
+  <path d="M55 71 H73" fill="none" stroke="#C9AE8C" stroke-width="5" stroke-linecap="round"/>
+</svg>

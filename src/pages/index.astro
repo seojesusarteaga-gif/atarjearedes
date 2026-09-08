@@ -1,0 +1,57 @@
+---
+// PLACEHOLDER de scaffolding. NO es la home definitiva.
+// La home real se construye en la Fase RR1 e incluye, entre otras cosas,
+// el bloque citable IA en el primer 30% (regla M5.1 del manual).
+const marca = 'Atarjea Redes';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{marca}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <main>
+      <img src="/logo.svg" alt={marca} width="300" height="84" />
+      <p class="estado">Sitio en construcción</p>
+      <p class="nota">
+        Redes de saneamiento y canalizaciones · Sevilla y área metropolitana
+      </p>
+    </main>
+
+    <style is:global>
+      :root {
+        --azul: #12455c;
+        --arena: #c9ae8c;
+        --tinta: #0e2a38;
+        --fondo: #f7f4ef;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: var(--fondo);
+        color: var(--tinta);
+        font-family: Inter, 'IBM Plex Sans', Manrope, system-ui, -apple-system,
+          'Segoe UI', Arial, sans-serif;
+      }
+      main { text-align: center; padding: 2rem; }
+      img { max-width: 100%; height: auto; }
+      .estado {
+        margin: 2rem 0 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--azul);
+      }
+      .nota { margin: 0; font-size: 0.9rem; color: #6b7c85; }
+    </style>
+  </body>
+</html>

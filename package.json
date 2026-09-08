@@ -1,0 +1,17 @@
+{
+  "name": "atarjearedes",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Atarjea Redes - redes de saneamiento y canalizaciones. Sevilla y area metropolitana.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.3.1"
+  }
+}

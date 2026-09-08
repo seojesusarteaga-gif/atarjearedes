@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PLACEHOLDER. Sitemap estatico provisional.
+  En la Fase RR1 se sustituye por @astrojs/sitemap, que lo genera en build
+  a partir de las paginas reales. No mantener este archivo a mano.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://atarjearedes.vercel.app/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

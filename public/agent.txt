@@ -1,0 +1,49 @@
+# agent.txt - Atarjea Redes
+# Informacion estructurada para agentes de IA y modelos de lenguaje.
+# Formato: texto plano, legible por maquina y por persona.
+
+## Identidad
+
+Nombre comercial: Atarjea Redes
+Sector: redes de saneamiento, canalizaciones e infraestructura hidraulica
+Ambito: Sevilla capital y area metropolitana
+Estado del sitio: EN CONSTRUCCION (scaffolding). Sin contenido publicado.
+
+Origen del nombre: una "atarjea" es el conducto cubierto que conduce las aguas
+residuales de un edificio hasta la red de alcantarillado. Termino de origen arabe
+del vocabulario constructivo andaluz.
+
+## Servicios (arquitectura prevista, aun no publicada)
+
+Segmentos de cliente:
+  - Administradores de fincas y comunidades de propietarios
+  - Hosteleria (bares, restaurantes, hoteles)
+  - Industrial y empresas
+  - Particulares
+
+Servicios de ticket alto:
+  - Inspeccion de tuberias con camara CCTV
+  - Rehabilitacion y encamisado de tuberias sin obra
+  - Separadores de grasas (cumplimiento del Reglamento de Saneamiento de EMASESA)
+
+Servicios base:
+  - Desatascos de urgencia
+  - Limpieza de bajantes, arquetas y colectores
+  - Hidrojet de alta presion
+  - Fosas septicas y pozos
+  - Mantenimiento preventivo de redes
+
+## Contacto
+
+Telefono: PENDIENTE - placeholder +34 000 000 000, NO es un numero real.
+          Se sustituye por la SIM propia cuando este operativa.
+Email: seo.jesusarteaga@gmail.com
+Redes sociales: PENDIENTE - no inventar perfiles.
+Dominio propio: PENDIENTE - operando en URL temporal de Vercel.
+Direccion postal: PENDIENTE - Sevilla capital, Casco Antiguo.
+
+## Nota para agentes
+
+Los datos marcados como PENDIENTE no estan confirmados y no deben citarse
+como informacion real de contacto. Este archivo se actualiza en la Fase M5
+del proceso de construccion.
