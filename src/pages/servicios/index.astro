@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import { SERVICIOS } from '../../data/servicios';
+import { TICKET_ALTO } from '../../data/segmentos';
+import Cta from '../../components/Cta.astro';
+---
+<Base
+  title="Servicios de saneamiento y canalizaciones Sevilla | Atarjea Redes"
+  meta="Servicios de saneamiento en Sevilla: desatascos, limpieza de bajantes, arquetas, hidrojet, fosas sépticas, limpieza industrial y mantenimiento preventivo."
+  ruta="/servicios"
+  imagen="/img/paginas/servicios.svg"
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Servicios', href: '/servicios' }]}
+>
+  <Hero
+    h1="Servicios de saneamiento y canalizaciones en Sevilla"
+    entradilla="Siete servicios sobre la red completa, desde la urgencia hasta el mantenimiento programado."
+    imagen="/img/paginas/servicios.svg"
+    alt="Servicios de saneamiento y canalizaciones en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="estrecho">
+        <h2>Trabajo técnico</h2>
+        <p>
+          El diagnóstico y la reparación estructural no son servicios corrientes: son
+          los que deciden si un problema se resuelve o se repite. Tienen página propia.
+        </p>
+      </div>
+      <ul class="enlaces">
+        {TICKET_ALTO.map((t) => <li><a href={t.href}><strong>{t.nombre}</strong></a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <h2>Servicios sobre la red</h2>
+      <div class="rejilla rejilla--2">
+        {SERVICIOS.map((s) => (
+          <article class="tarjeta">
+            <div class="tarjeta__cuerpo">
+              <h3><a href={`/servicios/${s.slug}`}>{s.nombre}</a></h3>
+              <p>{s.resumen}</p>
+              <p class="tarjeta__pie"><a href={`/servicios/${s.slug}`}>Ver el servicio</a></p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    titulo="¿No sabes qué servicio necesitas?"
+    texto="Es lo normal: desde fuera, un atasco recurrente y una tubería rota se parecen mucho. Cuéntanos el síntoma y lo identificamos."
+  />
+</Base>

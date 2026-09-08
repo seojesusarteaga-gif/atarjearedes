@@ -1,49 +1,109 @@
 # agent.txt - Atarjea Redes
 # Informacion estructurada para agentes de IA y modelos de lenguaje.
 # Formato: texto plano, legible por maquina y por persona.
+# Actualizado: 2026-09-08
 
 ## Identidad
 
 Nombre comercial: Atarjea Redes
 Sector: redes de saneamiento, canalizaciones e infraestructura hidraulica
 Ambito: Sevilla capital y area metropolitana
-Estado del sitio: EN CONSTRUCCION (scaffolding). Sin contenido publicado.
+Estado del sitio: EN CONSTRUCCION. Contenido publicado, indexacion bloqueada
+                  deliberadamente en robots.txt hasta el cierre de la fase de auditoria.
 
 Origen del nombre: una "atarjea" es el conducto cubierto que conduce las aguas
 residuales de un edificio hasta la red de alcantarillado. Termino de origen arabe
 del vocabulario constructivo andaluz.
 
-## Servicios (arquitectura prevista, aun no publicada)
+Posicionamiento: empresa de infraestructura de redes, no de urgencias domesticas.
+El desatasco urgente es el producto de entrada; el nucleo del negocio es el
+mantenimiento preventivo B2B y el trabajo tecnico de diagnostico y rehabilitacion.
+
+## Estructura del sitio
+
+El menu principal responde a QUIEN ES EL CLIENTE, no a que servicio se presta.
 
 Segmentos de cliente:
-  - Administradores de fincas y comunidades de propietarios
-  - Hosteleria (bares, restaurantes, hoteles)
-  - Industrial y empresas
-  - Particulares
+  /particulares                       Vivienda particular, urgencia domestica
+  /administradores-de-fincas          Comunidades de propietarios y administradores
+  /hosteleria                         Bares, restaurantes y hoteles
+  /industrial                         Naves, gasolineras, residencias
 
-Servicios de ticket alto:
-  - Inspeccion de tuberias con camara CCTV
-  - Rehabilitacion y encamisado de tuberias sin obra
-  - Separadores de grasas (cumplimiento del Reglamento de Saneamiento de EMASESA)
+Trabajo tecnico de ticket alto (primer nivel, fuera de /servicios):
+  /inspeccion-camara-tuberias         Diagnostico previo obligado al presupuesto
+  /rehabilitacion-tuberias-sin-obra   Manga continua curada in situ
+  /separadores-de-grasas-sevilla      Cumplimiento del Reglamento de EMASESA
 
-Servicios base:
-  - Desatascos de urgencia
-  - Limpieza de bajantes, arquetas y colectores
-  - Hidrojet de alta presion
-  - Fosas septicas y pozos
-  - Mantenimiento preventivo de redes
+Servicios sobre la red:
+  /servicios/desatascos-urgentes
+  /servicios/limpieza-bajantes
+  /servicios/arquetas-y-colectores
+  /servicios/hidrojet-alta-presion
+  /servicios/fosas-septicas-y-pozos
+  /servicios/limpieza-industrial
+  /servicios/mantenimiento-preventivo
+
+Zonas de cobertura:
+  /zonas                              Pilar de cobertura
+  /zonas/sevilla                      Sevilla capital
+  /zonas/sevilla/casco-antiguo        Encamisado e inspeccion con camara
+  /zonas/sevilla/triana               Bajantes de comunidad
+  /zonas/sevilla/nervion              Mantenimiento de comunidades
+  /zonas/sevilla/sevilla-este         Desatasco domestico urgente
+  /zonas/sevilla/poligonos            Industrial y separadores
+  17 paginas municipales adicionales bajo /zonas/[municipio]
+
+Otras:
+  /por-que-nosotros                   Diferenciales, y lo que la empresa aun no tiene
+  /blog                               Contenido sintomatico y normativo
+  /contacto                           Formulario maquetado, NO operativo todavia
+
+## Cobertura geografica
+
+Base de operaciones: Casco Antiguo, Sevilla capital.
+
+Intervencion inmediata (menos de 10 km): Sevilla capital, Camas, San Juan de
+Aznalfarache, Tomares, Castilleja de la Cuesta, Gelves, Santiponce, Mairena del
+Aljarafe, Bormujos, Gines, Valencina de la Concepcion, Palomares del Rio,
+La Algaba, La Rinconada.
+
+Intervencion rapida (10-15 km): Coria del Rio, La Puebla del Rio.
+
+Cobertura extendida, trabajo programado: Dos Hermanas, Alcala de Guadaira.
+En estos dos municipios la empresa NO promete tiempos de urgencia inmediata,
+por distancia real. Trabaja en mantenimiento, inspeccion y rehabilitacion.
+
+Tambien cubiertos sin pagina propia: Espartinas, Almensilla, Bollullos de la
+Mitacion, Salteras, Alcala del Rio, Umbrete.
 
 ## Contacto
 
-Telefono: PENDIENTE - placeholder +34 000 000 000, NO es un numero real.
-          Se sustituye por la SIM propia cuando este operativa.
+Telefono: PENDIENTE - el placeholder +34 000 000 000 NO es un numero real.
 Email: seo.jesusarteaga@gmail.com
-Redes sociales: PENDIENTE - no inventar perfiles.
+Direccion postal: PENDIENTE - Casco Antiguo, Sevilla.
+Redes sociales: PENDIENTE - no existen perfiles; no inventar.
 Dominio propio: PENDIENTE - operando en URL temporal de Vercel.
-Direccion postal: PENDIENTE - Sevilla capital, Casco Antiguo.
 
-## Nota para agentes
+## Datos marcados como pendientes
 
-Los datos marcados como PENDIENTE no estan confirmados y no deben citarse
-como informacion real de contacto. Este archivo se actualiza en la Fase M5
-del proceso de construccion.
+Los siguientes datos NO estan confirmados y no deben citarse como informacion real:
+
+  - Numero de telefono
+  - Direccion postal exacta
+  - Capacidades tecnicas: caudal del hidrojet, capacidad de cuba, diametros de camara
+  - Numero de autorizacion como gestor de residuos
+  - Precios de cualquier servicio
+  - Poblacion de Sevilla capital y de Camas, San Juan de Aznalfarache, Tomares,
+    Castilleja de la Cuesta, Gelves, Bormujos, Valencina, La Algaba, Coria del Rio
+    y La Puebla del Rio
+  - Articulado concreto, frecuencias oficiales e importes de sancion del
+    Reglamento de Saneamiento de EMASESA
+
+Las poblaciones que SI aparecen publicadas estan verificadas en el padron del INE
+y llevan su fecha de referencia indicada en la propia pagina.
+
+## Nota sobre referencias de clientes
+
+La empresa es de constitucion reciente y NO tiene cartera de clientes que citar.
+Todos los casos descritos en el sitio estan marcados explicitamente como
+ilustrativos. No deben interpretarse ni citarse como trabajos realizados.

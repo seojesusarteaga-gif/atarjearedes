@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Faqs from '../../components/Faqs.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import { getCollection, render } from 'astro:content';
+import { MUNICIPIOS, getMunicipio } from '../../data/municipios';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const { Content } = await render(p);
+
+const fecha = p.data.fecha.toISOString().slice(0, 10);
+const fechaTexto = p.data.fecha.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+// Zonas enlazadas: la funcion del blog es distribuir autoridad hacia servicio y zona.
+const zonas = p.data.zonas
+  .map((z) => (z === 'sevilla' ? { nombre: 'Sevilla capital', href: '/zonas/sevilla' } : null) ??
+    (getMunicipio(z) ? { nombre: getMunicipio(z)!.nombre, href: `/zonas/${z}` } : null))
+  .filter((x): x is { nombre: string; href: string } => x !== null);
+---
+
+<Base
+  title={`${p.data.tituloSeo ?? p.data.titulo} | Atarjea Redes`}
+  meta={p.data.descripcion}
+  ruta={`/blog/${p.id}`}
+  imagen="/img/paginas/blog.svg"
+  faqs={p.data.faqs}
+  entrada={{
+    titulo: p.data.titulo,
+    descripcion: p.data.descripcion,
+    fecha,
+    imagen: '/img/paginas/blog.svg',
+  }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Blog', href: '/blog' },
+    { nombre: p.data.titulo, href: `/blog/${p.id}` },
+  ]}
+>
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="articulo">
+        <span class="tarjeta__etiqueta">{p.data.categoria}</span>
+        <h1>{p.data.titulo}</h1>
+        <p class="articulo__meta">
+          Publicado el {fechaTexto} · Atarjea Redes, Sevilla
+        </p>
+        <p><strong>{p.data.entradilla}</strong></p>
+
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <div class="articulo">
+        <EnlacesServicios slugs={p.data.servicios} titulo="Servicios relacionados" />
+
+        {
+          zonas.length > 0 && (
+            <div style="margin-top:2rem">
+              <h3>Zonas donde prestamos este servicio</h3>
+              <ul class="enlaces">
+                {zonas.map((z) => (
+                  <li><a href={z.href}>{z.nombre}</a></li>
+                ))}
+                <li><a href="/zonas"><strong>Ver todas</strong></a></li>
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {p.data.faqs.length > 0 && <Faqs faqs={p.data.faqs} />}
+
+  <Cta
+    titulo="¿Te está pasando esto?"
+    texto="Cuéntanos el síntoma exacto y te decimos si se resuelve con una intervención o si conviene mirar la conducción por dentro antes de tocar nada."
+  />
+</Base>

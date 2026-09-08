@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Cta from '../../components/Cta.astro';
+import { MUNICIPIOS_NUCLEO, MUNICIPIOS_BORDE, MUNICIPIOS_ORGANICA } from '../../data/municipios';
+import { BARRIOS } from '../../data/barrios';
+
+const citable =
+  'Atarjea Redes opera desde el Casco Antiguo de Sevilla y cubre la capital junto a diecisiete municipios del área metropolitana. La empresa distingue tres niveles de cobertura según la distancia real: intervención inmediata en Sevilla capital y el Aljarafe cercano, dentro de un radio aproximado de diez kilómetros; intervención rápida en los municipios de ribera situados entre diez y quince kilómetros; y cobertura extendida en Dos Hermanas y Alcalá de Guadaíra, donde concentra el trabajo programado de mantenimiento e inspección en lugar de prometer tiempos de urgencia que no podría sostener.';
+
+const grupos = [
+  {
+    titulo: 'Intervención inmediata',
+    nota: 'Menos de diez kilómetros. Sevilla capital y el Aljarafe cercano.',
+    items: MUNICIPIOS_NUCLEO,
+  },
+  {
+    titulo: 'Intervención rápida',
+    nota: 'Entre diez y quince kilómetros. Municipios de ribera.',
+    items: MUNICIPIOS_BORDE,
+  },
+  {
+    titulo: 'Cobertura extendida',
+    nota: 'Trabajo programado: mantenimiento, inspección y rehabilitación. No prometemos urgencia inmediata a esta distancia.',
+    items: MUNICIPIOS_ORGANICA,
+  },
+];
+---
+
+<Base
+  title="Zonas de cobertura Sevilla y área metropolitana | Atarjea Redes"
+  meta="Zonas de cobertura de Atarjea Redes: Sevilla capital, Aljarafe, ribera y área metropolitana. Tiempos de respuesta reales por municipio."
+  ruta="/zonas"
+  imagen="/img/paginas/zonas.svg"
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Zonas', href: '/zonas' }]}
+>
+  <Hero
+    h1="Zonas de cobertura en Sevilla y área metropolitana"
+    entradilla="Sevilla capital y diecisiete municipios. Decimos en cada zona qué tiempo de respuesta podemos sostener de verdad."
+    imagen="/img/paginas/zonas.svg"
+    alt="Zonas de cobertura de saneamiento en Sevilla y área metropolitana"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        Prometer media hora en toda la provincia es fácil de escribir e imposible de
+        cumplir. Preferimos decir dónde llegamos rápido, dónde llegamos algo más tarde y
+        dónde tiene más sentido trabajar con nosotros en programado que en urgencia.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <h2>Sevilla capital</h2>
+      <p class="estrecho">
+        La base está en el Casco Antiguo. Estos son los distritos con servicio
+        diferenciado por tipo de parque edificado.
+      </p>
+      <ul class="enlaces">
+        <li><a href="/zonas/sevilla"><strong>Sevilla capital</strong></a></li>
+        {BARRIOS.map((b) => <li><a href={`/zonas/sevilla/${b.slug}`}>{b.nombre}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  {
+    grupos.map((g) => (
+      <section class="seccion">
+        <div class="contenedor">
+          <h2>{g.titulo}</h2>
+          <p class="estrecho">{g.nota}</p>
+          <div class="rejilla rejilla--3">
+            {g.items.map((m) => (
+              <article class="tarjeta">
+                <img
+                  src={`/img/zonas/${m.slug}.svg`}
+                  alt={`Saneamiento y desatascos en ${m.nombre}`}
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <div class="tarjeta__cuerpo">
+                  <span class="tarjeta__etiqueta">{m.km} km</span>
+                  <h3><a href={`/zonas/${m.slug}`}>{m.nombre}</a></h3>
+                  <p>{m.servicioDominante}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <Cta
+    titulo="¿Tu municipio no está en la lista?"
+    texto="Cubrimos más área de la que tiene página propia. Pregúntanos y te decimos con franqueza si llegamos bien o si te conviene alguien más cerca."
+  />
+</Base>

@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import Datos from '../../components/Datos.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import { SITE } from '../../data/site';
+
+const citable =
+  'Atarjea Redes presta servicio de limpieza y mantenimiento de redes de saneamiento en instalaciones industriales, gasolineras, residencias y centros de trabajo de Sevilla y su área metropolitana. Las intervenciones se programan en la franja horaria de menor actividad del cliente para no interrumpir la operación. El residuo se retira mediante gestor de residuos autorizado con entrega de justificante, documento habitualmente exigido en auditorías e inspecciones de la propia actividad. La empresa trabaja sobre redes, colectores, separadores de grasas e hidrocarburos y depósitos.';
+
+const capacidades = [
+  { etiqueta: 'Caudal del hidrojet', valor: SITE.capacidades.hidrojetCaudal, pendiente: true },
+  { etiqueta: 'Capacidad de cuba', valor: SITE.capacidades.cubaCapacidad, pendiente: true },
+  { etiqueta: 'Autorización de gestor', valor: SITE.capacidades.gestorResiduos, pendiente: true },
+];
+
+const faqs = [
+  {
+    p: '¿Podéis trabajar sin parar la actividad?',
+    r: 'Es lo habitual. Se acuerda una ventana horaria en la franja de menor actividad y se dimensiona el equipo para entrar y salir dentro de ella. En una instalación con producción, el coste real de una limpieza no es la limpieza: es la parada.',
+  },
+  {
+    p: '¿Entregáis documentación de gestión de residuos?',
+    r: 'Sí. La retirada se realiza mediante gestor autorizado y se entrega el justificante correspondiente, que es lo que se exige habitualmente en auditoría e inspección.',
+  },
+  {
+    p: '¿Cada cuánto hay que limpiar un separador de hidrocarburos?',
+    r: 'Depende del tipo de equipo y del volumen de actividad. La frecuencia se fija tras la revisión inicial. Un separador saturado deja de separar, con lo que el vertido pasa a la red sin tratar.',
+  },
+  {
+    p: '¿Cubrís los polígonos fuera de Sevilla capital?',
+    r: 'Sí. La Rinconada y Alcalá de Guadaíra concentran buena parte del suelo industrial del área y se atienden con normalidad, porque el trabajo industrial es programado y la distancia no penaliza como en una urgencia.',
+  },
+];
+---
+
+<Base
+  title="Limpieza industrial de redes de saneamiento Sevilla | Atarjea Redes"
+  meta="Limpieza industrial de redes, separadores y depósitos en Sevilla. Naves, gasolineras y residencias. En horario de baja actividad y con gestor autorizado."
+  ruta="/industrial"
+  imagen="/img/paginas/industrial.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Limpieza industrial de redes de saneamiento',
+    descripcion: 'Limpieza de redes, separadores y depósitos en instalaciones industriales de Sevilla, con retirada de residuo por gestor autorizado.',
+  }}
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Industrial', href: '/industrial' }]}
+>
+  <Hero
+    h1="Limpieza industrial de redes de saneamiento en Sevilla"
+    entradilla="Naves, gasolineras, residencias y centros de trabajo. En tu franja de menor actividad y con la documentación de residuo en regla."
+    imagen="/img/paginas/industrial.svg"
+    alt="Limpieza industrial de redes de saneamiento en Sevilla"
+    textoSec="Pedir visita técnica"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        En una instalación con actividad hay dos cosas que se negocian antes que el
+        precio: cuándo entramos y qué papel sale de ahí. Lo primero decide cuánto te
+        cuesta de verdad; lo segundo, si el mantenimiento te resuelve un problema o te
+        crea uno administrativo.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Capacidad técnica</h2>
+      <Datos items={capacidades} />
+      <div class="aviso">
+        <strong>Pendientes de publicar.</strong> Las cifras exactas de equipo y el número
+        de autorización de gestor están en proceso de confirmación. No los aproximamos:
+        en contratación industrial son datos que se verifican.
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Sobre qué trabajamos</h2>
+      <ul>
+        <li><strong>Redes y colectores</strong> de uso intensivo, con hidrojet de alta presión.</li>
+        <li><strong>Separadores</strong> de grasas e hidrocarburos: limpieza, vaciado y revisión de funcionamiento.</li>
+        <li><strong>Depósitos y arquetas</strong> de gran capacidad, con equipo de succión.</li>
+        <li><strong>Inspección con cámara</strong> cuando hay que localizar un fallo sin excavar en una zona en uso.</li>
+      </ul>
+      <EnlacesServicios
+        slugs={['limpieza-industrial', 'hidrojet-alta-presion', 'separadores', 'inspeccion', 'mantenimiento-preventivo']}
+        titulo="Servicios para industria"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Hablamos de tu instalación?"
+    texto="Visita técnica para ver red, equipos y accesos, y proponer una frecuencia según tu uso real. Sin plan de mantenimiento de catálogo."
+    textoSec="Pedir visita técnica"
+  />
+</Base>

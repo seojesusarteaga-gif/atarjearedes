@@ -1,0 +1,10 @@
+---
+/** Maximo 5 pasos (RR1.2). */
+interface Props { pasos: { titulo: string; texto: string }[] }
+const { pasos } = Astro.props;
+---
+<ol class="proceso">
+  {pasos.slice(0, 5).map((p) => (
+    <li><div><strong>{p.titulo}</strong>{p.texto}</div></li>
+  ))}
+</ol>

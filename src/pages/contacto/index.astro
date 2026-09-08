@@ -1,0 +1,141 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site';
+import { SEGMENTOS, TICKET_ALTO } from '../../data/segmentos';
+
+const asuntos = [...SEGMENTOS, ...TICKET_ALTO];
+---
+
+<Base
+  title="Contacto | Atarjea Redes Sevilla"
+  meta="Contacta con Atarjea Redes: urgencias de saneamiento, inspección con cámara y contratos de mantenimiento en Sevilla y área metropolitana."
+  ruta="/contacto"
+  imagen="/img/paginas/contacto.svg"
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Contacto', href: '/contacto' }]}
+>
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="estrecho">
+        <h1>Contacto</h1>
+        <p>
+          Si es una urgencia, llama: es más rápido que cualquier formulario. Para
+          inspecciones, contratos de mantenimiento o presupuestos con calma, escríbenos y
+          te respondemos.
+        </p>
+      </div>
+
+      <div class="rejilla rejilla--2" style="margin-top:2rem;align-items:start">
+        <div>
+          <h2 style="margin-top:0">Datos de contacto</h2>
+          <dl class="datos" style="grid-template-columns:1fr">
+            <div class="dato">
+              <dt>Teléfono</dt>
+              <dd>
+                <a href={SITE.telefonoHref}>{SITE.telefono}</a>
+              </dd>
+              {SITE.telefonoPendiente && (
+                <p style="margin:.6rem 0 0">
+                  <span class="pendiente">
+                    Número provisional: la línea todavía no está operativa
+                  </span>
+                </p>
+              )}
+            </div>
+            <div class="dato">
+              <dt>Email</dt>
+              <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
+            </div>
+            <div class="dato">
+              <dt>Zona</dt>
+              <dd>{SITE.direccion.barrio}, {SITE.direccion.localidad}</dd>
+              {SITE.direccion.pendiente && (
+                <p style="margin:.6rem 0 0">
+                  <span class="pendiente">Dirección exacta pendiente de publicar</span>
+                </p>
+              )}
+            </div>
+            <div class="dato">
+              <dt>Horario</dt>
+              <dd>{SITE.horario}</dd>
+            </div>
+          </dl>
+
+          <div class="aviso">
+            <strong>Sitio en construcción.</strong> Los datos marcados como provisionales
+            no son información de contacto real todavía. El formulario de esta página está
+            maquetado pero <strong>no envía</strong>: la integración se activa en la
+            siguiente fase del proyecto.
+          </div>
+        </div>
+
+        <div>
+          <h2 style="margin-top:0">Escríbenos</h2>
+          <form class="formulario" method="post" action="#" aria-describedby="aviso-form">
+            <p id="aviso-form" class="pendiente" style="margin-bottom:1rem">
+              Formulario no operativo: pendiente de integración
+            </p>
+
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required disabled />
+
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" required disabled />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" disabled />
+
+            <label for="asunto">¿Qué necesitas?</label>
+            <select id="asunto" name="asunto" disabled>
+              <option>Selecciona una opción</option>
+              {asuntos.map((a) => <option value={a.slug}>{a.nombre}</option>)}
+              <option value="otro">Otra cosa</option>
+            </select>
+
+            <label for="zona">Municipio o barrio</label>
+            <input id="zona" name="zona" type="text" disabled />
+
+            <label for="mensaje">Cuéntanos el caso</label>
+            <textarea id="mensaje" name="mensaje" rows="5" disabled></textarea>
+
+            <button class="boton boton--claro" type="submit" disabled style="margin-top:1rem">
+              Enviar (no operativo)
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .formulario label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 650;
+      color: var(--tinta);
+      margin: 0.9rem 0 0.3rem;
+    }
+    .formulario input,
+    .formulario select,
+    .formulario textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      font: inherit;
+      font-size: 0.95rem;
+      background: var(--blanco);
+      color: var(--texto);
+    }
+    .formulario input:disabled,
+    .formulario select:disabled,
+    .formulario textarea:disabled {
+      background: var(--fondo-alt);
+      color: var(--texto-sec);
+      cursor: not-allowed;
+    }
+    .formulario button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  </style>
+</Base>

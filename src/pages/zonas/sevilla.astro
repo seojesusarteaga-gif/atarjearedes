@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import { BARRIOS } from '../../data/barrios';
+
+const faqs = [
+  {
+    p: '¿Cuánto tardáis en llegar dentro de Sevilla capital?',
+    r: 'Toda la capital está dentro del radio de intervención inmediata. El punto más alejado es Sevilla Este, a unos siete kilómetros del Casco Antiguo.',
+  },
+  {
+    p: '¿Trabajáis en edificios del Casco Antiguo con protección patrimonial?',
+    r: 'Sí, y es donde más sentido tiene la rehabilitación sin obra: trabaja desde el interior del conducto, sin picar paramentos ni abrir zanja.',
+  },
+  {
+    p: '¿Qué distritos acumulan más problemas de bajante?',
+    r: 'El parque de bloque construido entre los años cincuenta y ochenta, que se concentra en Triana, Los Remedios, Macarena y Nervión, es el que más incidencias acumula por edad de la conducción.',
+  },
+];
+
+const citable =
+  'Atarjea Redes tiene su base en el Casco Antiguo de Sevilla y cubre la totalidad de la capital dentro de su radio de intervención inmediata. El parque edificado de la ciudad es heterogéneo: el centro histórico conserva conducciones de fundición y gres con décadas de servicio, los distritos de bloque construidos entre los años cincuenta y ochenta concentran bajantes al final de su vida útil, y las promociones de Sevilla Este disponen de redes más recientes. La empresa adapta el servicio a esa diferencia en lugar de aplicar el mismo procedimiento a toda la ciudad.';
+---
+
+<Base
+  title="Saneamiento y desatascos Sevilla capital | Atarjea Redes"
+  meta="Saneamiento, desatascos, inspección con cámara y rehabilitación de tuberías en Sevilla capital. Servicio diferenciado por distrito."
+  ruta="/zonas/sevilla"
+  imagen="/img/zonas/sevilla.svg"
+  faqs={faqs}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Zonas', href: '/zonas' },
+    { nombre: 'Sevilla capital', href: '/zonas/sevilla' },
+  ]}
+>
+  <Hero
+    h1="Saneamiento y desatascos en Sevilla capital"
+    entradilla="Toda la capital dentro del radio de intervención inmediata, con servicio adaptado al parque edificado de cada distrito."
+    imagen="/img/zonas/sevilla.svg"
+    alt="Saneamiento y desatascos en Sevilla capital"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        Sevilla no es una ciudad homogénea bajo el suelo. Una finca del Casco Antiguo y un
+        bloque de Sevilla Este no comparten ni el material de la conducción, ni la edad, ni
+        el tipo de fallo. Por eso trabajamos por distrito y no con un servicio único para
+        toda la ciudad.
+      </p>
+      <div class="aviso">
+        <strong>Población de Sevilla capital:</strong>
+        <span class="pendiente">pendiente de verificar en INE / SIMA</span>. No publicamos
+        cifras que no hayamos comprobado en la fuente.
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <h2>Distritos con servicio diferenciado</h2>
+      <p class="estrecho">
+        Cinco zonas, cinco servicios distintos. No hay página de barrio sin un argumento
+        técnico que la justifique.
+      </p>
+      <div class="rejilla rejilla--3">
+        {
+          BARRIOS.map((b) => (
+            <article class="tarjeta">
+              <img
+                src={`/img/zonas/${b.slug}.svg`}
+                alt={`${b.servicioDominante} en ${b.nombre}, Sevilla`}
+                width="1200"
+                height="675"
+                loading="lazy"
+              />
+              <div class="tarjeta__cuerpo">
+                <span class="tarjeta__etiqueta">{b.servicioDominante}</span>
+                <h3><a href={`/zonas/sevilla/${b.slug}`}>{b.nombre}</a></h3>
+                <p>{b.parque}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Hablamos?"
+    texto="Una urgencia, una inspección o un contrato de mantenimiento para tu comunidad en Sevilla capital."
+  />
+</Base>

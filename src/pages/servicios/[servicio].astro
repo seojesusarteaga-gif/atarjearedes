@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Proceso from '../../components/Proceso.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import { SERVICIOS } from '../../data/servicios';
+import { SEGMENTOS } from '../../data/segmentos';
+import { SITE } from '../../data/site';
+
+export function getStaticPaths() {
+  return SERVICIOS.map((s) => ({ params: { servicio: s.slug }, props: { s } }));
+}
+
+const { s } = Astro.props;
+const segmentos = SEGMENTOS.filter((x) => s.segmentos.includes(x.slug));
+---
+<Base
+  title={s.title}
+  meta={s.meta}
+  ruta={`/servicios/${s.slug}`}
+  imagen="/img/paginas/servicios.svg"
+  faqs={s.faqs}
+  servicio={{ nombre: s.nombre, descripcion: s.meta }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Servicios', href: '/servicios' },
+    { nombre: s.nombre, href: `/servicios/${s.slug}` },
+  ]}
+>
+  <Hero h1={s.h1} entradilla={s.entradilla} imagen="/img/paginas/servicios.svg" alt={`${s.nombre} en Sevilla`} />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={s.citable} />
+      {s.cuerpo.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Cómo trabajamos</h2>
+      <Proceso pasos={s.proceso} />
+      <div class="aviso">
+        <strong>Precios:</strong> pendientes de confirmar con el operador. Preferimos no
+        publicar una cifra antes de poder sostenerla.
+      </div>
+    </div>
+  </section>
+
+  <Faqs faqs={s.faqs} />
+
+  {segmentos.length > 0 && (
+    <section class="seccion seccion--alt">
+      <div class="contenedor">
+        <h2>Para quién es este servicio</h2>
+        <ul class="enlaces">
+          {segmentos.map((x) => <li><a href={x.href}>{x.nombre}</a></li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <Cta titulo={`¿Necesitas ${s.nombre.toLowerCase()} en Sevilla?`} texto={`Cuéntanos el caso y te decimos si este es el servicio que necesitas o si conviene inspeccionar antes.`} />
+</Base>

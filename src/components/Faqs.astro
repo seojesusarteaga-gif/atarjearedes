@@ -1,0 +1,22 @@
+---
+import type { Faq } from '../data/servicios';
+/**
+ * Renderiza las FAQs. El MISMO array alimenta el FAQPage del schema desde la
+ * pagina, para que no puedan desincronizarse texto visible y datos marcados.
+ */
+interface Props { faqs: Faq[]; titulo?: string }
+const { faqs, titulo = 'Preguntas frecuentes' } = Astro.props;
+---
+<section class="sección">
+  <div class="contenedor estrecho">
+    <h2>{titulo}</h2>
+    <div class="faq">
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.p}</summary>
+          <div><p>{f.r}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

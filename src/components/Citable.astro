@@ -1,0 +1,12 @@
+---
+/**
+ * Bloque citable IA (M5.1). Obligatorio en la home y en cada landing de capa,
+ * dentro del primer 30% de la pagina. Prosa corrida, tercera persona, 60-100
+ * palabras: es el fragmento que un modelo puede citar literalmente.
+ */
+interface Props { texto: string }
+const { texto } = Astro.props;
+---
+<div class="citable">
+  <p>{texto}</p>
+</div>

@@ -1,0 +1,14 @@
+---
+import { resolverServicios } from '../data/enlaces';
+interface Props { slugs: readonly string[]; titulo?: string }
+const { slugs, titulo = 'Servicios relacionados' } = Astro.props;
+const items = resolverServicios(slugs);
+---
+{items.length > 0 && (
+  <div>
+    <h3>{titulo}</h3>
+    <ul class="enlaces">
+      {items.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
+    </ul>
+  </div>
+)}

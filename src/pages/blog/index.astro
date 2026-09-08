@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Cta from '../../components/Cta.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title="Blog de saneamiento y canalizaciones Sevilla | Atarjea Redes"
+  meta="Artículos sobre atascos, olores, bajantes y normativa de saneamiento en Sevilla. Qué significa cada síntoma y cuándo hay que preocuparse."
+  ruta="/blog"
+  imagen="/img/paginas/blog.svg"
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Blog', href: '/blog' }]}
+>
+  <Hero
+    h1="Blog de saneamiento y canalizaciones en Sevilla"
+    entradilla="Qué significa cada síntoma, cuándo es cosa tuya y cuándo de la comunidad, y qué obliga la normativa. Sin adornos."
+    imagen="/img/paginas/blog.svg"
+    alt="Blog de saneamiento y canalizaciones en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="rejilla rejilla--2">
+        {
+          posts.map((p) => (
+            <article class="tarjeta">
+              <div class="tarjeta__cuerpo">
+                <span class="tarjeta__etiqueta">{p.data.categoria}</span>
+                <h2 style="font-size:1.2rem;margin-top:0">
+                  <a href={`/blog/${p.id}`}>{p.data.titulo}</a>
+                </h2>
+                <p>{p.data.entradilla}</p>
+                <p class="tarjeta__pie">
+                  <a href={`/blog/${p.id}`}>Leer</a>
+                  <span style="font-weight:400;color:var(--texto-sec)"> · {fmt(p.data.fecha)}</span>
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    titulo="¿Tu caso no está aquí?"
+    texto="Descríbenos el síntoma y te decimos qué suele haber detrás y si hace falta mirar la conducción por dentro."
+  />
+</Base>

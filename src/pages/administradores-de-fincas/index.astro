@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import Datos from '../../components/Datos.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import { SITE } from '../../data/site';
+
+const citable =
+  'Atarjea Redes trabaja con administradores de fincas y comunidades de propietarios en Sevilla y su área metropolitana. La empresa emite factura directamente a la comunidad de propietarios con sus datos fiscales, asigna un interlocutor único para todas las incidencias y documenta cada actuación con informe presentable ante la junta. Su propuesta central son los contratos de mantenimiento preventivo de redes de saneamiento, con frecuencia definida tras una inspección inicial, y la entrega de vídeo de inspección con cámara cuando hay que justificar una reparación ante los propietarios.';
+
+const capacidades = [
+  { etiqueta: 'Caudal del hidrojet', valor: SITE.capacidades.hidrojetCaudal, pendiente: true },
+  { etiqueta: 'Capacidad de cuba', valor: SITE.capacidades.cubaCapacidad, pendiente: true },
+  { etiqueta: 'Diámetros de cámara', valor: SITE.capacidades.camaraDiametros, pendiente: true },
+];
+
+const faqs = [
+  {
+    p: '¿Podéis facturar directamente a la comunidad de propietarios?',
+    r: 'Sí. Emitimos factura a la CCPP con sus datos fiscales, que es como lo necesita el administrador para su contabilidad y para la rendición de cuentas ante la junta.',
+  },
+  {
+    p: '¿Qué documentación entregáis después de una intervención?',
+    r: 'Informe de la actuación con el estado de la red y las recomendaciones, en formato presentable ante la junta. En inspecciones con cámara, además, el vídeo del recorrido.',
+  },
+  {
+    p: '¿Atendéis fuera de horario?',
+    r: 'Sí. Las bajantes no revientan en horario de oficina. Los contratos de mantenimiento fijan condiciones de respuesta preferentes para las incidencias fuera de horario.',
+  },
+  {
+    p: '¿Tenéis referencias de comunidades similares?',
+    r: 'Todavía no. Somos una empresa recién constituida y preferimos decirlo antes que enseñar logotipos de clientes que no son nuestros. Los casos que describimos en la web están marcados como ilustrativos. En cuanto tengamos comunidades trabajando con nosotros y su permiso, las citaremos con nombre.',
+  },
+  {
+    p: '¿Cómo se fija la frecuencia del mantenimiento?',
+    r: 'Después de una inspección inicial de la red, no antes. La antigüedad del edificio, el número de viviendas y la presencia de hostelería en los bajos cambian mucho la frecuencia necesaria. Proponer un plan sin haber mirado la red es vender por catálogo.',
+  },
+];
+---
+
+<Base
+  title="Saneamiento para administradores de fincas Sevilla | Atarjea Redes"
+  meta="Servicio de saneamiento para administradores de fincas en Sevilla: interlocutor único, factura a la comunidad, informe para la junta y contratos de mantenimiento preventivo."
+  ruta="/administradores-de-fincas"
+  imagen="/img/paginas/administradores-de-fincas.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Mantenimiento de redes de saneamiento para comunidades',
+    descripcion: 'Contratos de mantenimiento preventivo, inspección y rehabilitación de redes para administradores de fincas y comunidades de propietarios en Sevilla.',
+  }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Administradores de Fincas', href: '/administradores-de-fincas' },
+  ]}
+>
+  <Hero
+    h1="Mantenimiento de saneamiento para administradores de fincas en Sevilla"
+    entradilla="Un interlocutor, una factura a la comunidad y un informe que puedes llevar a la junta. Y alguien que coge el teléfono un domingo."
+    imagen="/img/paginas/administradores-de-fincas.svg"
+    alt="Mantenimiento de saneamiento para administradores de fincas en Sevilla"
+    textoSec="Hablar de un contrato"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        Sabemos cómo funciona esto. No decides por precio: decides por quién no te va a
+        dejar tirado cuando una bajante reviente un domingo, y por quién te va a dar un
+        papel que puedas enseñar en la junta sin que te hagan quince preguntas.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Los cuatro criterios con los que nos vas a evaluar</h2>
+      <p>
+        Son los que usa el sector para elegir proveedor de mantenimiento. Los ponemos
+        nosotros mismos sobre la mesa, incluido aquel en el que todavía no salimos bien.
+      </p>
+
+      <h3>1. Capacitación técnica del equipo</h3>
+      <p>
+        Los datos que importan son de máquina, no de adjetivos. Estos son los nuestros:
+      </p>
+      <Datos items={capacidades} />
+      <div class="aviso">
+        <strong>Pendientes de publicar.</strong> Las cifras exactas de equipo están en
+        proceso de confirmación. Preferimos dejarlas marcadas como pendientes a poner un
+        número aproximado: es justo el dato con el que un administrador compara, y
+        redondearlo al alza sería empezar mintiendo.
+      </div>
+
+      <h3>2. Gestión de incidencias</h3>
+      <p>
+        Alta de la incidencia, seguimiento del estado e informe al cierre. Cada actuación
+        queda registrada, de modo que cuando la junta pregunta qué se hizo en la finca de
+        la calle tal en marzo, hay respuesta y no memoria.
+      </p>
+
+      <h3>3. Reactividad ante emergencias</h3>
+      <p>
+        Disponibilidad fuera de horario, que es cuando ocurren las cosas. Los contratos de
+        mantenimiento fijan condiciones de respuesta preferentes por escrito, no de
+        palabra.
+      </p>
+
+      <h3>4. Referencias verificables en comunidades similares</h3>
+      <p>
+        Aquí es donde todavía no salimos bien, y lo decimos: somos una empresa recién
+        constituida y no tenemos cartera de comunidades que enseñar. Los casos que
+        describimos en esta web están marcados como ilustrativos. Cuando tengamos
+        comunidades trabajando con nosotros y su permiso expreso, las citaremos con
+        nombre y podrás llamarlas.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Cómo encajamos en tu forma de contratar</h2>
+      <p>
+        Los contratos de mantenimiento se revisan a vencimiento, no cuando llama un
+        comercial. Y la decisión tiene dos pasos: tú filtras y la junta aprueba. Trabajamos
+        con eso en mente.
+      </p>
+      <ul>
+        <li>
+          <strong>Para ti:</strong> un interlocutor único, agilidad y respuesta fuera de
+          horario. Sin cadena de teléfonos ni derivaciones.
+        </li>
+        <li>
+          <strong>Para la junta:</strong> propuesta comparable, precio cerrado y un
+          informe con el estado real de la red que justifique el gasto.
+        </li>
+        <li>
+          <strong>Cuándo hablamos:</strong> dinos cuándo vence el contrato actual y
+          volvemos entonces. No insistimos antes.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Tres cosas que sí tenemos desde el primer día</h2>
+
+      <h3>Interlocutor único y factura a la comunidad</h3>
+      <p>
+        Facturamos a la CCPP con sus datos fiscales. Suena a trámite y es exactamente lo
+        que te ahorra trabajo cuando cuadras las cuentas del ejercicio.
+      </p>
+
+      <h3>Informe de inspección con vídeo</h3>
+      <p>
+        Cuando hay que aprobar una derrama, la diferencia entre una discusión larga y una
+        aprobación rápida suele ser poder proyectar el interior de la tubería en la junta.
+        Nosotros te damos ese vídeo.
+      </p>
+
+      <h3>Presupuesto cerrado después del diagnóstico</h3>
+      <p>
+        No presupuestamos una reparación sin haber inspeccionado antes. Un precio dado a
+        ojo se convierte en una ampliación a mitad de obra, y esa conversación la acabas
+        teniendo tú con los propietarios, no nosotros.
+      </p>
+
+      <EnlacesServicios
+        slugs={['mantenimiento-preventivo', 'limpieza-bajantes', 'inspeccion', 'rehabilitacion', 'arquetas-y-colectores']}
+        titulo="Servicios para comunidades"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Cuándo vence tu contrato de mantenimiento?"
+    texto="Dinos la fecha y volvemos entonces con una propuesta comparable. Si tienes una incidencia ahora, llama y la vemos hoy."
+    textoSec="Escribir para un contrato"
+  />
+</Base>

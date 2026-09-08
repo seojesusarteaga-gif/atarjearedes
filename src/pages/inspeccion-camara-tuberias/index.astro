@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import Datos from '../../components/Datos.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import { SITE } from '../../data/site';
+
+const citable =
+  'Atarjea Redes realiza inspección de tuberías con cámara en Sevilla y su área metropolitana como paso previo a cualquier presupuesto de reparación. La cámara recorre el interior de la conducción y permite identificar el punto exacto y la causa del fallo: raíces, fisuras, juntas abiertas, contrapendientes, pérdida de material o acometidas mal ejecutadas. El cliente recibe el vídeo del recorrido y un informe con el diagnóstico. La empresa no emite precio de reparación sin haber inspeccionado antes, porque un presupuesto sin diagnóstico es una estimación que casi siempre se amplía a mitad de obra.';
+
+const datos = [
+  { etiqueta: 'Diámetros de cámara', valor: SITE.capacidades.camaraDiametros, pendiente: true },
+  { etiqueta: 'Entregable', valor: 'Vídeo del recorrido + informe' },
+  { etiqueta: 'Precio de la inspección', valor: 'Pendiente de confirmar', pendiente: true },
+];
+
+const faqs = [
+  {
+    p: '¿Por qué no me dais precio de la reparación por teléfono?',
+    r: 'Porque no sabríamos de qué estamos hablando. Una raíz en una junta, una fisura y un tramo hundido dan el mismo síntoma desde fuera y tienen tres reparaciones distintas, con tres precios distintos. Dar una cifra sin mirar es dar una cifra que luego hay que corregir al alza.',
+  },
+  {
+    p: '¿Qué me llevo de la inspección?',
+    r: 'El vídeo completo del recorrido y un informe con el diagnóstico: dónde está el problema, qué lo causa y qué opciones de reparación hay. Es tuyo, aunque después no nos contrates la reparación.',
+  },
+  {
+    p: '¿Hay que romper para meter la cámara?',
+    r: 'No. Se accede desde arquetas y registros existentes. Ese es precisamente el sentido de inspeccionar: saber dónde hay que actuar antes de abrir nada, en lugar de abrir para averiguarlo.',
+  },
+  {
+    p: '¿Y si la inspección no encuentra nada?',
+    r: 'También es un resultado útil: descarta daño estructural y confirma que el problema es de uso o de mantenimiento, que se resuelve con limpieza y sale mucho más barato que una reparación.',
+  },
+  {
+    p: '¿La inspección se descuenta si contrato la reparación?',
+    r: 'Es la práctica que queremos aplicar, pero las condiciones exactas están pendientes de cerrar con el operador. Preferimos no anunciar un descuento antes de poder garantizarlo.',
+  },
+];
+---
+
+<Base
+  title="Inspección con cámara de tuberías Sevilla | Atarjea Redes"
+  meta="Inspección de tuberías con cámara en Sevilla. Diagnóstico previo obligado antes de presupuestar una reparación. Vídeo del recorrido e informe incluidos."
+  ruta="/inspeccion-camara-tuberias"
+  imagen="/img/paginas/inspeccion-camara-tuberias.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Inspección de tuberías con cámara',
+    descripcion: 'Inspección con cámara de redes de saneamiento en Sevilla como diagnóstico previo a cualquier presupuesto de reparación.',
+  }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Inspección con cámara de tuberías', href: '/inspeccion-camara-tuberias' },
+  ]}
+>
+  <Hero
+    h1="Inspección con cámara de tuberías en Sevilla"
+    entradilla="Antes de presupuestar cualquier reparación, inspeccionamos la red con cámara. Sin diagnóstico no hay presupuesto real, solo una estimación que luego sube."
+    imagen="/img/paginas/inspeccion-camara-tuberias.svg"
+    alt="Inspección con cámara de tuberías en Sevilla"
+    textoSec="Pedir una inspección"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <Datos items={datos} />
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Qué se ve, y qué se descarta</h2>
+      <p>La cámara recorre el interior del conducto y permite identificar:</p>
+      <ul>
+        <li><strong>Raíces</strong> que han entrado por juntas o microfisuras buscando humedad.</li>
+        <li><strong>Fisuras y roturas</strong> del conducto, y pérdida de material en tubería antigua.</li>
+        <li><strong>Contrapendientes</strong>: tramos donde el agua se para porque el conducto no cae.</li>
+        <li><strong>Juntas abiertas o desplazadas</strong> por asentamiento del terreno.</li>
+        <li><strong>Acometidas mal ejecutadas</strong>, que estrangulan la sección desde el primer día.</li>
+        <li><strong>Incrustación</strong>: cuánta sección útil queda realmente.</li>
+      </ul>
+      <p>
+        Y descarta, que vale igual de dinero: si la conducción está sana, no hay reparación
+        que hacer y el problema se resuelve con limpieza.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Por qué no presupuestamos sin inspeccionar antes</h2>
+      <p>
+        Un atasco recurrente, una humedad en el techo del vecino y un hundimiento en el
+        jardín pueden tener la misma causa o tres causas distintas. Desde fuera no se
+        distinguen. Y cada una tiene una reparación con un precio muy diferente.
+      </p>
+      <p>
+        Dar precio sin mirar tiene dos finales posibles, y los dos son malos: o se
+        presupuesta de más por si acaso, o se presupuesta de menos y aparece la ampliación
+        a mitad de obra. En una comunidad de propietarios, esa segunda conversación la
+        acaba teniendo el administrador delante de la junta.
+      </p>
+      <p>
+        Por eso el orden es siempre el mismo: <strong>inspeccionar, diagnosticar,
+        presupuestar</strong>. En ese orden.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Qué recibes</h2>
+      <ul>
+        <li><strong>El vídeo</strong> del recorrido completo, tuyo aunque no nos contrates después.</li>
+        <li><strong>El informe</strong>: dónde está el fallo, qué lo causa y qué opciones hay.</li>
+        <li><strong>Las opciones de reparación</strong>, con la diferencia entre cada una explicada.</li>
+      </ul>
+      <p>
+        Para una comunidad, el vídeo tiene un uso adicional muy concreto: convierte una
+        derrama discutida en una derrama aprobada. Ver el interior de la bajante
+        proyectado en la junta acaba con la discusión más rápido que cualquier informe
+        escrito.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Cuándo basta con limpiar y cuándo hay que reparar</h2>
+      <table>
+        <thead>
+          <tr><th>Lo que ve la cámara</th><th>Lo que procede</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Incrustación y grasa, conducto íntegro</td><td>Hidrolimpieza. No hay reparación que hacer.</td></tr>
+          <tr><td>Raíces sin daño estructural</td><td>Corte de raíz y limpieza, más revisión periódica.</td></tr>
+          <tr><td>Fisuras, juntas abiertas, pérdida de material</td><td>Rehabilitación sin obra con manga continua.</td></tr>
+          <tr><td>Colapso o hundimiento del conducto</td><td>Sustitución del tramo. Aquí sí hay obra.</td></tr>
+        </tbody>
+      </table>
+      <p>
+        <a class="boton boton--claro" href="/rehabilitacion-tuberias-sin-obra">
+          Ver cómo funciona la rehabilitación sin obra
+        </a>
+      </p>
+      <EnlacesServicios
+        slugs={['rehabilitacion', 'limpieza-bajantes', 'arquetas-y-colectores', 'hidrojet-alta-presion']}
+        titulo="A dónde lleva el diagnóstico"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Un problema que vuelve siempre al mismo sitio?"
+    texto="Eso ya no es suciedad. Inspecciona una vez y deja de pagar la misma intervención cada pocos meses."
+    textoSec="Pedir una inspección"
+  />
+</Base>

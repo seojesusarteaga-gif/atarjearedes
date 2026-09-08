@@ -1,0 +1,112 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Cta from '../../components/Cta.astro';
+import Faqs from '../../components/Faqs.astro';
+
+const faqs = [
+  {
+    p: '¿Cuánto tiempo lleváis trabajando?',
+    r: 'Somos una empresa recién constituida. Lo decimos en la primera línea porque tarde o temprano se nota, y preferimos que lo sepas por nosotros. El equipo técnico que ejecuta los trabajos sí tiene recorrido en el sector.',
+  },
+  {
+    p: '¿Tenéis referencias que pueda consultar?',
+    r: 'Todavía no. Los casos que describimos en la web están marcados como ilustrativos. En cuanto tengamos clientes trabajando con nosotros y su permiso expreso, los citaremos con nombre para que puedas llamarlos.',
+  },
+  {
+    p: '¿Por qué no publicáis precios?',
+    r: 'Porque aún no están cerrados. Publicar una cifra de reclamo que luego no se sostiene en la factura es la práctica más extendida del sector y la que peor nos parece. Damos precio por teléfono antes de salir.',
+  },
+];
+---
+
+<Base
+  title="Por qué trabajar con nosotros | Atarjea Redes"
+  meta="Qué hacemos distinto en Atarjea Redes: diagnóstico antes de presupuestar, precio cerrado, documentación entregable y franqueza sobre lo que todavía no tenemos."
+  ruta="/por-que-nosotros"
+  imagen="/img/paginas/por-que-nosotros.svg"
+  faqs={faqs}
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Por qué nosotros', href: '/por-que-nosotros' }]}
+>
+  <Hero
+    h1="Por qué trabajar con Atarjea Redes en Sevilla"
+    entradilla="Cuatro cosas que hacemos distinto, y tres que todavía no tenemos. Las dos listas importan."
+    imagen="/img/paginas/por-que-nosotros.svg"
+    alt="Por qué trabajar con Atarjea Redes en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Qué hacemos distinto</h2>
+
+      <h3>Diagnosticamos antes de presupuestar</h3>
+      <p>
+        No damos precio de reparación sin haber visto la conducción por dentro. Un
+        presupuesto sin diagnóstico es una estimación, y las estimaciones se amplían a
+        mitad de obra. Preferimos la conversación incómoda al principio que la factura
+        incómoda al final.
+      </p>
+
+      <h3>Distinguimos limpiar de desatascar</h3>
+      <p>
+        Abrir paso a través de un tapón y recuperar la sección del conducto no son lo
+        mismo, aunque se facturen parecido. Lo primero hace que vuelvas a llamar en unos
+        meses. Nosotros explicamos la diferencia y decimos cuál necesita tu caso, aunque
+        sea la barata.
+      </p>
+
+      <h3>Entregamos documentación, no solo trabajo</h3>
+      <p>
+        Informe de cada actuación y vídeo cuando hay inspección con cámara. Para una
+        comunidad de propietarios eso no es un extra: es lo que convierte una derrama
+        discutida en una derrama aprobada.
+      </p>
+
+      <h3>Decimos dónde no llegamos bien</h3>
+      <p>
+        Prometer media hora en toda la provincia es fácil de escribir e imposible de
+        cumplir. En nuestra página de <a href="/zonas">zonas de cobertura</a> decimos
+        municipio por municipio qué tiempo de respuesta podemos sostener, y en cuáles
+        trabajamos solo en programado.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Qué todavía no tenemos</h2>
+      <p>
+        Esta parte no suele aparecer en las webs del sector. Nos parece más útil que la
+        anterior.
+      </p>
+      <ul>
+        <li>
+          <strong>Referencias de clientes.</strong> Somos una empresa nueva. No tenemos
+          cartera que enseñar y no vamos a poner logotipos que no son nuestros. Los casos
+          que describimos están marcados como ilustrativos.
+        </li>
+        <li>
+          <strong>Precios publicados.</strong> Están pendientes de cerrar. Cuando los
+          publiquemos serán rangos reales por tipo de intervención.
+        </li>
+        <li>
+          <strong>Años de experiencia como empresa.</strong> Los tiene el equipo técnico;
+          la marca, no. Son cosas distintas y no las vamos a mezclar.
+        </li>
+      </ul>
+      <div class="aviso">
+        <strong>Por qué contamos esto.</strong> En un sector donde todo el mundo lleva
+        «más de veinticinco años» y atiende «en menos de treinta minutos», ser el único que
+        dice lo que le falta es, probablemente, la mejor referencia que podemos dar
+        mientras no tengamos las otras.
+      </div>
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Nos das una oportunidad?"
+    texto="Empieza por algo pequeño: una inspección, una limpieza programada, una segunda opinión sobre un presupuesto que te han pasado. Se juzga mejor por un trabajo que por una web."
+  />
+</Base>

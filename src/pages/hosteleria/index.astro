@@ -1,0 +1,145 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+
+const citable =
+  'El Reglamento de Saneamiento de EMASESA obliga a instalar arqueta separadora de grasas a las actividades susceptibles de aportar grasas a la red pública de Sevilla, entre ellas bares, restaurantes, hoteles, estaciones de lavado y aparcamientos. El separador requiere limpieza periódica y vaciado mediante empresa gestora de residuos autorizada. Atarjea Redes presta ese servicio a establecimientos de hostelería de Sevilla y su área metropolitana, programado en horario de cierre para no interrumpir la actividad, con retirada del residuo por gestor autorizado y entrega del justificante correspondiente.';
+
+const faqs = [
+  {
+    p: '¿Estoy obligado a tener separador de grasas en mi bar?',
+    r: 'El Reglamento de Saneamiento de EMASESA exige arqueta separadora de grasas a las actividades que aportan grasas a la red pública, y la hostelería está entre ellas. Si tu local sirve comida, lo más probable es que sí.',
+  },
+  {
+    p: '¿Cada cuánto hay que limpiarlo?',
+    r: 'Depende del tipo de separador y del volumen de actividad. Los compactos requieren limpieza con frecuencia alta; los de mayor capacidad, espaciada. La frecuencia correcta se fija tras revisar el equipo, no por catálogo.',
+  },
+  {
+    p: '¿Quién puede vaciarlo?',
+    r: 'El residuo debe retirarlo una empresa gestora de residuos autorizada, que emite el justificante. No lo puede hacer cualquiera, y ese justificante es lo que acredita el cumplimiento.',
+  },
+  {
+    p: '¿Me vais a cerrar la cocina?',
+    r: 'No. Se programa en horario de cierre. En un local de hostelería el coste real de un mantenimiento no es el mantenimiento: es el servicio que dejas de dar mientras se hace.',
+  },
+  {
+    p: '¿Qué pasa si nunca lo he limpiado?',
+    r: 'Lo primero es ver en qué estado está. Un separador saturado deja de separar, y a partir de ahí la grasa se va a la red y acaba provocando atascos en la acometida del local, que es un problema más caro que la limpieza.',
+  },
+];
+---
+
+<Base
+  title="Separadores de grasas hostelería Sevilla | Atarjea Redes"
+  meta="Limpieza de separadores de grasas y saneamiento para bares, restaurantes y hoteles en Sevilla. Cumplimiento del Reglamento de EMASESA, en horario de cierre."
+  ruta="/hosteleria"
+  imagen="/img/paginas/hosteleria.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Saneamiento y separadores de grasas para hostelería',
+    descripcion: 'Limpieza de separadores de grasas, redes y acometidas para establecimientos de hostelería en Sevilla, con retirada por gestor autorizado.',
+  }}
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Hostelería', href: '/hosteleria' }]}
+>
+  <Hero
+    h1="Saneamiento y separadores de grasas para hostelería en Sevilla"
+    entradilla="El separador de grasas no es una recomendación: es una obligación del Reglamento de Saneamiento de EMASESA. Nosotros lo mantenemos y te damos el justificante."
+    imagen="/img/paginas/hosteleria.svg"
+    alt="Separadores de grasas y saneamiento para hostelería en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>1. La obligación</h2>
+      <p>
+        El Reglamento de Saneamiento de EMASESA exige arqueta separadora de grasas a los
+        vertidos procedentes de actividades susceptibles de aportar grasas a la red
+        pública: bares, restaurantes, hoteles, estaciones de lavado y engrase y
+        aparcamientos, entre otras.
+      </p>
+      <p>
+        No es una buena práctica ni una recomendación del sector. Es normativa municipal, y
+        el incumplimiento tiene consecuencias tanto económicas como sobre la propia
+        licencia de actividad.
+      </p>
+      <div class="aviso">
+        <strong>Articulado concreto:</strong>
+        <span class="pendiente">pendiente de verificar en el texto oficial</span>. Vamos a
+        citar artículo, frecuencias e importes cuando los hayamos contrastado uno a uno con
+        el reglamento publicado por EMASESA. Citar mal una norma en una página que habla de
+        cumplimiento normativo destruye exactamente la credibilidad que la página busca.
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>2. Cómo saber si cumples</h2>
+      <p>Tres preguntas rápidas. Si no sabes responder a alguna, conviene mirarlo:</p>
+      <ul>
+        <li>¿Tu local tiene arqueta separadora de grasas instalada y accesible?</li>
+        <li>¿Cuándo se limpió por última vez?</li>
+        <li>¿Tienes el justificante de retirada emitido por un gestor autorizado?</li>
+      </ul>
+      <p>
+        La tercera es la que suele fallar. Muchos locales han limpiado el separador alguna
+        vez, pero sin documentación de la retirada del residuo, que es justamente lo que
+        acredita el cumplimiento ante una inspección.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>3. Cómo se resuelve</h2>
+      <ul>
+        <li><strong>Revisión del equipo:</strong> tipo de separador, estado y capacidad real.</li>
+        <li><strong>Limpieza y vaciado:</strong> con succión y agua a presión, en horario de cierre.</li>
+        <li><strong>Retirada del residuo:</strong> por gestor autorizado, con justificante.</li>
+        <li><strong>Frecuencia:</strong> se fija según el equipo y tu volumen de actividad real.</li>
+      </ul>
+      <p>
+        Además del separador, en hostelería la acometida y la red interior acumulan grasa
+        con rapidez. La hidrolimpieza periódica de ese tramo evita el atasco que siempre
+        llega en el peor momento, que es un viernes noche.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>4. El contrato anual</h2>
+      <p>
+        La forma sensata de llevar esto no es llamar cuando huele mal: es un contrato con
+        frecuencia fijada, visitas programadas en horario de cierre y la documentación
+        siempre al día. Sabes lo que cuesta al año y no te la juegas en una inspección.
+      </p>
+      <p>
+        <a class="boton boton--claro" href="/separadores-de-grasas-sevilla">
+          Ver la página de separadores de grasas
+        </a>
+      </p>
+      <EnlacesServicios
+        slugs={['separadores', 'hidrojet-alta-presion', 'desatascos-urgentes', 'mantenimiento-preventivo']}
+        titulo="Servicios para hostelería"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Cuándo limpiaste el separador por última vez?"
+    texto="Si la respuesta es «no lo sé» o «no tengo el papel», conviene revisarlo antes de que lo revise otro. Lo vemos sin compromiso."
+  />
+</Base>

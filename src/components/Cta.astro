@@ -1,0 +1,18 @@
+---
+import { SITE } from '../data/site';
+interface Props { titulo: string; texto: string; hrefSec?: string; textoSec?: string }
+const { titulo, texto, hrefSec = '/contacto', textoSec = 'Pedir presupuesto' } = Astro.props;
+---
+<section class="sección sección--osc">
+  <div class="contenedor estrecho">
+    <h2>{titulo}</h2>
+    <p>{texto}</p>
+    <div class="acciones">
+      <a class="boton boton--pri" href={SITE.telefonoHref}>Llamar {SITE.telefono}</a>
+      <a class="boton boton--sec" href={hrefSec}>{textoSec}</a>
+    </div>
+    {SITE.telefonoPendiente && (
+      <p style="margin-top:1rem"><span class="pendiente">Telefono provisional: pendiente de alta de linea</span></p>
+    )}
+  </div>
+</section>

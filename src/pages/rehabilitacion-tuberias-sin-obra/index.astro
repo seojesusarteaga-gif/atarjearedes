@@ -1,0 +1,142 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Proceso from '../../components/Proceso.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+
+const citable =
+  'Atarjea Redes rehabilita conducciones de saneamiento sin obra en Sevilla y su área metropolitana mediante manga continua curada in situ. La técnica consiste en introducir en la tubería existente un revestimiento flexible impregnado en resina que endurece contra la pared interior y forma un conducto nuevo dentro del antiguo, sin abrir zanja ni picar paramentos. Resulta especialmente adecuada en bajantes de edificios habitados, en redes horizontales bajo solado o jardín y en inmuebles del centro histórico con protección patrimonial, donde la obra abierta es cara, lenta o directamente inviable.';
+
+const proceso = [
+  { titulo: 'Inspección previa', texto: 'La cámara determina si el conducto conserva continuidad suficiente. Sin esto no se puede planificar la rehabilitación.' },
+  { titulo: 'Limpieza del tramo', texto: 'Hidrolimpieza para dejar la pared interior libre de incrustación: la manga tiene que adherirse al conducto, no a la suciedad.' },
+  { titulo: 'Instalación de la manga', texto: 'Se introduce el revestimiento impregnado en resina por un registro existente y se expande contra la pared.' },
+  { titulo: 'Curado', texto: 'La resina endurece in situ y forma un conducto nuevo, continuo y sin juntas, dentro del antiguo.' },
+  { titulo: 'Comprobación final', texto: 'Nueva inspección con cámara para verificar el resultado, que se entrega en vídeo.' },
+];
+
+const faqs = [
+  {
+    p: '¿Se puede hacer en un edificio habitado?',
+    r: 'Sí, y es su principal ventaja frente a la obra abierta. Se trabaja desde registros existentes, sin picar paramentos ni levantar suelos, de modo que el edificio sigue siendo habitable durante los trabajos.',
+  },
+  {
+    p: '¿Sirve para cualquier tubería?',
+    r: 'No para todas. Hace falta que el conducto conserve continuidad suficiente: si hay colapso o el tramo ha perdido la sección, la solución es sustituir. Eso lo decide la inspección previa, no el comercial.',
+  },
+  {
+    p: '¿Cuánto dura una tubería rehabilitada?',
+    r: 'El revestimiento curado forma un conducto continuo sin juntas, que es justamente por donde fallan las conducciones antiguas. La vida útil esperable es larga, pero no vamos a dar una cifra de años que no podamos respaldar con la ficha técnica del material que empleemos.',
+  },
+  {
+    p: '¿Es más barato que picar?',
+    r: 'Casi siempre, y no solo por el precio del trabajo: no hay que reponer solado, alicatado ni jardinería, y no hay que desalojar. La comparación honesta incluye esa reposición, que es donde se dispara el presupuesto de la obra abierta.',
+  },
+  {
+    p: '¿Vale para bajantes de comunidad?',
+    r: 'Es uno de sus usos más frecuentes en Sevilla, sobre todo en bloques de los años cincuenta a ochenta cuyas bajantes originales han agotado su vida útil pero conservan integridad suficiente.',
+  },
+];
+---
+
+<Base
+  title="Rehabilitación de tuberías sin obra Sevilla | Atarjea Redes"
+  meta="Rehabilitación de tuberías sin obra en Sevilla con manga continua curada in situ. Conducto nuevo dentro del existente, sin zanja ni picar."
+  ruta="/rehabilitacion-tuberias-sin-obra"
+  imagen="/img/paginas/rehabilitacion-tuberias-sin-obra.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Rehabilitación de tuberías sin obra',
+    descripcion: 'Rehabilitación de conducciones de saneamiento con manga continua curada in situ en Sevilla, sin obra abierta.',
+  }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Rehabilitación de tuberías sin obra', href: '/rehabilitacion-tuberias-sin-obra' },
+  ]}
+>
+  <Hero
+    h1="Rehabilitación de tuberías sin obra en Sevilla"
+    entradilla="Un conducto nuevo dentro del existente, con manga continua curada in situ. Sin zanja, sin picar y sin desalojar el edificio."
+    imagen="/img/paginas/rehabilitacion-tuberias-sin-obra.svg"
+    alt="Rehabilitación de tuberías sin obra en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        La reparación tradicional de una conducción enterrada o empotrada implica llegar
+        hasta ella: zanja, picado, reposición. En un edificio habitado o bajo un jardín
+        consolidado, ese acceso cuesta más que la propia reparación.
+      </p>
+      <p>
+        La rehabilitación con manga invierte el planteamiento: en lugar de llegar a la
+        tubería desde fuera, se trabaja desde dentro. Se entra por un registro que ya
+        existe y se sale con un conducto nuevo.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Cómo se hace</h2>
+      <Proceso pasos={proceso} />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Frente a la obra abierta</h2>
+      <table>
+        <thead>
+          <tr><th></th><th>Obra abierta</th><th>Rehabilitación con manga</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Acceso</th><td>Zanja o picado</td><td>Registro existente</td></tr>
+          <tr><th scope="row">Reposición</th><td>Solado, alicatado, jardinería</td><td>Ninguna</td></tr>
+          <tr><th scope="row">Uso del inmueble</th><td>Afectado o desalojado</td><td>Se mantiene</td></tr>
+          <tr><th scope="row">Edificio protegido</th><td>Con frecuencia inviable</td><td>Viable</td></tr>
+          <tr><th scope="row">Requisito</th><td>Ninguno</td><td>El conducto debe conservar continuidad</td></tr>
+        </tbody>
+      </table>
+      <div class="aviso">
+        <strong>Caso ilustrativo.</strong> Un bloque de los años sesenta con bajante de
+        fundición fisurada en dos plantas: la obra abierta obligaría a picar en las
+        viviendas afectadas y reponer alicatado; la manga se instala desde el registro de
+        cubierta y las viviendas siguen ocupadas.
+        <em>Ejemplo explicativo, no un trabajo realizado.</em>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Antes de rehabilitar, siempre se inspecciona</h2>
+      <p>
+        No hay forma de saber si una conducción admite rehabilitación sin haberla visto por
+        dentro. La inspección con cámara es el paso previo obligado, y es también lo que
+        determina si basta con limpiar, si procede la manga o si el tramo está colapsado y
+        hay que sustituirlo.
+      </p>
+      <p>
+        <a class="boton boton--claro" href="/inspeccion-camara-tuberias">
+          Empezar por la inspección con cámara
+        </a>
+      </p>
+      <EnlacesServicios
+        slugs={['inspeccion', 'limpieza-bajantes', 'arquetas-y-colectores', 'mantenimiento-preventivo']}
+        titulo="Servicios relacionados"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Bajantes al final de su vida útil?"
+    texto="Si tu comunidad está valorando cambiar bajantes, mira antes si se pueden rehabilitar. La diferencia de coste y de molestias es considerable."
+  />
+</Base>

@@ -1,0 +1,13 @@
+---
+/** Ficha de datos tecnicos. Los pendientes se marcan, nunca se inventan. */
+interface Props { items: { etiqueta: string; valor: string; pendiente?: boolean }[] }
+const { items } = Astro.props;
+---
+<dl class="datos">
+  {items.map((d) => (
+    <div class="dato">
+      <dt>{d.etiqueta}</dt>
+      <dd>{d.pendiente ? <span class="pendiente">{d.valor}</span> : d.valor}</dd>
+    </div>
+  ))}
+</dl>

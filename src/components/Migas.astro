@@ -1,0 +1,14 @@
+---
+import type { Miga } from '../lib/schema';
+interface Props { items: Miga[] }
+const { items } = Astro.props;
+---
+<nav class="migas" aria-label="Migas de pan">
+  <ol>
+    {items.map((m, i) => (
+      <li>
+        {i < items.length - 1 ? <a href={m.href}>{m.nombre}</a> : <span aria-current="page">{m.nombre}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

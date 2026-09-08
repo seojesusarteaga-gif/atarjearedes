@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import Datos from '../../components/Datos.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import { MUNICIPIOS, nota } from '../../data/municipios';
+
+export function getStaticPaths() {
+  // Sevilla capital NO entra aqui: tiene pagina propia en zonas/sevilla.astro
+  // porque ademas lista los cinco distritos.
+  return MUNICIPIOS.map((m) => ({ params: { municipio: m.slug }, props: { m } }));
+}
+
+const { m } = Astro.props;
+
+const poblacion = m.poblacion
+  ? { etiqueta: 'Población', valor: `${m.poblacion.toLocaleString('es-ES')} habitantes` }
+  : { etiqueta: 'Población', valor: 'Pendiente de verificar en INE / SIMA', pendiente: true };
+
+const datos = [
+  poblacion,
+  { etiqueta: 'Distancia', valor: `${m.km} km del centro de Sevilla` },
+  { etiqueta: 'Servicio dominante', valor: m.servicioDominante },
+];
+
+const esOrganica = m.zona === 'organica';
+---
+
+<Base
+  title={`Saneamiento y desatascos ${m.nombre} | Atarjea Redes`}
+  meta={`${m.servicioDominante} en ${m.nombre}. ${m.porQue.slice(0, 110)}`}
+  ruta={`/zonas/${m.slug}`}
+  imagen={`/img/zonas/${m.slug}.svg`}
+  faqs={m.faqs}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Zonas', href: '/zonas' },
+    { nombre: m.nombre, href: `/zonas/${m.slug}` },
+  ]}
+>
+  <Hero
+    h1={`Saneamiento y desatascos en ${m.nombre}`}
+    entradilla={m.servicioDominante}
+    imagen={`/img/zonas/${m.slug}.svg`}
+    alt={`Saneamiento y desatascos en ${m.nombre}`}
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={m.citable} />
+
+      {
+        esOrganica && (
+          <div class="aviso">
+            <strong>Cobertura orgánica extendida.</strong> {nota(m.zona)} En {m.nombre}{' '}
+            trabajamos sobre todo en programado: mantenimiento, inspección y
+            rehabilitación. No prometemos tiempos de urgencia que a esta distancia no
+            podríamos sostener.
+          </div>
+        )
+      }
+
+      <Datos items={datos} />
+
+      <h2>Por qué este municipio necesita un planteamiento propio</h2>
+      <p>{m.porQue}</p>
+
+      <table>
+        <tbody>
+          <tr><th scope="row">Tipo de red</th><td>{m.red}</td></tr>
+          <tr><th scope="row">Parque de vivienda</th><td>{m.vivienda}</td></tr>
+          <tr><th scope="row">Servicio con más recorrido</th><td>{m.servicioDominante}</td></tr>
+          <tr><th scope="row">Nivel de cobertura</th><td>{nota(m.zona)}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <EnlacesServicios slugs={m.servicios} titulo={`Servicios que más se piden en ${m.nombre}`} />
+    </div>
+  </section>
+
+  <Faqs faqs={m.faqs} titulo={`Preguntas frecuentes en ${m.nombre}`} />
+
+  <Cta
+    titulo={`¿Necesitas un servicio en ${m.nombre}?`}
+    texto="Cuéntanos el síntoma y te decimos si se resuelve con una intervención o si conviene inspeccionar antes."
+  />
+</Base>

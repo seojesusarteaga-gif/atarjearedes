@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Proceso from '../../components/Proceso.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+
+const citable =
+  'Atarjea Redes atiende atascos y averías de saneamiento en vivienda particular en Sevilla capital y su área metropolitana. La empresa interviene en fregaderos, inodoros, platos de ducha, bajantes y arquetas, con maquinaria de varillas o agua a presión según el diámetro y el material de la conducción. Cuando el atasco se repite siempre en el mismo punto, recomienda inspección con cámara antes de volver a intervenir, porque una obstrucción recurrente suele indicar un defecto estructural de la tubería y no una simple acumulación de residuos.';
+
+const proceso = [
+  { titulo: 'Nos llamas y describes el síntoma', texto: 'Preguntamos si falla un solo desagüe o varios: eso ya dice si el problema es tuyo o de la comunidad.' },
+  { titulo: 'Te decimos qué va a pasar', texto: 'Qué equipo llevamos, qué vamos a hacer y qué margen de precio manejamos antes de salir.' },
+  { titulo: 'Intervenimos', texto: 'Desde arquetas y registros existentes. En la mayoría de casos no hay que romper nada.' },
+  { titulo: 'Comprobamos', texto: 'Verificamos que evacúan bien todos los puntos afectados, no solo el que dio el aviso.' },
+  { titulo: 'Te decimos si va a volver', texto: 'Si hay indicios de que el problema es estructural, te lo decimos. Preferimos perder una segunda visita a cobrarla dos veces.' },
+];
+
+const faqs = [
+  {
+    p: '¿El atasco lo pago yo o la comunidad?',
+    r: 'La bajante y el colector son elementos comunes y corresponden a la comunidad. La derivación particular, desde tu fregadero o inodoro hasta la bajante, es tuya. La forma práctica de distinguirlo: si te fallan varios desagües a la vez, o si a algún vecino le pasa lo mismo, el problema está en la red común.',
+  },
+  {
+    p: '¿Hay que romper algo?',
+    r: 'En la gran mayoría de intervenciones, no. Se trabaja desde arquetas y registros que ya existen. Si no hubiera ningún acceso disponible, te lo planteamos antes de tocar nada.',
+  },
+  {
+    p: '¿Cuánto tardáis en llegar?',
+    r: 'Dentro de Sevilla capital y del Aljarafe cercano, la intervención es inmediata. En los municipios de ribera el desplazamiento es algo mayor, y en Dos Hermanas y Alcalá de Guadaíra no prometemos urgencia inmediata porque a esa distancia no podríamos sostenerla.',
+  },
+  {
+    p: '¿Cuánto cuesta un desatasco?',
+    r: 'Los precios están pendientes de cerrar. Cuando los publiquemos serán rangos reales por tipo de intervención, no una cifra de reclamo. Mientras tanto, damos precio por teléfono antes de salir.',
+  },
+];
+---
+
+<Base
+  title="Desatascos para particulares Sevilla | Atarjea Redes"
+  meta="Desatascos y averías de saneamiento en vivienda particular en Sevilla y área metropolitana. Intervención sin romper y diagnóstico si el atasco se repite."
+  ruta="/particulares"
+  imagen="/img/paginas/particulares.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Desatascos y saneamiento para particulares',
+    descripcion: 'Intervención en atascos y averías de saneamiento en vivienda particular en Sevilla y área metropolitana.',
+  }}
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Particulares', href: '/particulares' }]}
+>
+  <Hero
+    h1="Desatascos para particulares en Sevilla"
+    entradilla="Resolvemos el atasco hoy. Y si vemos que va a volver, te lo decimos en lugar de esperar a que nos llames otra vez."
+    imagen="/img/paginas/particulares.svg"
+    alt="Desatascos para particulares en Sevilla"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <p>
+        Un atasco puntual es eso: puntual. Se resuelve y no vuelve a dar guerra. El
+        problema es el otro caso, el del fregadero que se atasca cada pocas semanas o la
+        ducha por la que sube agua cuando pones la lavadora. Eso no es suciedad: es la
+        conducción, que tiene algo.
+      </p>
+      <p>
+        La diferencia importa porque cambia lo que hay que hacer. En el primer caso basta
+        con desatascar. En el segundo, desatascar es pagar por aplazar el problema unas
+        semanas.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Cómo funciona</h2>
+      <Proceso pasos={proceso} />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Si el atasco se repite, el problema no es el atasco</h2>
+      <p>
+        Cuando la obstrucción aparece siempre en el mismo punto, lo que suele haber
+        detrás es una raíz que ha entrado por una junta, un tramo con contrapendiente
+        donde el agua se para, o una tubería fisurada. Eso no se ve desde fuera: se ve
+        con cámara.
+      </p>
+      <p>
+        <a class="boton boton--claro" href="/inspeccion-camara-tuberias">
+          Ver cómo funciona la inspección con cámara
+        </a>
+      </p>
+      <EnlacesServicios
+        slugs={['desatascos-urgentes', 'limpieza-bajantes', 'arquetas-y-colectores', 'fosas-septicas-y-pozos']}
+        titulo="Servicios para vivienda"
+      />
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Tienes un atasco ahora?"
+    texto="Llama y te decimos qué vamos a hacer y qué va a costar antes de salir. Si no es urgente, escríbenos y lo vemos con calma."
+  />
+</Base>

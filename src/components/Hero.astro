@@ -1,0 +1,33 @@
+---
+import { SITE } from '../data/site';
+interface Props {
+  h1: string;
+  entradilla: string;
+  imagen: string;
+  alt: string;
+  textoPri?: string;
+  hrefPri?: string;
+  textoSec?: string;
+  hrefSec?: string;
+}
+const {
+  h1, entradilla, imagen, alt,
+  textoPri = `Llamar ${SITE.telefono}`, hrefPri = SITE.telefonoHref,
+  textoSec = 'Pedir presupuesto', hrefSec = '/contacto',
+} = Astro.props;
+---
+<section class="hero">
+  <div class="contenedor hero__grid">
+    <div>
+      <h1>{h1}</h1>
+      <p class="hero__entradilla">{entradilla}</p>
+      <div class="acciones">
+        <a class="boton boton--pri" href={hrefPri}>{textoPri}</a>
+        <a class="boton boton--sec" href={hrefSec}>{textoSec}</a>
+      </div>
+    </div>
+    <div class="hero__img">
+      <img src={imagen} alt={alt} width="1600" height="700" fetchpriority="high" />
+    </div>
+  </div>
+</section>

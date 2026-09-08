@@ -1,0 +1,61 @@
+---
+import { SITE } from '../data/site';
+import { SERVICIOS } from '../data/servicios';
+import { SEGMENTOS, TICKET_ALTO } from '../data/segmentos';
+import { MUNICIPIOS } from '../data/municipios';
+
+const anio = new Date().getFullYear();
+---
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="rejilla rejilla--4">
+      <div>
+        <h2>Atarjea Redes</h2>
+        <p>Redes de saneamiento y canalizaciones en Sevilla y su area metropolitana.</p>
+        <ul>
+          <li>
+            <a href={SITE.telefonoHref}>{SITE.telefono}</a>
+            {SITE.telefonoPendiente && <span class="pendiente">Telefono provisional</span>}
+          </li>
+          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li>{SITE.direccion.barrio}, {SITE.direccion.localidad}</li>
+          {SITE.direccion.pendiente && <li><span class="pendiente">Direccion pendiente</span></li>}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Quien eres</h3>
+        <ul>
+          {SEGMENTOS.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
+          <li><a href="/por-que-nosotros">Por que nosotros</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Servicios</h3>
+        <ul>
+          {TICKET_ALTO.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
+          {SERVICIOS.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.nombre}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Zonas</h3>
+        <ul>
+          <li><a href="/zonas/sevilla">Sevilla capital</a></li>
+          {MUNICIPIOS.slice(0, 8).map((m) => <li><a href={`/zonas/${m.slug}`}>{m.nombre}</a></li>)}
+          <li><a href="/zonas"><strong>Ver todas las zonas</strong></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pie__legal">
+      <p>
+        &copy; {anio} {SITE.nombre}. Sitio en construccion: los datos marcados como
+        provisionales o pendientes no son informacion de contacto real.
+      </p>
+    </div>
+  </div>
+</footer>

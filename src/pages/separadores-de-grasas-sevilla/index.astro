@@ -1,0 +1,136 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Citable from '../../components/Citable.astro';
+import Proceso from '../../components/Proceso.astro';
+import Faqs from '../../components/Faqs.astro';
+import Cta from '../../components/Cta.astro';
+import EnlacesServicios from '../../components/EnlacesServicios.astro';
+
+const citable =
+  'El Reglamento de Saneamiento de EMASESA establece que los vertidos procedentes de actividades susceptibles de aportar grasas a la red pública de Sevilla deben disponer de arqueta separadora de grasas. La obligación alcanza a bares, restaurantes, hoteles, estaciones de lavado y engrase y aparcamientos, entre otras actividades. El equipo requiere limpieza periódica y vaciado mediante empresa gestora de residuos autorizada, que emite el justificante acreditativo. Atarjea Redes presta ese servicio en Sevilla y su área metropolitana, con intervención programada en horario de cierre del establecimiento.';
+
+const proceso = [
+  { titulo: 'Revisión del equipo', texto: 'Tipo de separador, capacidad real y estado. Determina la frecuencia que necesita de verdad.' },
+  { titulo: 'Programación', texto: 'Se fija la intervención en horario de cierre, para no afectar al servicio.' },
+  { titulo: 'Limpieza y vaciado', texto: 'Succión del contenido y retirada de la costra adherida, que es donde se pierde capacidad de separación.' },
+  { titulo: 'Retirada del residuo', texto: 'Mediante gestor de residuos autorizado, con emisión del justificante.' },
+  { titulo: 'Documentación', texto: 'Se entrega el justificante y queda registrada la fecha, para acreditar el cumplimiento.' },
+];
+
+const faqs = [
+  {
+    p: '¿Quién está obligado a tener separador de grasas en Sevilla?',
+    r: 'El Reglamento de Saneamiento de EMASESA lo exige a las actividades susceptibles de aportar grasas a la red pública: bares, restaurantes, hoteles, estaciones de lavado y engrase y aparcamientos, entre otras. Si tu actividad genera vertido graso, lo más probable es que estés obligado.',
+  },
+  {
+    p: '¿Cada cuánto hay que limpiarlo?',
+    r: 'Varía mucho según el tipo de equipo y el volumen de actividad: los separadores compactos requieren una frecuencia alta, los de mayor capacidad más espaciada. La frecuencia correcta se fija tras revisar el equipo instalado.',
+  },
+  {
+    p: '¿Sirve cualquier empresa para vaciarlo?',
+    r: 'No. El residuo debe retirarlo un gestor de residuos autorizado, que es quien emite el justificante. Sin ese documento, la limpieza no acredita cumplimiento aunque se haya hecho.',
+  },
+  {
+    p: '¿Qué pasa si no cumplo?',
+    r: 'El incumplimiento tiene consecuencias económicas y puede afectar a la licencia de actividad. Los importes concretos y el articulado los publicaremos cuando los hayamos contrastado con el texto oficial, no antes.',
+  },
+  {
+    p: '¿Qué pasa si el separador lleva años sin limpiarse?',
+    r: 'Un separador saturado deja de separar: la grasa pasa a la red y termina obstruyendo la acometida del local. Lo primero es revisar el estado del equipo, porque a veces ya no basta con vaciar.',
+  },
+];
+---
+
+<Base
+  title="Separadores de grasas Sevilla y Reglamento EMASESA | Atarjea Redes"
+  meta="Limpieza de separadores de grasas en Sevilla y cumplimiento del Reglamento de Saneamiento de EMASESA. Retirada por gestor autorizado con justificante."
+  ruta="/separadores-de-grasas-sevilla"
+  imagen="/img/paginas/separadores-de-grasas-sevilla.svg"
+  faqs={faqs}
+  servicio={{
+    nombre: 'Limpieza de separadores de grasas',
+    descripcion: 'Limpieza y vaciado de separadores de grasas en Sevilla conforme al Reglamento de Saneamiento de EMASESA, con retirada por gestor autorizado.',
+  }}
+  migas={[
+    { nombre: 'Inicio', href: '/' },
+    { nombre: 'Separadores de grasas', href: '/separadores-de-grasas-sevilla' },
+  ]}
+>
+  <Hero
+    h1="Separadores de grasas en Sevilla: cumplir el Reglamento de EMASESA"
+    entradilla="No es una recomendación del sector, es normativa municipal. Te mantenemos el equipo y te damos el justificante que acredita el cumplimiento."
+    imagen="/img/paginas/separadores-de-grasas-sevilla.svg"
+    alt="Limpieza de separadores de grasas en Sevilla conforme al Reglamento de EMASESA"
+    textoSec="Solicitar revisión"
+  />
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <Citable texto={citable} />
+      <div class="aviso">
+        <strong>Sobre las citas concretas de la norma.</strong> El articulado exacto,
+        las frecuencias oficiales y los importes de sanción están
+        <span class="pendiente">pendientes de verificar en el texto publicado por EMASESA</span>.
+        Los publicaremos cuando los hayamos contrastado uno a uno. Una página que habla de
+        cumplimiento normativo no puede permitirse citar mal la norma.
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Quién está obligado</h2>
+      <p>
+        La obligación alcanza a los vertidos de actividades susceptibles de aportar grasas
+        a la red pública de saneamiento. En la práctica:
+      </p>
+      <ul>
+        <li>Bares, restaurantes y cafeterías</li>
+        <li>Hoteles y establecimientos con cocina</li>
+        <li>Estaciones de lavado y engrase</li>
+        <li>Aparcamientos</li>
+        <li>Obradores, catering y cocinas centrales</li>
+      </ul>
+      <p>
+        Y no basta con tenerlo instalado: hay que mantenerlo y poder demostrarlo. El
+        justificante de retirada emitido por gestor autorizado es lo que acredita que se
+        ha hecho.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Cómo lo hacemos</h2>
+      <Proceso pasos={proceso} />
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      <h2>Más allá del cumplimiento</h2>
+      <p>
+        El separador no está ahí solo por la normativa. Cuando se satura deja de separar, y
+        la grasa pasa a la acometida del local. El resultado es un atasco en la red interior
+        que siempre aparece en el peor momento y cuesta bastante más que la limpieza que se
+        aplazó.
+      </p>
+      <EnlacesServicios
+        slugs={['hidrojet-alta-presion', 'desatascos-urgentes', 'mantenimiento-preventivo', 'limpieza-industrial']}
+        titulo="Servicios relacionados"
+      />
+      <p style="margin-top:1.4rem">
+        <a class="boton boton--claro" href="/hosteleria">Ver todos los servicios para hostelería</a>
+      </p>
+    </div>
+  </section>
+
+  <Faqs faqs={faqs} />
+
+  <Cta
+    titulo="¿Tienes el justificante de la última limpieza?"
+    texto="Si no lo encuentras, es el momento de revisarlo. Hacemos la revisión del equipo y te decimos qué frecuencia necesita de verdad."
+    textoSec="Solicitar revisión"
+  />
+</Base>
