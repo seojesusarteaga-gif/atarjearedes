@@ -15,21 +15,21 @@ tomada en el Bloque 7 de la auditoria, sobre el patron de NetJet (Barcelona) y
 Abacus (Houston).
 
 ```
-/particulares                          Segmento
-/administradores                       Segmento - capa 1, el margen
-/hosteleria                            Segmento - capa 1, via EMASESA
-/industrial                            Segmento
-/inspeccion-camara                     Ticket alto, primer nivel - el gancho
-/rehabilitacion-tuberias-sin-obra      Ticket alto, primer nivel
-/separadores-de-grasas-sevilla         Landing normativa EMASESA
-/servicios                             Pilar + servicios individuales
-/zonas                                 Pilar + 14 municipios + 5 barrios
-/blog                                  Contenido sintomatico
+/particulares                       Segmento
+/administradores-de-fincas          Segmento - capa 1, el margen
+/hosteleria                         Segmento - capa 1, via EMASESA
+/industrial                         Segmento
+/inspeccion-camara-tuberias         Ticket alto, primer nivel - el gancho
+/rehabilitacion-tuberias-sin-obra   Ticket alto, primer nivel
+/separadores-de-grasas-sevilla      Landing normativa EMASESA
+/servicios                          Pilar + servicios individuales
+/zonas                              Pilar + 14 municipios + 5 barrios
+/blog                               Contenido sintomatico
 /por-que-nosotros
 /contacto
 ```
 
-`/inspeccion-camara` y `/rehabilitacion-tuberias-sin-obra` **no cuelgan de
+`/inspeccion-camara-tuberias` y `/rehabilitacion-tuberias-sin-obra` **no cuelgan de
 `/servicios`**: van en primer nivel. Si el ticket alto queda enterrado a dos
 niveles, el sitio comunica que es una web de desatascos baratos.
 
