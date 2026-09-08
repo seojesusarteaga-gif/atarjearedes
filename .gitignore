@@ -9,7 +9,6 @@ node_modules/
 # entorno: los datos privados NUNCA en el repo (regla dura del manual)
 .env
 .env.*
-!.env.example
 
 # vercel
 .vercel/
@@ -25,3 +24,9 @@ npm-debug.log*
 # listado de fichas a atacar por redressal. Publicarlo seria regalar el
 # playbook a la competencia. Si se quiere respaldo, repo privado aparte.
 _auditoria/
+
+.vercel
+.env*
+
+# la excepcion va al final: Vercel anade .env* despues y si no, la anula
+!.env.example
