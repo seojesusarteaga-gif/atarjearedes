@@ -1,7 +1,7 @@
 ---
 titulo: 'El váter sube al ducharse: qué significa y por qué no es un atasco normal'
 tituloSeo: 'El váter sube al ducharse: qué significa'
-descripcion: 'Si sube agua por la ducha al usar el inodoro o la lavadora, la obstrucción no está donde crees. Qué significa el síntoma y por qué desatascar el aparato no lo resuelve.'
+descripcion: 'Si sube agua por la ducha al usar el inodoro o la lavadora, la obstrucción no está donde crees. Qué significa y por qué desatascar el aparato no lo resuelve.'
 entradilla: 'El agua no sube porque tu ducha esté atascada. Sube porque no cabe por otro sitio, y busca la salida más baja.'
 fecha: 2026-10-21
 categoria: 'Diagnóstico'

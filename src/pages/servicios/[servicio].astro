@@ -7,7 +7,7 @@ import Faqs from '../../components/Faqs.astro';
 import Cta from '../../components/Cta.astro';
 import { SERVICIOS } from '../../data/servicios';
 import { SEGMENTOS } from '../../data/segmentos';
-import { SITE } from '../../data/site';
+import { MUNICIPIOS } from '../../data/municipios';
 
 export function getStaticPaths() {
   return SERVICIOS.map((s) => ({ params: { servicio: s.slug }, props: { s } }));
@@ -15,6 +15,66 @@ export function getStaticPaths() {
 
 const { s } = Astro.props;
 const segmentos = SEGMENTOS.filter((x) => s.segmentos.includes(x.slug));
+
+// Municipios que declaran este servicio como uno de los suyos. El enlazado
+// lateral sale del dato, no de una lista puesta a mano.
+const zonas = MUNICIPIOS.filter((mu) => mu.servicios.includes(s.slug)).slice(0, 8);
+const otros = SERVICIOS.filter((x) => x.slug !== s.slug).slice(0, 6);
+
+/**
+ * CTA por servicio, no la misma en las siete fichas: cada uno tiene una
+ * objecion distinta y un siguiente paso distinto.
+ */
+const CTAS: Record<string, { titulo: string; texto: string; textoSec: string; hrefSec: string }> = {
+  'desatascos-urgentes': {
+    titulo: '¿Tienes el atasco ahora mismo?',
+    texto: 'Llama y te decimos qué vamos a hacer y qué margen de precio manejamos antes de salir. Si se repite siempre en el mismo punto, te lo diremos también.',
+    textoSec: 'Ver la inspección con cámara',
+    hrefSec: '/inspeccion-camara-tuberias',
+  },
+  'limpieza-bajantes': {
+    titulo: '¿La bajante de tu edificio vuelve a dar guerra?',
+    texto: 'Limpiamos la sección completa y entregamos informe del estado, que es lo que necesita el administrador para justificar el gasto en la junta.',
+    textoSec: 'Servicio para administradores',
+    hrefSec: '/administradores-de-fincas',
+  },
+  'arquetas-y-colectores': {
+    titulo: '¿Sabéis dónde están todas vuestras arquetas?',
+    texto: 'Las localizamos, limpiamos el tramo y os dejamos identificado el trazado, para que la próxima intervención no empiece buscando.',
+    textoSec: 'Pedir revisión de la red',
+    hrefSec: '/contacto',
+  },
+  'hidrojet-alta-presion': {
+    titulo: '¿Desatascar otra vez o recuperar la sección?',
+    texto: 'Si es la tercera llamada por el mismo punto, el tapón no es el problema. El agua a presión retira la capa adherida y devuelve el diámetro útil.',
+    textoSec: 'Ver el diagnóstico con cámara',
+    hrefSec: '/inspeccion-camara-tuberias',
+  },
+  'fosas-septicas-y-pozos': {
+    titulo: '¿Cuándo se vació tu fosa por última vez?',
+    texto: 'Si no lo recuerdas, probablemente toque. Indícanos la distancia desde el acceso rodado y lo resolvemos en una sola visita, con justificante.',
+    textoSec: 'Ver zonas de ribera y diseminado',
+    hrefSec: '/zonas',
+  },
+  'limpieza-industrial': {
+    titulo: '¿Cuál es tu franja de menor actividad?',
+    texto: 'Programamos la intervención dentro de esa ventana y salimos con la documentación de gestión de residuo entregada.',
+    textoSec: 'Pedir visita técnica',
+    hrefSec: '/industrial',
+  },
+  'mantenimiento-preventivo': {
+    titulo: '¿Cuándo vence tu contrato actual?',
+    texto: 'Dinos la fecha y volvemos entonces con una propuesta comparable. La frecuencia se fija tras la inspección inicial, no por tarifa de catálogo.',
+    textoSec: 'Servicio para administradores',
+    hrefSec: '/administradores-de-fincas',
+  },
+};
+const cta = CTAS[s.slug] ?? {
+  titulo: `¿Necesitas ${s.nombre.toLowerCase()} en Sevilla?`,
+  texto: 'Cuéntanos el caso y te decimos si este es el servicio que necesitas o si conviene inspeccionar antes.',
+  textoSec: 'Pedir presupuesto',
+  hrefSec: '/contacto',
+};
 ---
 <Base
   title={s.title}
@@ -29,7 +89,14 @@ const segmentos = SEGMENTOS.filter((x) => s.segmentos.includes(x.slug));
     { nombre: s.nombre, href: `/servicios/${s.slug}` },
   ]}
 >
-  <Hero h1={s.h1} entradilla={s.entradilla} imagen="/img/paginas/servicios.svg" alt={`${s.nombre} en Sevilla`} />
+  <Hero
+    h1={s.h1}
+    entradilla={s.entradilla}
+    imagen="/img/paginas/servicios.svg"
+    alt={`${s.nombre} en Sevilla`}
+    textoSec={cta.textoSec}
+    hrefSec={cta.hrefSec}
+  />
 
   <section class="seccion">
     <div class="contenedor estrecho">
@@ -51,16 +118,41 @@ const segmentos = SEGMENTOS.filter((x) => s.segmentos.includes(x.slug));
 
   <Faqs faqs={s.faqs} />
 
-  {segmentos.length > 0 && (
-    <section class="seccion seccion--alt">
-      <div class="contenedor">
-        <h2>Para quién es este servicio</h2>
+  <section class="seccion seccion--alt">
+    <div class="contenedor estrecho">
+      {segmentos.length > 0 && (
+        <div>
+          <h2>Para quién es este servicio</h2>
+          <ul class="enlaces">
+            {segmentos.map((x) => <li><a href={x.href}>{x.nombre}</a></li>)}
+          </ul>
+        </div>
+      )}
+
+      {zonas.length > 0 && (
+        <div style="margin-top:2rem">
+          <h3>Dónde lo prestamos</h3>
+          <p>
+            Municipios donde este servicio es de los que más se piden, por el tipo de red
+            y de vivienda que predomina.
+          </p>
+          <ul class="enlaces">
+            {zonas.map((z) => <li><a href={`/zonas/${z.slug}`}>{z.nombre}</a></li>)}
+            <li><a href="/zonas/sevilla">Sevilla capital</a></li>
+            <li><a href="/zonas"><strong>Todas las zonas</strong></a></li>
+          </ul>
+        </div>
+      )}
+
+      <div style="margin-top:2rem">
+        <h3>Otros servicios sobre la red</h3>
         <ul class="enlaces">
-          {segmentos.map((x) => <li><a href={x.href}>{x.nombre}</a></li>)}
+          {otros.map((o) => <li><a href={`/servicios/${o.slug}`}>{o.nombre}</a></li>)}
+          <li><a href="/servicios"><strong>Ver todos</strong></a></li>
         </ul>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <Cta titulo={`¿Necesitas ${s.nombre.toLowerCase()} en Sevilla?`} texto={`Cuéntanos el caso y te decimos si este es el servicio que necesitas o si conviene inspeccionar antes.`} />
+  <Cta titulo={cta.titulo} texto={cta.texto} textoSec={cta.textoSec} hrefSec={cta.hrefSec} />
 </Base>

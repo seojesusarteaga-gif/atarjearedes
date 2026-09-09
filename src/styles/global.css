@@ -7,10 +7,12 @@
   --azul-osc: #0e2a38;
   --azul-claro: #1b5a70;
   --arena: #c9ae8c;
-  --arena-osc: #8a7a66;
+  --arena-osc: #726450;
   --tinta: #0e2a38;
   --texto: #23343d;
-  --texto-sec: #5f7079;
+  /* Oscurecidos en M5.5: los originales (#5f7079 y #8a7a66) no llegaban
+     al 4.5:1 de AA sobre el fondo arena --fondo-alt. */
+  --texto-sec: #52646d;
   --fondo: #f7f4ef;
   --fondo-alt: #ede7dd;
   --blanco: #ffffff;
@@ -179,6 +181,11 @@ hr { border: 0; border-top: 1px solid var(--borde); margin: 3rem 0; }
   margin-bottom: 0.45rem;
 }
 
+/* ---------- lista de definiciones (senales / fallos tipicos) ---------- */
+.articulo dl, .estrecho > dl:not(.datos) { margin: 1.2rem 0; }
+.estrecho > dl:not(.datos) dt { margin-top: 1.1rem; color: var(--tinta); }
+.estrecho > dl:not(.datos) dd { margin: 0.25rem 0 0; padding-left: 0; color: var(--texto-sec); }
+
 /* ---------- proceso ---------- */
 .proceso { list-style: none; counter-reset: p; padding: 0; margin: 0; display: grid; gap: 1rem; }
 .proceso li { counter-increment: p; display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; align-items: start; }
@@ -285,6 +292,29 @@ hr { border: 0; border-top: 1px solid var(--borde); margin: 3rem 0; }
 table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin-block: 1.4rem; }
 th, td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--borde); }
 th { color: var(--tinta); font-weight: 700; }
+
+/* ---------- foco de teclado ----------
+   Antes solo existia la regla de .saltar: el sitio no era navegable con
+   teclado porque no se veia donde estaba el foco. Se usa :focus-visible para
+   que el contorno aparezca al tabular y no al hacer clic con raton. */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Sobre fondo oscuro el azul no contrasta: se invierte a arena. */
+.hero :where(a, button):focus-visible,
+.seccion--osc :where(a, button):focus-visible,
+.pie :where(a, button):focus-visible,
+.cabecera__tel:focus-visible {
+  outline-color: var(--arena);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
 
 .saltar {
   position: absolute;

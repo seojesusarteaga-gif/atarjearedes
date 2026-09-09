@@ -6,12 +6,19 @@ import Faqs from '../../../components/Faqs.astro';
 import Cta from '../../../components/Cta.astro';
 import EnlacesServicios from '../../../components/EnlacesServicios.astro';
 import { BARRIOS } from '../../../data/barrios';
+import { SEGMENTOS } from '../../../data/segmentos';
+import { resolverServicio } from '../../../data/enlaces';
 
 export function getStaticPaths() {
   return BARRIOS.map((b) => ({ params: { barrio: b.slug }, props: { b } }));
 }
 
 const { b } = Astro.props;
+const otros = BARRIOS.filter((x) => x.slug !== b.slug);
+
+// El secundario del hero apunta al servicio dominante del distrito, no a un
+// "pedir presupuesto" generico repetido en las cinco paginas.
+const principal = resolverServicio(b.servicios[0]);
 ---
 
 <Base
@@ -33,6 +40,8 @@ const { b } = Astro.props;
     entradilla={b.servicioDominante}
     imagen={`/img/zonas/${b.slug}.svg`}
     alt={`${b.servicioDominante} en ${b.nombre}, Sevilla`}
+    textoSec={principal ? `Ver ${principal.nombre.toLowerCase()}` : 'Ver servicios'}
+    hrefSec={principal ? principal.href : '/servicios'}
   />
 
   <section class="seccion">
@@ -54,9 +63,27 @@ const { b } = Astro.props;
   <section class="seccion seccion--alt">
     <div class="contenedor estrecho">
       <EnlacesServicios slugs={b.servicios} titulo={`Servicios en ${b.nombre}`} />
-      <p style="margin-top:1.4rem">
-        <a href="/zonas/sevilla">Ver todos los distritos de Sevilla capital</a>
-      </p>
+
+      <div style="margin-top:2rem">
+        <h3>Otros distritos de Sevilla capital</h3>
+        <p>Cada uno con el servicio que pide su parque edificado, que no es el mismo.</p>
+        <ul class="enlaces">
+          {
+            otros.map((o) => (
+              <li><a href={`/zonas/sevilla/${o.slug}`}>{o.nombre}</a></li>
+            ))
+          }
+          <li><a href="/zonas/sevilla"><strong>Sevilla capital</strong></a></li>
+          <li><a href="/zonas">Área metropolitana</a></li>
+        </ul>
+      </div>
+
+      <div style="margin-top:2rem">
+        <h3>Según quién nos llame</h3>
+        <ul class="enlaces">
+          {SEGMENTOS.map((sg) => <li><a href={sg.href}>{sg.nombre}</a></li>)}
+        </ul>
+      </div>
     </div>
   </section>
 

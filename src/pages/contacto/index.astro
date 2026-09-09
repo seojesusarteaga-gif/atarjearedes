@@ -2,8 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import { SITE } from '../../data/site';
 import { SEGMENTOS, TICKET_ALTO } from '../../data/segmentos';
+import { MUNICIPIOS_NUCLEO } from '../../data/municipios';
 
 const asuntos = [...SEGMENTOS, ...TICKET_ALTO];
+const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
 ---
 
 <Base
@@ -16,7 +18,10 @@ const asuntos = [...SEGMENTOS, ...TICKET_ALTO];
   <section class="seccion">
     <div class="contenedor">
       <div class="estrecho">
-        <h1>Contacto</h1>
+        {/* H1 cambiado en M5.5, con aprobacion expresa: el anterior era solo
+            "Contacto", sin keyword ni ciudad. Es el unico H1 modificado del
+            sitio; los otros 47 quedan congelados por la regla del manual. */}
+        <h1>Contacto: saneamiento y desatascos en Sevilla</h1>
         <p>
           Si es una urgencia, llama: es más rápido que cualquier formulario. Para
           inspecciones, contratos de mantenimiento o presupuestos con calma, escríbenos y
@@ -102,6 +107,36 @@ const asuntos = [...SEGMENTOS, ...TICKET_ALTO];
             </button>
           </form>
         </div>
+      </div>
+
+      <div class="estrecho" style="margin-top:3rem">
+        <h2>Antes de escribir, quizá esté aquí</h2>
+        <p>
+          Buena parte de las dudas se resuelven en la página del servicio o en la de tu
+          zona, donde explicamos qué suele fallar en cada tipo de red.
+        </p>
+
+        <h3>Según quién eres</h3>
+        <ul class="enlaces">
+          {SEGMENTOS.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
+        </ul>
+
+        <h3>Trabajo técnico</h3>
+        <ul class="enlaces">
+          {TICKET_ALTO.map((t) => <li><a href={t.href}>{t.nombre}</a></li>)}
+        </ul>
+
+        <h3>Tu zona</h3>
+        <ul class="enlaces">
+          <li><a href="/zonas/sevilla">Sevilla capital</a></li>
+          {zonasDestacadas.map((z) => <li><a href={`/zonas/${z.slug}`}>{z.nombre}</a></li>)}
+          <li><a href="/zonas"><strong>Todas las zonas</strong></a></li>
+        </ul>
+
+        <p style="margin-top:1.6rem">
+          También puedes ver <a href="/servicios">todos los servicios</a> o
+          <a href="/por-que-nosotros">qué hacemos distinto</a>.
+        </p>
       </div>
     </div>
   </section>

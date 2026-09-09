@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import Cta from '../../components/Cta.astro';
 import Faqs from '../../components/Faqs.astro';
+import { SEGMENTOS, TICKET_ALTO } from '../../data/segmentos';
 
 const faqs = [
   {
@@ -103,10 +104,41 @@ const faqs = [
     </div>
   </section>
 
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h2>Por dónde empezar</h2>
+      <p>
+        Lo dicho arriba se juzga mejor sobre un caso concreto que sobre una declaración de
+        intenciones. Estas son las puertas de entrada.
+      </p>
+
+      <h3>Según quién eres</h3>
+      <ul class="enlaces">
+        {SEGMENTOS.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
+      </ul>
+
+      <h3>El trabajo donde más se nota la diferencia</h3>
+      <ul class="enlaces">
+        {TICKET_ALTO.map((t) => <li><a href={t.href}>{t.nombre}</a></li>)}
+      </ul>
+
+      <h3>Servicios y cobertura</h3>
+      <ul class="enlaces">
+        <li><a href="/servicios">Todos los servicios</a></li>
+        <li><a href="/servicios/mantenimiento-preventivo">Mantenimiento preventivo</a></li>
+        <li><a href="/zonas">Zonas de cobertura</a></li>
+        <li><a href="/zonas/sevilla">Sevilla capital</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </section>
+
   <Faqs faqs={faqs} />
 
   <Cta
     titulo="¿Nos das una oportunidad?"
     texto="Empieza por algo pequeño: una inspección, una limpieza programada, una segunda opinión sobre un presupuesto que te han pasado. Se juzga mejor por un trabajo que por una web."
+    textoSec="Pedir una inspección"
+    hrefSec="/inspeccion-camara-tuberias"
   />
 </Base>

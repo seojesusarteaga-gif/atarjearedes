@@ -4,7 +4,8 @@ import Cta from '../../components/Cta.astro';
 import Faqs from '../../components/Faqs.astro';
 import EnlacesServicios from '../../components/EnlacesServicios.astro';
 import { getCollection, render } from 'astro:content';
-import { MUNICIPIOS, getMunicipio } from '../../data/municipios';
+import { getMunicipio } from '../../data/municipios';
+import { resolverServicio } from '../../data/enlaces';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -26,6 +27,12 @@ const zonas = p.data.zonas
   .map((z) => (z === 'sevilla' ? { nombre: 'Sevilla capital', href: '/zonas/sevilla' } : null) ??
     (getMunicipio(z) ? { nombre: getMunicipio(z)!.nombre, href: `/zonas/${z}` } : null))
   .filter((x): x is { nombre: string; href: string } => x !== null);
+
+// El CTA secundario sale del primer servicio del articulo: no es el mismo en las cinco piezas.
+const primero = resolverServicio(p.data.servicios[0]);
+const ctaSec = primero
+  ? { texto: `Ver ${primero.nombre.toLowerCase()}`, href: primero.href }
+  : { texto: 'Ver servicios', href: '/servicios' };
 ---
 
 <Base
@@ -88,5 +95,7 @@ const zonas = p.data.zonas
   <Cta
     titulo="¿Te está pasando esto?"
     texto="Cuéntanos el síntoma exacto y te decimos si se resuelve con una intervención o si conviene mirar la conducción por dentro antes de tocar nada."
+    textoSec={ctaSec.texto}
+    hrefSec={ctaSec.href}
   />
 </Base>

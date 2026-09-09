@@ -1,7 +1,7 @@
 ---
 titulo: 'Olor a alcantarilla en casa: causas reales y cuándo es señal de algo grave'
 tituloSeo: 'Olor a alcantarilla en casa: causas'
-descripcion: 'Las cinco causas reales del olor a alcantarilla en casa, cómo distinguir la que se arregla en cinco minutos de la que indica una tubería rota, y qué revisar en cada estancia.'
+descripcion: 'Las cinco causas reales del olor a alcantarilla en casa, cómo distinguir la que se arregla en cinco minutos de la que indica una tubería rota bajo el suelo.'
 entradilla: 'Cuatro de cada cinco casos se arreglan echando un vaso de agua. El quinto es una tubería rota bajo el suelo.'
 fecha: 2026-10-08
 categoria: 'Diagnóstico'

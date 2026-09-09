@@ -1,7 +1,7 @@
 ---
 titulo: 'Antes de las lluvias: por qué se desbordan las arquetas en Sevilla en otoño'
 tituloSeo: 'Arquetas desbordadas en otoño en Sevilla'
-descripcion: 'Por qué las arquetas se desbordan con las primeras lluvias de otoño en Sevilla, cómo saber si la tuya está en riesgo y qué revisar antes de que llueva de verdad.'
+descripcion: 'Por qué las arquetas se desbordan con las primeras lluvias de otoño en Sevilla, cómo saber si la tuya está en riesgo y qué revisar antes de la temporada.'
 entradilla: 'La primera tormenta seria del otoño no provoca el problema: lo revela. Lo que revienta en octubre llevaba meses estrechándose.'
 fecha: 2026-09-15
 categoria: 'Prevención'

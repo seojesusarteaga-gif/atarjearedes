@@ -1,4 +1,5 @@
 import type { Faq } from './servicios';
+import type { Perfil } from './perfiles';
 
 export type Zona = 'nucleo' | 'borde' | 'organica';
 
@@ -19,8 +20,14 @@ export interface Municipio {
   red: string;
   /** Eje 2 del Bloque 7 */
   vivienda: string;
+  /** Perfil de red: agrupa municipios por tipo de red para dar contenido
+   *  tecnico cierto sin inventar datos concretos de cada pueblo. */
+  perfil: Perfil;
   /** Eje 3 del Bloque 7: consecuencia de los dos anteriores */
   servicioDominante: string;
+  /** Meta description propia, 120-160 caracteres. Antes se recortaba porQue
+   *  a 110 caracteres, lo que cortaba a mitad de frase y se pasaba de largo. */
+  meta: string;
   porQue: string;
   citable: string;
   faqs: Faq[];
@@ -40,11 +47,14 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'camas',
     nombre: 'Camas',
     km: 4,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal antigua',
     vivienda: 'Bloque antiguo de densidad media, perfil residencial consolidado',
+    perfil: 'bloque-antiguo',
     servicioDominante: 'Desatasco doméstico y limpieza de bajantes',
+    meta:
+      'Desatascos y limpieza de bajantes en Camas, a 4 km de Sevilla. Parque de bloque sobre red municipal antigua, con intervencion inmediata.',
     porQue:
       'Camas tiene un parque de vivienda en bloque con bajantes originales que llevan décadas en servicio. La incidencia típica no es la arqueta de jardín, sino la bajante comunitaria que evacua mal y termina afectando a varias plantas a la vez.',
     citable:
@@ -59,11 +69,14 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'san-juan-de-aznalfarache',
     nombre: 'San Juan de Aznalfarache',
     km: 4.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal antigua',
     vivienda: 'Bloque de los años 60 a 80, alta densidad',
+    perfil: 'bloque-antiguo',
     servicioDominante: 'Bajantes de comunidad',
+    meta:
+      'Limpieza de bajantes de comunidad en San Juan de Aznalfarache. Bloques de los anos 60 a 80 con conducciones al final de su vida util.',
     porQue:
       'San Juan concentra bloques de los años sesenta a ochenta con bajantes que están al final de su vida útil. Es terreno de limpieza de bajantes y, cuando la cámara muestra daño estructural, de rehabilitación sin obra.',
     citable:
@@ -78,17 +91,20 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'tomares',
     nombre: 'Tomares',
     km: 5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal y urbanización con red privada',
     vivienda: 'Unifamiliar y adosado, parcela con jardín',
-    servicioDominante: 'Red horizontal, arquetas y raices de arbolado',
+    perfil: 'urbanizacion',
+    servicioDominante: 'Red horizontal, arquetas y raíces de arbolado',
+    meta:
+      'Arquetas y red horizontal en Tomares. Vivienda unifamiliar con parcela: raíces de arbolado, contrapendientes y red privada de urbanizacion.',
     porQue:
-      'Tomares es tipologia de unifamiliar y adosado con parcela. Eso significa mucha red horizontal enterrada propia, arquetas repartidas y arbolado cuyas raices entran por las juntas. El problema aquí rara vez es la bajante: es el tramo enterrado.',
+      'Tomares es tipologia de unifamiliar y adosado con parcela. Eso significa mucha red horizontal enterrada propia, arquetas repartidas y arbolado cuyas raíces entran por las juntas. El problema aquí rara vez es la bajante: es el tramo enterrado.',
     citable:
-      'Atarjea Redes cubre Tomares, a unos cinco kilómetros del Casco Antiguo de Sevilla. La tipologia dominante de vivienda unifamiliar y adosada con parcela implica una red de saneamiento horizontal extensa y, en muchas promociones, de titularidad privada. Las incidencias características son obstrucciones en arquetas, entrada de raices de arbolado por las juntas del conducto y contrapendientes por asentamiento del terreno, que se localizan con inspección de cámara.',
+      'Atarjea Redes cubre Tomares, a unos cinco kilómetros del Casco Antiguo de Sevilla. La tipologia dominante de vivienda unifamiliar y adosada con parcela implica una red de saneamiento horizontal extensa y, en muchas promociones, de titularidad privada. Las incidencias características son obstrucciones en arquetas, entrada de raíces de arbolado por las juntas del conducto y contrapendientes por asentamiento del terreno, que se localizan con inspección de cámara.',
     faqs: [
-      { p: '¿Las raices del jardín pueden atascar la tubería?', r: 'Es una de las causas más frecuentes en vivienda con parcela. Las raices entran por juntas y microfisuras buscando humedad, y al engrosar terminan obstruyendo o rompiendo el conducto.' },
+      { p: '¿Las raíces del jardín pueden atascar la tubería?', r: 'Es una de las causas más frecuentes en vivienda con parcela. Las raíces entran por juntas y microfisuras buscando humedad, y al engrosar terminan obstruyendo o rompiendo el conducto.' },
       { p: '¿La red de mi urbanización la mantiene el ayuntamiento?', r: 'Depende de si fue recepcionada. En bastantes promociones del Aljarafe la red interior sigue siendo privada y la mantiene la comunidad hasta el punto de conexión con la red pública.' },
     ],
     servicios: ['arquetas-y-colectores', 'inspeccion', 'mantenimiento-preventivo'],
@@ -97,11 +113,14 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'castilleja-de-la-cuesta',
     nombre: 'Castilleja de la Cuesta',
     km: 6,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal antigua',
     vivienda: 'Núcleo tradicional denso',
+    perfil: 'bloque-antiguo',
     servicioDominante: 'Bajantes y colectores antiguos',
+    meta:
+      'Bajantes y colectores antiguos en Castilleja de la Cuesta. Nucleo tradicional denso donde conviene inspeccionar con camara antes de intervenir.',
     porQue:
       'Castilleja tiene núcleo tradicional compacto, con conducciones antiguas y trazados que no siempre coinciden con los planos. Es terreno de inspección previa: intervenir sin saber por donde va la red sale caro.',
     citable:
@@ -116,11 +135,14 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'gelves',
     nombre: 'Gelves',
     km: 6.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Mixta: municipal, urbanizaciones y ribera',
     vivienda: 'Mixta, con urbanizaciones y zona de ribera',
+    perfil: 'mixto',
     servicioDominante: 'Arquetas, red horizontal y fosas en diseminado',
+    meta:
+      'Arquetas, red horizontal y fosas sépticas en Gelves. Municipio mixto con nucleo, urbanizaciones y ribera: los tres tipos de incidencia a la vez.',
     porQue:
       'Gelves combina núcleo, urbanizaciones y zona de ribera. Esa mezcla da los tres tipos de incidencia a la vez: bajante en el núcleo, arqueta y red horizontal en urbanización, y fosa séptica en el diseminado.',
     citable:
@@ -135,12 +157,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'santiponce',
     nombre: 'Santiponce',
     km: 7,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: 8634,
     poblacionFuente: 'INE, 1 de enero de 2025',
     red: 'Municipal con diseminado',
     vivienda: 'Núcleo pequeño con entorno de diseminado',
+    perfil: 'diseminado',
     servicioDominante: 'Fosas sépticas y desatasco doméstico',
+    meta:
+      'Fosas sépticas y desatascos en Santiponce, 8.634 habitantes. Nucleo compacto con diseminado fuera de la red municipal de saneamiento.',
     porQue:
       'Santiponce es núcleo pequeño con entorno de diseminado. La combinación habitual es desatasco doméstico en el casco y servicio de cuba en la vivienda que queda fuera de la red municipal.',
     citable:
@@ -155,12 +180,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'mairena-del-aljarafe',
     nombre: 'Mairena del Aljarafe',
     km: 7,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: 48032,
     poblacionFuente: 'INE, 1 de enero de 2025',
     red: 'Mixta: municipal y urbanizaciones privadas',
     vivienda: 'Bloque y urbanización de unifamiliar',
+    perfil: 'mixto',
     servicioDominante: 'Bajantes en bloque y arquetas en urbanización',
+    meta:
+      'Bajantes y arquetas en Mairena del Aljarafe, 48.032 habitantes. Convive el bloque con la urbanizacion de red privada, y cada una pide un servicio.',
     porQue:
       'Mairena es el municipio más poblado del Aljarafe y tiene las dos tipologias: bloque con bajante comunitaria y urbanización con red horizontal privada. Cada una necesita un servicio distinto, y confundirlas es la causa habitual de que una intervención no resuelva.',
     citable:
@@ -175,15 +203,18 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'bormujos',
     nombre: 'Bormujos',
     km: 7.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Urbanización con red privada',
     vivienda: 'Adosado de los años 90 y 2000',
+    perfil: 'urbanizacion',
     servicioDominante: 'Arquetas y red comunitaria privada',
+    meta:
+      'Arquetas y red comunitaria privada en Bormujos. Adosados de los 90 y 2000 cuya red de saneamiento mantiene la comunidad, no el ayuntamiento.',
     porQue:
       'Bormujos crecio con promociones de adosado de los noventa y dos mil. Son comunidades con red horizontal propia, zonas comunes y jardín: mucha arqueta, mucho metro de conducto enterrado y responsabilidad de mantenimiento de la comunidad, no del ayuntamiento.',
     citable:
-      'Atarjea Redes atiende Bormujos, a unos siete kilómetros y medio del Casco Antiguo de Sevilla. El municipio crecio con promociones de vivienda adosada de los años noventa y dos mil, cuyas comunidades disponen de red de saneamiento horizontal propia con arquetas y zonas comunes ajardinadas. El mantenimiento de ese tramo corresponde a la comunidad hasta el punto de conexión con la red pública, y las incidencias más frecuentes son obstrucciones por raices y contrapendientes por asentamiento.',
+      'Atarjea Redes atiende Bormujos, a unos siete kilómetros y medio del Casco Antiguo de Sevilla. El municipio crecio con promociones de vivienda adosada de los años noventa y dos mil, cuyas comunidades disponen de red de saneamiento horizontal propia con arquetas y zonas comunes ajardinadas. El mantenimiento de ese tramo corresponde a la comunidad hasta el punto de conexión con la red pública, y las incidencias más frecuentes son obstrucciones por raíces y contrapendientes por asentamiento.',
     faqs: [
       { p: '¿Quien mantiene la red de una urbanización de adosados?', r: 'Salvo que la red haya sido recepcionada por el ayuntamiento, el tramo interior es privado y lo mantiene la comunidad hasta el punto de conexión con la red pública.' },
       { p: '¿Se puede contratar un mantenimiento anual?', r: 'Si, y es lo recomendable en este tipo de promociones. Se fija frecuencia tras una inspección inicial de la red.' },
@@ -194,12 +225,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'gines',
     nombre: 'Gines',
     km: 7.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: 13524,
     poblacionFuente: 'INE, 1 de enero de 2024',
     red: 'Urbanización con red privada',
     vivienda: 'Adosado y unifamiliar',
+    perfil: 'urbanizacion',
     servicioDominante: 'Red horizontal privada',
+    meta:
+      'Red horizontal privada en Gines, 13.524 habitantes. Adosado y unifamiliar con arquetas repartidas: terreno de mantenimiento programado.',
     porQue:
       'Gines es municipio pequeño de tipologia residencial unifamiliar. Red horizontal propia, arquetas y arbolado: el mismo patron del Aljarafe interior, con la ventaja de que la escala permite mantenimiento programado sencillo.',
     citable:
@@ -214,11 +248,14 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'valencina-de-la-concepcion',
     nombre: 'Valencina de la Concepción',
     km: 8,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal con parcelaciones',
     vivienda: 'Núcleo pequeño y parcelaciones en diseminado',
+    perfil: 'diseminado',
     servicioDominante: 'Fosas sépticas y red horizontal',
+    meta:
+      'Fosas sépticas y red horizontal en Valencina de la Concepcion. Parcelaciones sin conexion a la red municipal donde el servicio es de cuba.',
     porQue:
       'Valencina tiene núcleo pequeño y parcelaciones alrededor. En las parcelaciones no siempre hay conexión a red municipal, y ahi el servicio es de cuba, no de desatasco.',
     citable:
@@ -233,12 +270,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'palomares-del-rio',
     nombre: 'Palomares del Río',
     km: 8.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: 9421,
     poblacionFuente: 'INE, 1 de enero de 2025',
     red: 'Mixta: municipal y diseminado',
     vivienda: 'Unifamiliar con parcela',
+    perfil: 'mixto',
     servicioDominante: 'Arquetas y fosas en diseminado',
+    meta:
+      'Arquetas y fosas sépticas en Palomares del Rio, 9.421 habitantes. Unifamiliar con parcela: red horizontal larga y diseminado con fosa.',
     porQue:
       'Palomares es unifamiliar con parcela, lo que da red horizontal larga y arquetas repartidas, y conserva diseminado donde la fosa séptica sigue siendo el sistema de saneamiento.',
     citable:
@@ -253,15 +293,18 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'la-algaba',
     nombre: 'La Algaba',
     km: 9,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: null,
     red: 'Municipal con entorno agrícola',
     vivienda: 'Núcleo consolidado con entorno agrícola',
+    perfil: 'diseminado',
     servicioDominante: 'Desatasco doméstico y red horizontal',
+    meta:
+      'Desatascos y limpieza de red en La Algaba, a 9 km de Sevilla. Nucleo consolidado con entorno agrícola y vivienda dispersa con fosa séptica.',
     porQue:
       'La Algaba tiene núcleo consolidado y entorno agrícola. El servicio habitual es desatasco doméstico y limpieza de red, con presencia de fosas en la vivienda dispersa del entorno.',
     citable:
-      'Atarjea Redes atiende La Algaba, a unos nueve kilómetros del Casco Antiguo de Sevilla. El municipio combina núcleo urbano consolidado con entorno agrícola en el que persiste vivienda dispersa sin conexión a la red municipal. La empresa presta desatasco doméstico, limpieza de red horizontal y arquetas, y vaciado de fosas sépticas con retirada del residuo por gestor autorizado.',
+      'Atarjea Redes atiende La Algaba, a unos nueve kilometros del Casco Antiguo de Sevilla. El municipio combina nucleo urbano consolidado con entorno agrícola en el que persiste vivienda dispersa sin conexion a la red municipal. La empresa presta desatasco domestico, limpieza de red horizontal y arquetas, y vaciado de fosas sépticas con retirada del residuo por gestor autorizado. Al estar dentro del radio de intervencion inmediata, las incidencias del nucleo se atienden el mismo dia.',
     faqs: [
       { p: '¿Cuánto tardais en llegar a La Algaba?', r: 'Esta a unos nueve kilómetros del centro de Sevilla, dentro del radio de intervención inmediata.' },
       { p: '¿Atendeis vivienda fuera del núcleo?', r: 'Si, incluida la que depende de fosa séptica. Conviene indicar el acceso al solicitar el servicio.' },
@@ -272,12 +315,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'la-rinconada',
     nombre: 'La Rinconada',
     km: 9.5,
-    zona: 'núcleo',
+    zona: 'nucleo',
     poblacion: 40529,
     poblacionFuente: 'INE, 1 de enero de 2024',
     red: 'Municipal, con polígonos industriales',
     vivienda: 'Núcleo urbano y tejido industrial',
+    perfil: 'industrial',
     servicioDominante: 'Limpieza industrial y red municipal',
+    meta:
+      'Limpieza industrial de redes en La Rinconada, 40.529 habitantes. Poligonos con separadores y depositos, en horario de baja actividad.',
     porQue:
       'La Rinconada tiene un tejido industrial relevante junto al núcleo residencial. Eso desplaza el servicio hacia limpieza industrial, separadores y mantenimiento de red de nave, más que hacia el desatasco doméstico.',
     citable:
@@ -296,7 +342,10 @@ export const MUNICIPIOS: Municipio[] = [
     poblacion: null,
     red: 'Municipal con diseminado agrícola',
     vivienda: 'Núcleo tradicional y diseminado de ribera',
+    perfil: 'diseminado',
     servicioDominante: 'Fosas sépticas y pozos',
+    meta:
+      'Limpieza de fosas sépticas y pozos en Coria del Rio. Municipio de ribera con diseminado agrícola fuera de la red municipal de saneamiento.',
     porQue:
       'Coria es municipio de ribera con diseminado agrícola. Es de los pocos del entorno donde el servicio de cuba pesa más que el desatasco urbano, y donde la competencia especializada es practicamente inexistente.',
     citable:
@@ -315,11 +364,14 @@ export const MUNICIPIOS: Municipio[] = [
     poblacion: null,
     red: 'Municipal con diseminado agrícola',
     vivienda: 'Núcleo y entorno agrícola de arrozales',
+    perfil: 'diseminado',
     servicioDominante: 'Fosas sépticas y pozos',
+    meta:
+      'Fosas sépticas y pozos en La Puebla del Rio. Entorno agrícola de ribera con vivienda y explotaciones sin conexion a la red municipal.',
     porQue:
       'La Puebla es entorno agrícola de ribera. Mismo patron que Coria: el servicio dominante es la cuba, y la competencia especializada es minima.',
     citable:
-      'Atarjea Redes cubre La Puebla del Río, a unos doce kilómetros del Casco Antiguo de Sevilla. Su entorno agrícola de ribera concentra vivienda y explotaciones sin conexión a la red municipal de saneamiento, donde el sistema habitual es la fosa séptica o el pozo. La empresa realiza vaciado y limpieza con cuba y retira el residuo mediante gestor autorizado.',
+      'Atarjea Redes cubre La Puebla del Rio, a unos doce kilometros del Casco Antiguo de Sevilla. Su entorno agrícola de ribera concentra vivienda y explotaciones sin conexion a la red municipal de saneamiento, donde el sistema habitual es la fosa séptica o el pozo. La empresa realiza vaciado y limpieza con cuba y retira el residuo mediante gestor autorizado, con entrega del justificante correspondiente para la actividad que lo necesite.',
     faqs: [
       { p: '¿Atendeis explotaciones agricolas?', r: 'Si. El servicio de cuba cubre tanto vivienda como instalación agrícola, con la documentación de gestión de residuo correspondiente.' },
       { p: '¿Hay recargo por distancia?', r: 'La Puebla esta en el borde del radio. El desplazamiento se refleja en el presupuesto, que se cierra antes de la intervención.' },
@@ -330,12 +382,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'dos-hermanas',
     nombre: 'Dos Hermanas',
     km: 12,
-    zona: 'orgánica',
+    zona: 'organica',
     poblacion: 140430,
     poblacionFuente: 'INE, 1 de enero de 2024',
     red: 'Municipal',
     vivienda: 'Ciudad completa: bloque, unifamiliar e industrial',
+    perfil: 'ciudad',
     servicioDominante: 'Mantenimiento de comunidades y B2B',
+    meta:
+      'Mantenimiento de comunidades e inspeccion en Dos Hermanas, 140.430 habitantes. Cobertura extendida: trabajo programado, no urgencia inmediata.',
     porQue:
       'Dos Hermanas es la segunda ciudad de la provincia y tiene tejido propio. Nuestra propuesta aquí no es la urgencia doméstica a doce kilómetros, sino el contrato de mantenimiento y el trabajo técnico programado, donde la distancia no penaliza.',
     citable:
@@ -350,12 +405,15 @@ export const MUNICIPIOS: Municipio[] = [
     slug: 'alcala-de-guadaira',
     nombre: 'Alcalá de Guadaíra',
     km: 13.5,
-    zona: 'orgánica',
+    zona: 'organica',
     poblacion: 76922,
     poblacionFuente: 'INE, 1 de enero de 2024',
     red: 'Municipal, con fuerte tejido industrial',
     vivienda: 'Ciudad completa con polígonos industriales',
+    perfil: 'industrial',
     servicioDominante: 'Industrial y mantenimiento de comunidades',
+    meta:
+      'Limpieza industrial y mantenimiento de comunidades en Alcala de Guadaira, 76.922 habitantes. Cobertura extendida centrada en trabajo programado.',
     porQue:
       'Alcalá tiene uno de los tejidos industriales más potentes del área metropolitana. Nuestra via de entrada es la industrial y el mantenimiento programado, no la urgencia doméstica a trece kilómetros.',
     citable:
@@ -369,6 +427,6 @@ export const MUNICIPIOS: Municipio[] = [
 ];
 
 export const getMunicipio = (slug: string) => MUNICIPIOS.find((m) => m.slug === slug);
-export const MUNICIPIOS_NUCLEO = MUNICIPIOS.filter((m) => m.zona === 'núcleo');
+export const MUNICIPIOS_NUCLEO = MUNICIPIOS.filter((m) => m.zona === 'nucleo');
 export const MUNICIPIOS_BORDE = MUNICIPIOS.filter((m) => m.zona === 'borde');
-export const MUNICIPIOS_ORGANICA = MUNICIPIOS.filter((m) => m.zona === 'orgánica');
+export const MUNICIPIOS_ORGANICA = MUNICIPIOS.filter((m) => m.zona === 'organica');

@@ -92,21 +92,21 @@ export const SERVICIOS: Servicio[] = [
       'Limpieza de la red horizontal: arquetas, colectores y acometidas de urbanizaciones y comunidades.',
     resumen: 'Red enterrada de urbanizaciones, adosados y comunidades con red privada.',
     citable:
-      'Atarjea Redes limpia y desatasca arquetas, colectores y acometidas en Sevilla y el Aljarafe, con especial dedicación a urbanizaciones de vivienda unifamiliar cuya red horizontal es privada y no municipal. En estas promociones, el mantenimiento del tramo que va desde cada vivienda hasta el punto de vertido corresponde a la comunidad. La empresa trabaja con agua a presión y equipo de succión, y localiza con cámara las obstrucciones causadas por raices de arbolado, asentamientos del terreno o contrapendientes de ejecución.',
+      'Atarjea Redes limpia y desatasca arquetas, colectores y acometidas en Sevilla y el Aljarafe, con especial dedicación a urbanizaciones de vivienda unifamiliar cuya red horizontal es privada y no municipal. En estas promociones, el mantenimiento del tramo que va desde cada vivienda hasta el punto de vertido corresponde a la comunidad. La empresa trabaja con agua a presión y equipo de succión, y localiza con cámara las obstrucciones causadas por raíces de arbolado, asentamientos del terreno o contrapendientes de ejecución.',
     cuerpo: [
       'En el Aljarafe hay mucha urbanización de los años noventa y dos mil con red de saneamiento privada. Es un detalle que sorprende a muchas comunidades: el tramo enterrado que va de las viviendas al punto de vertido no lo mantiene el ayuntamiento, lo mantienen ellas.',
-      'Los tres problemas habituales son raices de arbolado ornamental que entran por las juntas, asentamientos del terreno que generan contrapendientes donde el agua se para, y arquetas que nadie ha abierto en quince años.',
+      'Los tres problemas habituales son raíces de arbolado ornamental que entran por las juntas, asentamientos del terreno que generan contrapendientes donde el agua se para, y arquetas que nadie ha abierto en quince años.',
     ],
     proceso: [
       { titulo: 'Localización de arquetas', texto: 'Muchas quedan ocultas bajo solado o jardín. Las localizamos antes de intervenir.' },
       { titulo: 'Apertura y valoración', texto: 'Comprobamos nivel, olor y sentido de circulación, que indican donde está el problema.' },
       { titulo: 'Limpieza', texto: 'Agua a presión sobre el tramo y succión del residuo, que se retira.' },
-      { titulo: 'Inspección si procede', texto: 'Cámara cuando hay sospecha de raices, rotura o contrapendiente.' },
+      { titulo: 'Inspección si procede', texto: 'Cámara cuando hay sospecha de raíces, rotura o contrapendiente.' },
       { titulo: 'Plano de red', texto: 'Dejamos identificadas las arquetas para que la siguiente intervención no empiece de cero.' },
     ],
     faqs: [
       { p: '¿La red de mi urbanización es municipal o privada?', r: 'Depende de si la urbanización fue recepcionada por el ayuntamiento. En muchas promociones del Aljarafe la red interior sigue siendo privada, y su mantenimiento corresponde a la comunidad hasta el punto de conexión con la red pública.' },
-      { p: '¿Las raices pueden romper la tubería?', r: 'Si. Entran buscando humedad por juntas y microfisuras, y al engrosar terminan desplazando o rompiendo el conducto. Cuando la cámara muestra daño estructural, limpiar no basta.' },
+      { p: '¿Las raíces pueden romper la tubería?', r: 'Si. Entran buscando humedad por juntas y microfisuras, y al engrosar terminan desplazando o rompiendo el conducto. Cuando la cámara muestra daño estructural, limpiar no basta.' },
       { p: '¿Hay que levantar el jardín o el pavimento?', r: 'En la mayoría de casos no. Se trabaja desde las arquetas existentes, y cuando hay daño estructural la rehabilitación sin obra evita la zanja.' },
     ],
     segmentos: ['administradores-de-fincas', 'particulares', 'industrial'],
@@ -116,7 +116,7 @@ export const SERVICIOS: Servicio[] = [
     nombre: 'Hidrojet de alta presión',
     h1: 'Limpieza con hidrojet de alta presión en Sevilla',
     title: 'Hidrojet alta presión Sevilla | Atarjea Redes',
-    meta: 'Limpieza de redes de saneamiento con hidrojet de alta presión en Sevilla. Recupera la sección completa del conducto.',
+    meta: 'Limpieza de redes con hidrojet de alta presión en Sevilla. Recupera la sección completa del conducto en lugar de abrir paso a través del tapón.',
     entradilla: 'Agua a presión para recuperar la sección completa del conducto, no solo abrir paso.',
     resumen: 'Limpieza técnica de redes con equipo de agua a presión y boquillas según diámetro.',
     citable:
@@ -173,7 +173,7 @@ export const SERVICIOS: Servicio[] = [
     nombre: 'Limpieza industrial',
     h1: 'Limpieza industrial de redes en Sevilla',
     title: 'Limpieza industrial redes Sevilla | Atarjea Redes',
-    meta: 'Limpieza industrial de redes de saneamiento, separadores y depósitos en Sevilla. Naves, gasolineras y residencias.',
+    meta: 'Limpieza industrial de redes, separadores y depósitos en Sevilla. Naves, gasolineras y residencias, en horario de baja actividad y con gestor autorizado.',
     entradilla: 'Redes, separadores y depósitos en nave, gasolinera, residencia y centro de trabajo.',
     resumen: 'Mantenimiento de red y equipos de tratamiento en instalaciones con actividad.',
     citable:
@@ -201,7 +201,7 @@ export const SERVICIOS: Servicio[] = [
     nombre: 'Mantenimiento preventivo',
     h1: 'Mantenimiento preventivo de redes de saneamiento en Sevilla',
     title: 'Mantenimiento preventivo saneamiento Sevilla | Atarjea Redes',
-    meta: 'Contratos de mantenimiento preventivo de redes de saneamiento en Sevilla para comunidades, hostelería e industria.',
+    meta: 'Contratos de mantenimiento preventivo de redes de saneamiento en Sevilla para comunidades, hostelería e industria, con frecuencia fijada tras inspección.',
     entradilla:
       'Contrato anual con frecuencia definida, interlocutor único y registro de cada intervención.',
     resumen: 'El servicio que convierte la urgencia en previsibilidad. Para comunidades, hostelería e industria.',

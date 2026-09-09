@@ -7,6 +7,8 @@ import Cta from '../../components/Cta.astro';
 import Datos from '../../components/Datos.astro';
 import EnlacesServicios from '../../components/EnlacesServicios.astro';
 import { MUNICIPIOS, nota } from '../../data/municipios';
+import { PERFILES } from '../../data/perfiles';
+import { SEGMENTOS } from '../../data/segmentos';
 
 export function getStaticPaths() {
   // Sevilla capital NO entra aqui: tiene pagina propia en zonas/sevilla.astro
@@ -15,9 +17,13 @@ export function getStaticPaths() {
 }
 
 const { m } = Astro.props;
+const perfil = PERFILES[m.perfil];
 
 const poblacion = m.poblacion
-  ? { etiqueta: 'Población', valor: `${m.poblacion.toLocaleString('es-ES')} habitantes` }
+  ? {
+      etiqueta: 'Población',
+      valor: `${m.poblacion.toLocaleString('es-ES')} habitantes`,
+    }
   : { etiqueta: 'Población', valor: 'Pendiente de verificar en INE / SIMA', pendiente: true };
 
 const datos = [
@@ -27,14 +33,59 @@ const datos = [
 ];
 
 const esOrganica = m.zona === 'organica';
+
+// Municipios del mismo perfil de red: enlazado lateral con criterio, no aleatorio.
+const hermanos = MUNICIPIOS.filter((x) => x.perfil === m.perfil && x.slug !== m.slug).slice(0, 5);
+
+// El CTA se ajusta al servicio dominante, no es el mismo en las 17 paginas.
+const CTA: Record<string, { titulo: string; texto: string; textoSec: string; hrefSec: string }> = {
+  'bloque-antiguo': {
+    titulo: `¿La misma bajante da problemas otra vez en ${m.nombre}?`,
+    texto: 'Si vuelve cada pocos meses, el tapón no es el problema: lo es la sección del conducto. Te decimos si basta con limpiar a fondo o si conviene mirarlo con cámara.',
+    textoSec: 'Hablar de la comunidad',
+    hrefSec: '/administradores-de-fincas',
+  },
+  urbanizacion: {
+    titulo: `¿Sabéis por dónde va la red de vuestra urbanización en ${m.nombre}?`,
+    texto: 'Localizamos las arquetas, limpiamos el tramo completo y os dejamos identificado el trazado, para que la siguiente intervención no empiece de cero.',
+    textoSec: 'Pedir revisión de la red',
+    hrefSec: '/contacto',
+  },
+  mixto: {
+    titulo: `¿Bloque o urbanización? En ${m.nombre} cambia el servicio`,
+    texto: 'Dinos qué tipo de edificación es y cuántos desagües fallan. Con eso sale el equipo correcto a la primera y te ahorras una segunda visita.',
+    textoSec: 'Ver servicios',
+    hrefSec: '/servicios',
+  },
+  diseminado: {
+    titulo: `¿Cuándo se vació la fosa por última vez en ${m.nombre}?`,
+    texto: 'Si no lo recuerdas, probablemente toque. Vaciado con cuba, retirada por gestor autorizado y justificante. Indícanos el acceso y lo resolvemos en una visita.',
+    textoSec: 'Ver fosas sépticas y pozos',
+    hrefSec: '/servicios/fosas-septicas-y-pozos',
+  },
+  industrial: {
+    titulo: `¿Cuándo te viene bien que entremos en ${m.nombre}?`,
+    texto: 'Programamos en tu franja de menor actividad y salimos dentro de la ventana acordada, con el justificante de gestor autorizado en la mano.',
+    textoSec: 'Pedir visita técnica',
+    hrefSec: '/industrial',
+  },
+  ciudad: {
+    titulo: `Trabajo programado en ${m.nombre}`,
+    texto: 'Mantenimiento, inspección y rehabilitación, que no dependen de la proximidad inmediata. La urgencia a esta distancia la resuelve mejor alguien más cerca, y preferimos decirlo.',
+    textoSec: 'Hablar de un contrato',
+    hrefSec: '/administradores-de-fincas',
+  },
+};
+const cta = CTA[m.perfil];
 ---
 
 <Base
   title={`Saneamiento y desatascos ${m.nombre} | Atarjea Redes`}
-  meta={`${m.servicioDominante} en ${m.nombre}. ${m.porQue.slice(0, 110)}`}
+  meta={m.meta}
   ruta={`/zonas/${m.slug}`}
   imagen={`/img/zonas/${m.slug}.svg`}
   faqs={m.faqs}
+  servicio={{ nombre: `${m.servicioDominante} en ${m.nombre}`, descripcion: m.meta }}
   migas={[
     { nombre: 'Inicio', href: '/' },
     { nombre: 'Zonas', href: '/zonas' },
@@ -46,6 +97,8 @@ const esOrganica = m.zona === 'organica';
     entradilla={m.servicioDominante}
     imagen={`/img/zonas/${m.slug}.svg`}
     alt={`Saneamiento y desatascos en ${m.nombre}`}
+    textoSec={cta.textoSec}
+    hrefSec={cta.hrefSec}
   />
 
   <section class="seccion">
@@ -65,7 +118,7 @@ const esOrganica = m.zona === 'organica';
 
       <Datos items={datos} />
 
-      <h2>Por qué este municipio necesita un planteamiento propio</h2>
+      <h2>Por qué {m.nombre} necesita un planteamiento propio</h2>
       <p>{m.porQue}</p>
 
       <table>
@@ -81,14 +134,61 @@ const esOrganica = m.zona === 'organica';
 
   <section class="seccion seccion--alt">
     <div class="contenedor estrecho">
-      <EnlacesServicios slugs={m.servicios} titulo={`Servicios que más se piden en ${m.nombre}`} />
+      <h2>{perfil.titulo}</h2>
+      <p>{perfil.intro}</p>
+
+      <h3>Las señales que aparecen antes del aviso</h3>
+      <dl>
+        {
+          perfil.fallos.map((f) => (
+            <>
+              <dt><strong>{f.que}</strong></dt>
+              <dd>{f.por}</dd>
+            </>
+          ))
+        }
+      </dl>
+
+      <h3>Cómo lo abordamos</h3>
+      <p>{perfil.enfoque}</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <EnlacesServicios
+        slugs={m.servicios}
+        titulo={`Servicios que más se piden en ${m.nombre}`}
+      />
+
+      {
+        hermanos.length > 0 && (
+          <div style="margin-top:2rem">
+            <h3>Municipios con el mismo tipo de red</h3>
+            <p>
+              Comparten problemática con {m.nombre}, así que el planteamiento técnico es
+              parecido.
+            </p>
+            <ul class="enlaces">
+              {hermanos.map((x) => (
+                <li><a href={`/zonas/${x.slug}`}>{x.nombre}</a></li>
+              ))}
+              <li><a href="/zonas"><strong>Todas las zonas</strong></a></li>
+            </ul>
+          </div>
+        )
+      }
+
+      <div style="margin-top:2rem">
+        <h3>Según quién nos llame</h3>
+        <ul class="enlaces">
+          {SEGMENTOS.map((sg) => <li><a href={sg.href}>{sg.nombre}</a></li>)}
+        </ul>
+      </div>
     </div>
   </section>
 
   <Faqs faqs={m.faqs} titulo={`Preguntas frecuentes en ${m.nombre}`} />
 
-  <Cta
-    titulo={`¿Necesitas un servicio en ${m.nombre}?`}
-    texto="Cuéntanos el síntoma y te decimos si se resuelve con una intervención o si conviene inspeccionar antes."
-  />
+  <Cta titulo={cta.titulo} texto={cta.texto} textoSec={cta.textoSec} hrefSec={cta.hrefSec} />
 </Base>
