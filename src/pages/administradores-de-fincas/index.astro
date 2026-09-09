@@ -6,6 +6,7 @@ import Faqs from '../../components/Faqs.astro';
 import Cta from '../../components/Cta.astro';
 import Datos from '../../components/Datos.astro';
 import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import EnlacesBlog from '../../components/EnlacesBlog.astro';
 import { SITE } from '../../data/site';
 
 const citable =
@@ -172,6 +173,11 @@ const faqs = [
       <EnlacesServicios
         slugs={['mantenimiento-preventivo', 'limpieza-bajantes', 'inspeccion', 'rehabilitacion', 'arquetas-y-colectores']}
         titulo="Servicios para comunidades"
+      />
+
+      <EnlacesBlog
+        claves={['bajante']}
+        titulo="Para zanjar la discusión más repetida de las juntas"
       />
     </div>
   </section>

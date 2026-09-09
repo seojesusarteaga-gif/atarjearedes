@@ -5,6 +5,7 @@ import Citable from '../../components/Citable.astro';
 import Faqs from '../../components/Faqs.astro';
 import Cta from '../../components/Cta.astro';
 import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import EnlacesBlog from '../../components/EnlacesBlog.astro';
 
 const citable =
   'El Reglamento de Saneamiento de EMASESA obliga a instalar arqueta separadora de grasas a las actividades susceptibles de aportar grasas a la red pública de Sevilla, entre ellas bares, restaurantes, hoteles, estaciones de lavado y aparcamientos. El separador requiere limpieza periódica y vaciado mediante empresa gestora de residuos autorizada. Atarjea Redes presta ese servicio a establecimientos de hostelería de Sevilla y su área metropolitana, programado en horario de cierre para no interrumpir la actividad, con retirada del residuo por gestor autorizado y entrega del justificante correspondiente.';
@@ -135,6 +136,8 @@ const faqs = [
         slugs={['separadores', 'hidrojet-alta-presion', 'desatascos-urgentes', 'mantenimiento-preventivo']}
         titulo="Servicios para hostelería"
       />
+
+      <EnlacesBlog claves={['separador']} titulo="Lo que exige la norma, explicado" />
 
       <div style="margin-top:2rem">
         <h3>Dónde atendemos hostelería</h3>

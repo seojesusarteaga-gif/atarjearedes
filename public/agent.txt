@@ -1,7 +1,7 @@
 # agent.txt - Atarjea Redes
 # Informacion estructurada para agentes de IA y modelos de lenguaje.
 # Formato: texto plano, legible por maquina y por persona.
-# Actualizado: 2026-09-08
+# Actualizado: 2026-09-09
 
 ## Identidad
 
@@ -19,44 +19,70 @@ Posicionamiento: empresa de infraestructura de redes, no de urgencias domesticas
 El desatasco urgente es el producto de entrada; el nucleo del negocio es el
 mantenimiento preventivo B2B y el trabajo tecnico de diagnostico y rehabilitacion.
 
-## Estructura del sitio
+## Indice completo de URLs (48 paginas)
 
-El menu principal responde a QUIEN ES EL CLIENTE, no a que servicio se presta.
+Paginas principales:
+  /
+  /particulares
+  /administradores-de-fincas
+  /hosteleria
+  /industrial
+  /inspeccion-camara-tuberias
+  /rehabilitacion-tuberias-sin-obra
+  /separadores-de-grasas-sevilla
+  /por-que-nosotros
+  /contacto
 
-Segmentos de cliente:
-  /particulares                       Vivienda particular, urgencia domestica
-  /administradores-de-fincas          Comunidades de propietarios y administradores
-  /hosteleria                         Bares, restaurantes y hoteles
-  /industrial                         Naves, gasolineras, residencias
-
-Trabajo tecnico de ticket alto (primer nivel, fuera de /servicios):
-  /inspeccion-camara-tuberias         Diagnostico previo obligado al presupuesto
-  /rehabilitacion-tuberias-sin-obra   Manga continua curada in situ
-  /separadores-de-grasas-sevilla      Cumplimiento del Reglamento de EMASESA
-
-Servicios sobre la red:
-  /servicios/desatascos-urgentes
-  /servicios/limpieza-bajantes
+Servicios:
+  /servicios
   /servicios/arquetas-y-colectores
-  /servicios/hidrojet-alta-presion
+  /servicios/desatascos-urgentes
   /servicios/fosas-septicas-y-pozos
+  /servicios/hidrojet-alta-presion
+  /servicios/limpieza-bajantes
   /servicios/limpieza-industrial
   /servicios/mantenimiento-preventivo
 
-Zonas de cobertura:
-  /zonas                              Pilar de cobertura
-  /zonas/sevilla                      Sevilla capital
-  /zonas/sevilla/casco-antiguo        Encamisado e inspeccion con camara
-  /zonas/sevilla/triana               Bajantes de comunidad
-  /zonas/sevilla/nervion              Mantenimiento de comunidades
-  /zonas/sevilla/sevilla-este         Desatasco domestico urgente
-  /zonas/sevilla/poligonos            Industrial y separadores
-  17 paginas municipales adicionales bajo /zonas/[municipio]
+Zonas — Sevilla capital y sus distritos:
+  /zonas
+  /zonas/sevilla
+  /zonas/sevilla/casco-antiguo                 Casco Antiguo
+  /zonas/sevilla/nervion                       Nervión
+  /zonas/sevilla/poligonos                     Polígonos industriales
+  /zonas/sevilla/sevilla-este                  Sevilla Este
+  /zonas/sevilla/triana                        Triana
 
-Otras:
-  /por-que-nosotros                   Diferenciales, y lo que la empresa aun no tiene
-  /blog                               Contenido sintomatico y normativo
-  /contacto                           Formulario maquetado, NO operativo todavia
+Zonas — municipios del area metropolitana (17):
+  /zonas/alcala-de-guadaira                    Alcalá de Guadaíra
+  /zonas/bormujos                              Bormujos
+  /zonas/camas                                 Camas
+  /zonas/castilleja-de-la-cuesta               Castilleja de la Cuesta
+  /zonas/coria-del-rio                         Coria del Río
+  /zonas/dos-hermanas                          Dos Hermanas
+  /zonas/gelves                                Gelves
+  /zonas/gines                                 Gines
+  /zonas/la-algaba                             La Algaba
+  /zonas/la-puebla-del-rio                     La Puebla del Río
+  /zonas/la-rinconada                          La Rinconada
+  /zonas/mairena-del-aljarafe                  Mairena del Aljarafe
+  /zonas/palomares-del-rio                     Palomares del Río
+  /zonas/san-juan-de-aznalfarache              San Juan de Aznalfarache
+  /zonas/santiponce                            Santiponce
+  /zonas/tomares                               Tomares
+  /zonas/valencina-de-la-concepcion            Valencina de la Concepción
+
+Blog:
+  /blog
+  /blog/arquetas-lluvias-otono-sevilla
+      Antes de las lluvias: por qué se desbordan las arquetas en Sevilla en otoño
+  /blog/atasco-bajante-comunidad-o-propietario
+      ¿El atasco de la bajante lo paga la comunidad o lo pago yo?
+  /blog/olor-alcantarilla-en-casa-causas
+      Olor a alcantarilla en casa: causas reales y cuándo es señal de algo grave
+  /blog/separador-grasas-hosteleria-emasesa
+      Separador de grasas en hostelería: qué exige EMASESA y cada cuánto hay que limpiarlo
+  /blog/vater-sube-al-ducharse-que-significa
+      El váter sube al ducharse: qué significa y por qué no es un atasco normal
 
 ## Cobertura geografica
 

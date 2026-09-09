@@ -24,6 +24,8 @@ export interface ContenidoPerfil {
   intro: string;
   fallos: { que: string; por: string }[];
   enfoque: string;
+  /** Claves de src/data/articulos.ts: el blog debe recibir enlaces, no solo darlos. */
+  articulos: string[];
 }
 
 export const PERFILES: Record<Perfil, ContenidoPerfil> = {
@@ -51,6 +53,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'En este parque el trabajo útil es la limpieza de la sección completa con agua a presión, no el desatasco puntual, y la inspección con cámara cuando la incidencia se repite. Si la cámara revela fisuras o pérdida de material, la rehabilitación sin obra evita picar en las viviendas.',
+    articulos: ['vater', 'olor', 'bajante'],
   },
 
   urbanizacion: {
@@ -77,6 +80,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'Aquí el trabajo es sobre la red horizontal enterrada, no sobre bajantes. Localizar todas las arquetas, limpiar el tramo completo e inspeccionar con cámara donde haya sospecha de raíz o de tramo hundido. Es también el escenario donde más rentabilidad tiene el mantenimiento programado, porque la revisión anual cuesta una fracción de la urgencia en plena tormenta.',
+    articulos: ['arquetas', 'vater'],
   },
 
   mixto: {
@@ -99,6 +103,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'La primera pregunta al recibir el aviso no es qué se ha atascado, sino qué tipo de edificación es y cuántos puntos fallan. Eso decide el equipo que sale y evita una segunda visita.',
+    articulos: ['arquetas', 'vater', 'bajante'],
   },
 
   diseminado: {
@@ -125,6 +130,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'El vaciado programado cuesta una fracción de lo que cuesta reparar un sistema de infiltración agotado. El residuo se retira mediante gestor de residuos autorizado y se entrega el justificante, que conviene conservar.',
+    articulos: ['olor', 'arquetas'],
   },
 
   industrial: {
@@ -147,6 +153,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'La intervención se programa en la franja de menor actividad y se dimensiona para entrar y salir dentro de esa ventana. El residuo se retira por gestor autorizado con su justificante, que es lo que se exige en auditoría.',
+    articulos: ['separador', 'arquetas'],
   },
 
   ciudad: {
@@ -169,6 +176,7 @@ export const PERFILES: Record<Perfil, ContenidoPerfil> = {
     ],
     enfoque:
       'Trabajamos aquí en programado: inspección, mantenimiento preventivo y rehabilitación. La urgencia a esta distancia la resuelve mejor alguien que esté más cerca, y preferimos decirlo.',
+    articulos: ['bajante', 'separador'],
   },
 };
 

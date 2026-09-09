@@ -6,6 +6,7 @@ import Faqs from '../../components/Faqs.astro';
 import Cta from '../../components/Cta.astro';
 import Datos from '../../components/Datos.astro';
 import EnlacesServicios from '../../components/EnlacesServicios.astro';
+import EnlacesBlog from '../../components/EnlacesBlog.astro';
 import { MUNICIPIOS, nota } from '../../data/municipios';
 import { PERFILES } from '../../data/perfiles';
 import { SEGMENTOS } from '../../data/segmentos';
@@ -178,6 +179,8 @@ const cta = CTA[m.perfil];
           </div>
         )
       }
+
+      <EnlacesBlog claves={perfil.articulos} titulo={`Lo que suele fallar en ${m.nombre}`} />
 
       <div style="margin-top:2rem">
         <h3>Según quién nos llame</h3>

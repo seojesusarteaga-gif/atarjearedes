@@ -13,6 +13,8 @@ export interface Barrio {
   citable: string;
   faqs: Faq[];
   servicios: string[];
+  /** Claves de src/data/articulos.ts */
+  articulos: string[];
 }
 
 /**
@@ -38,6 +40,7 @@ export const BARRIOS: Barrio[] = [
       { p: '¿Cuánto dura la intervención?', r: 'Depende del número de tramos y de su longitud. La ventaja frente a la obra abierta no es solo el precio: es que el edificio sigue habitable durante los trabajos.' },
       { p: '¿Sirve para tubería de fundición antigua?', r: 'Si, siempre que el conducto conserve continuidad suficiente. La inspección previa con cámara determina si es viable o si el tramo requiere sustitución.' },
     ],
+    articulos: ['vater', 'olor'],
     servicios: ['inspeccion', 'rehabilitacion', 'limpieza-bajantes'],
   },
   {
@@ -57,6 +60,7 @@ export const BARRIOS: Barrio[] = [
       { p: '¿La limpieza arregla una bajante deteriorada?', r: 'No. Recupera sección, pero no repara. Si la cámara muestra fisuras o juntas abiertas, la solución es la rehabilitación sin obra.' },
       { p: '¿Hay que entrar en las viviendas?', r: 'No siempre. Se trabaja desde registros comunes cuando existen.' },
     ],
+    articulos: ['bajante', 'vater'],
     servicios: ['limpieza-bajantes', 'inspeccion', 'rehabilitacion'],
   },
   {
@@ -76,6 +80,7 @@ export const BARRIOS: Barrio[] = [
       { p: '¿Podeis facturar directamente a la comunidad?', r: 'Si, con los datos fiscales de la comunidad de propietarios, que es como lo necesita el administrador para su contabilidad.' },
       { p: '¿Que documentación se entrega?', r: 'Informe de cada actuación, con estado de la red y recomendaciones, en formato presentable ante la junta.' },
     ],
+    articulos: ['bajante', 'arquetas'],
     servicios: ['mantenimiento-preventivo', 'limpieza-bajantes', 'inspeccion'],
   },
   {
@@ -95,6 +100,7 @@ export const BARRIOS: Barrio[] = [
       { p: '¿Cuánto tardais en llegar a Sevilla Este?', r: 'Sevilla Este es el punto más alejado dentro de la capital, a unos siete kilómetros del centro, dentro del radio de intervención inmediata.' },
       { p: '¿Hay que romper algo?', r: 'En la mayoría de intervenciones no. Se trabaja desde registros y arquetas existentes.' },
     ],
+    articulos: ['vater', 'olor'],
     servicios: ['desatascos-urgentes', 'limpieza-bajantes', 'inspeccion'],
   },
   {
@@ -114,6 +120,7 @@ export const BARRIOS: Barrio[] = [
       { p: '¿Que documentación entregais?', r: 'Justificante de retirada por gestor autorizado, que es lo que se exige habitualmente en auditoria e inspección.' },
       { p: '¿Cada cuánto hay que limpiar un separador?', r: 'Depende del tipo de separador y del volumen de actividad. La frecuencia se fija tras la revisión inicial, no por catálogo.' },
     ],
+    articulos: ['separador', 'arquetas'],
     servicios: ['limpieza-industrial', 'hidrojet-alta-presion', 'mantenimiento-preventivo'],
   },
 ];

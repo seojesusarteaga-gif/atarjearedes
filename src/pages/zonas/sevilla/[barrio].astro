@@ -5,6 +5,7 @@ import Citable from '../../../components/Citable.astro';
 import Faqs from '../../../components/Faqs.astro';
 import Cta from '../../../components/Cta.astro';
 import EnlacesServicios from '../../../components/EnlacesServicios.astro';
+import EnlacesBlog from '../../../components/EnlacesBlog.astro';
 import { BARRIOS } from '../../../data/barrios';
 import { SEGMENTOS } from '../../../data/segmentos';
 import { resolverServicio } from '../../../data/enlaces';
@@ -63,6 +64,8 @@ const principal = resolverServicio(b.servicios[0]);
   <section class="seccion seccion--alt">
     <div class="contenedor estrecho">
       <EnlacesServicios slugs={b.servicios} titulo={`Servicios en ${b.nombre}`} />
+
+      <EnlacesBlog claves={b.articulos} titulo={`Lo que suele fallar en ${b.nombre}`} />
 
       <div style="margin-top:2rem">
         <h3>Otros distritos de Sevilla capital</h3>

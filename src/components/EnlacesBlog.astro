@@ -1,0 +1,43 @@
+---
+import { articulos } from '../data/articulos';
+
+interface Props {
+  claves: string[];
+  titulo?: string;
+}
+const { claves, titulo = 'Sobre esto hemos escrito' } = Astro.props;
+const items = articulos(...claves);
+---
+
+{
+  items.length > 0 && (
+    <div class="blog-rel">
+      <h3>{titulo}</h3>
+      <ul>
+        {items.map((a) => (
+          <li>
+            <a href={`/blog/${a.slug}`}>{a.titulo}</a>
+            <span>{a.gancho}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+<style>
+  .blog-rel { margin-top: 2rem; }
+  .blog-rel ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .blog-rel li {
+    border-left: 3px solid var(--arena);
+    padding-left: 0.9rem;
+  }
+  .blog-rel a { font-weight: 650; text-decoration: none; }
+  .blog-rel a:hover { text-decoration: underline; }
+  .blog-rel span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--texto-sec);
+    margin-top: 0.15rem;
+  }
+</style>

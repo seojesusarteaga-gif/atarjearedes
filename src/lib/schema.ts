@@ -102,10 +102,14 @@ export interface Miga {
   href: string;
 }
 
-function migas(items: Miga[]) {
+/**
+ * El @id lleva la URL de la pagina, no la del sitio. Con un @id fijo, las 47
+ * migas del sitio afirmaban ser la misma entidad dentro del grafo. (M5.6)
+ */
+function migas(items: Miga[], url: string) {
   return {
     '@type': 'BreadcrumbList',
-    '@id': `${SITE.url}/#breadcrumb`,
+    '@id': `${url}#breadcrumb`,
     itemListElement: items.map((m, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -175,7 +179,7 @@ export function construirGrafo(o: OpcionesGrafo) {
   const url = `${SITE.url}${o.ruta === '/' ? '' : o.ruta}`;
   const nodos: unknown[] = [organizacion(), negocioLocal(), sitioWeb()];
 
-  if (o.migas?.length) nodos.push(migas(o.migas));
+  if (o.migas?.length) nodos.push(migas(o.migas, url));
   if (o.faqs?.length) nodos.push(paginaFaq(o.faqs, url));
   if (o.servicio) nodos.push(servicio({ ...o.servicio, url }));
   if (o.entrada) nodos.push(entrada({ ...o.entrada, url }));
