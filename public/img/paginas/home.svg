@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" role="img" aria-label="Redes de saneamiento">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Redes de saneamiento">
 <title>Redes de saneamiento</title>
 <defs>
 <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
 <path d="M40 0 L0 0 0 40" fill="none" stroke="#C9AE8C" stroke-width="0.6" opacity="0.22"/>
 </pattern>
 </defs>
-<rect width="1600" height="700" fill="#12455C"/>
-<rect width="1600" height="700" fill="url(#g)"/>
-<circle cx="303" cy="342" r="70" fill="none" stroke="#C9AE8C" stroke-width="14" opacity="0.95"/><circle cx="303" cy="342" r="100" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.77"/><circle cx="303" cy="342" r="130" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.59"/><circle cx="303" cy="342" r="160" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.41"/><line x1="393" y1="306" x2="568" y2="306" stroke="#C9AE8C" stroke-width="3" opacity="0.50" stroke-linecap="round"/><line x1="433" y1="330" x2="595" y2="330" stroke="#C9AE8C" stroke-width="3" opacity="0.42" stroke-linecap="round"/><line x1="393" y1="354" x2="549" y2="354" stroke="#C9AE8C" stroke-width="3" opacity="0.34" stroke-linecap="round"/><line x1="433" y1="378" x2="586" y2="378" stroke="#C9AE8C" stroke-width="3" opacity="0.26" stroke-linecap="round"/>
-<text x="64" y="608" fill="#F7F4EF" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="46" font-weight="700" letter-spacing="-0.5">Redes de saneamiento</text>
-<text x="64" y="648" fill="#C9AE8C" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="19" font-weight="600" letter-spacing="4">ATARJEA REDES</text>
-<text x="1536" y="648" text-anchor="end" fill="#F7F4EF" opacity="0.55" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="1.5">IMAGEN PROVISIONAL · FASE RR2</text>
+<rect width="1200" height="675" fill="#12455C"/>
+<rect width="1200" height="675" fill="url(#g)"/>
+<circle cx="303" cy="329.5" r="70" fill="none" stroke="#C9AE8C" stroke-width="14" opacity="0.95"/><circle cx="303" cy="329.5" r="100" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.77"/><circle cx="303" cy="329.5" r="130" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.59"/><circle cx="303" cy="329.5" r="160" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.41"/><line x1="393" y1="293.5" x2="568" y2="293.5" stroke="#C9AE8C" stroke-width="3" opacity="0.50" stroke-linecap="round"/><line x1="433" y1="317.5" x2="595" y2="317.5" stroke="#C9AE8C" stroke-width="3" opacity="0.42" stroke-linecap="round"/><line x1="393" y1="341.5" x2="549" y2="341.5" stroke="#C9AE8C" stroke-width="3" opacity="0.34" stroke-linecap="round"/><line x1="433" y1="365.5" x2="586" y2="365.5" stroke="#C9AE8C" stroke-width="3" opacity="0.26" stroke-linecap="round"/>
+<text x="64" y="583" fill="#F7F4EF" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="46" font-weight="700" letter-spacing="-0.5">Redes de saneamiento</text>
+<text x="64" y="623" fill="#C9AE8C" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="19" font-weight="600" letter-spacing="4">ATARJEA REDES</text>
+<text x="1136" y="623" text-anchor="end" fill="#F7F4EF" opacity="0.55" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="1.5">IMAGEN PROVISIONAL · FASE RR2</text>
 </svg>

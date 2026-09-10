@@ -6,7 +6,7 @@ const { items, columnas = 3 } = Astro.props;
 <div class={`rejilla rejilla--${columnas}`}>
   {items.map((t) => (
     <article class="tarjeta">
-      <img src={t.imagen} alt={t.alt} width="1600" height="700" loading="lazy" />
+      <img src={t.imagen} alt={t.alt} width="1200" height="675" loading="lazy" />
       <div class="tarjeta__cuerpo">
         <span class="tarjeta__etiqueta">{t.etiqueta}</span>
         <h3><a href={t.href}>{t.titular}</a></h3>

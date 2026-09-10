@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Nervion">
-<title>Nervion</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Nervión">
+<title>Nervión</title>
 <defs>
 <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
 <path d="M40 0 L0 0 0 40" fill="none" stroke="#C9AE8C" stroke-width="0.6" opacity="0.22"/>
@@ -8,7 +8,7 @@
 <rect width="1200" height="675" fill="#12455C"/>
 <rect width="1200" height="675" fill="url(#g)"/>
 <circle cx="276" cy="298.5" r="70" fill="none" stroke="#C9AE8C" stroke-width="14" opacity="0.95"/><circle cx="276" cy="298.5" r="106" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.77"/><circle cx="276" cy="298.5" r="142" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.59"/><circle cx="276" cy="298.5" r="178" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.41"/><circle cx="276" cy="298.5" r="214" fill="none" stroke="#C9AE8C" stroke-width="4" opacity="0.23"/><line x1="366" y1="262.5" x2="565" y2="262.5" stroke="#C9AE8C" stroke-width="3" opacity="0.50" stroke-linecap="round"/><line x1="406" y1="286.5" x2="580" y2="286.5" stroke="#C9AE8C" stroke-width="3" opacity="0.42" stroke-linecap="round"/><line x1="366" y1="310.5" x2="588" y2="310.5" stroke="#C9AE8C" stroke-width="3" opacity="0.34" stroke-linecap="round"/><line x1="406" y1="334.5" x2="652" y2="334.5" stroke="#C9AE8C" stroke-width="3" opacity="0.26" stroke-linecap="round"/>
-<text x="64" y="583" fill="#F7F4EF" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="46" font-weight="700" letter-spacing="-0.5">Nervion</text>
+<text x="64" y="583" fill="#F7F4EF" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="46" font-weight="700" letter-spacing="-0.5">Nervión</text>
 <text x="64" y="623" fill="#C9AE8C" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="19" font-weight="600" letter-spacing="4">ATARJEA REDES</text>
 <text x="1136" y="623" text-anchor="end" fill="#F7F4EF" opacity="0.55" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="1.5">IMAGEN PROVISIONAL · FASE RR2</text>
 </svg>

@@ -64,10 +64,10 @@ export const AREA_SERVIDA_EXTRA = [
 
 export const MENU = [
   { texto: 'Particulares', href: '/particulares' },
-  { texto: 'Administradores de Fincas', href: '/administradores-de-fincas' },
+  { texto: 'Administradores', href: '/administradores-de-fincas' },
   { texto: 'Hostelería', href: '/hosteleria' },
   { texto: 'Industrial', href: '/industrial' },
-  { texto: 'Inspección con Cámara de Tuberías', href: '/inspeccion-camara-tuberias' },
+  { texto: 'Inspección CCTV', href: '/inspeccion-camara-tuberias' },
   { texto: 'Zonas', href: '/zonas' },
   { texto: 'Blog', href: '/blog' },
   { texto: 'Contacto', href: '/contacto' },
