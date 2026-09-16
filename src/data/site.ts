@@ -12,7 +12,9 @@ export const PENDIENTE = 'Pendiente de confirmar' as const;
 export const SITE = {
   nombre: 'Atarjea Redes',
   claim: 'Redes de saneamiento y canalizaciones',
-  url: 'https://atarjearedes.vercel.app',
+  // Origen canonico. Debe coincidir con el SITE de astro.config.mjs,
+  // que es el que alimenta el sitemap.
+  url: 'https://atarjearedes.es',
 
   // --- NAP ---
   telefono: '+34 000 000 000',
@@ -51,6 +53,30 @@ export const SITE = {
     nota: 'Precios pendientes de confirmar con el operador.',
   },
 } as const;
+
+/* ---------------------------------------------------------------------------
+ * ANALITICA - PREPARADA, NO ACTIVA. Se enciende en la Fase M6.
+ *
+ * Jesus crea la propiedad en analytics.google.com y sustituye el placeholder
+ * de abajo por el Measurement ID real. No hay que tocar nada mas: Base.astro
+ * emite el snippet automaticamente en cuanto el ID tiene formato valido.
+ *
+ * Mientras valga el placeholder NO se imprime nada en el HTML. Cargar gtag.js
+ * con un ID invalido son dos peticiones a Google en cada una de las 48 paginas
+ * que no miden nada y encima plantan cookies sin contrapartida.
+ *
+ * ANTES DE PONER EL ID REAL: resolver el consentimiento de cookies. Hoy el
+ * sitio no planta ninguna y por eso no lleva banner; con GA4 activo, si.
+ * Ver _docs/PENDIENTES_M6.md, punto 1.
+ * ------------------------------------------------------------------------- */
+export const GA4_ID: string = 'G-XXXXXXXXX';
+
+/**
+ * Un Measurement ID real es G- seguido de 10 alfanumericos en mayusculas.
+ * El placeholder (nueve equis) no pasa el formato; el segundo test cubre
+ * ademas cualquier variante del marcador escrita con mas equis.
+ */
+export const GA4_ACTIVO = /^G-[A-Z0-9]{10}$/.test(GA4_ID) && !GA4_ID.includes('XXX');
 
 /** Municipios donde se compite en Maps + los que solo se cubren. Alimenta areaServed. */
 export const AREA_SERVIDA_EXTRA = [

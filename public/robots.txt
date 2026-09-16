@@ -2,12 +2,15 @@
 #
 # ESTADO: PRE-INDEXACION. Bloqueo total deliberado.
 #
-# El sitio esta en scaffolding y desplegado en una URL temporal de Vercel.
-# Si Google indexa la URL de Vercel antes de tener dominio propio, se genera
-# contenido duplicado y un problema de migracion al mover al dominio definitivo.
+# El dominio propio ya esta conectado (https://atarjearedes.es), pero el sitio
+# sigue con placeholders sin cerrar: telefono, direccion, capacidades tecnicas
+# y articulado de EMASESA. Indexar antes de cerrarlos significa que la primera
+# version que Google rastrea y cachea es la incompleta.
 #
 # ESTE ARCHIVO SE CAMBIA EN LA FASE M6 (indexacion en Search Console),
-# despues de la auditoria final M5.6 y con el dominio propio ya conectado.
+# a la vez que se quita el meta robots noindex de Base.astro. Los dos a la
+# vez o ninguno: abrir robots con el meta puesto deja el sitio igual de
+# invisible, y quitar el meta con robots cerrado impide que Google lo lea.
 
 User-agent: *
 Disallow: /
@@ -15,4 +18,4 @@ Disallow: /
 # Al abrir en M6, sustituir por:
 #   User-agent: *
 #   Allow: /
-#   Sitemap: https://DOMINIO-DEFINITIVO/sitemap-index.xml
+#   Sitemap: https://atarjearedes.es/sitemap-index.xml

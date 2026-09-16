@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Migas from '../components/Migas.astro';
-import { SITE } from '../data/site';
+import { SITE, GA4_ID, GA4_ACTIVO } from '../data/site';
 import { construirGrafo, type Miga } from '../lib/schema';
 import type { Faq } from '../data/servicios';
 
@@ -30,6 +30,31 @@ const og = `${SITE.url}${imagen ?? '/img/paginas/home.svg'}`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/*
+      GA4 - PREPARADO, NO ACTIVO (Fase M6).
+      Solo se emite cuando src/data/site.ts lleva un Measurement ID real.
+      Con el placeholder G-XXXXXXXXX no se imprime nada: ni peticiones a
+      googletagmanager, ni cookies, ni consentimiento que gestionar.
+    */}
+    {GA4_ACTIVO && (
+      <Fragment>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+        {/*
+          define:vars envuelve el script en una funcion para aislar las variables.
+          Por eso gtag se cuelga de window a mano: con la declaracion clasica
+          quedaria local y ningun evento posterior (clic en telefono, envio de
+          formulario) podria llamarla.
+        */}
+        <script is:inline define:vars={{ id: GA4_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', id);
+        </script>
+      </Fragment>
+    )}
+
     <title>{title}</title>
     <meta name="description" content={meta} />
     <link rel="canonical" href={canonical} />

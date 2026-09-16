@@ -53,8 +53,10 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 - [ ] Telefono real (SIM prepago propia). El placeholder `+34 000 000 000` esta
       en `public/agent.txt` y hay que sustituirlo antes de M6.2.
 - [ ] Direccion postal del operador (Casco Antiguo) para NAP y schema.
-- [ ] Dominio propio. Ahora mismo `astro.config.mjs` apunta a una URL de Vercel
-      provisional, y de ahi depende el canonical.
+- [x] Dominio propio conectado: `https://atarjearedes.es`, con `www` redirigido
+      con 301 permanente al apex. La URL vive en dos sitios y los dos estan
+      actualizados: `astro.config.mjs` (sitemap) y `src/data/site.ts` (canonical,
+      og:url y los @id del JSON-LD).
 - [ ] Poblaciones INE/SIMA de los municipios de las paginas de zona.
 - [ ] Verificacion del PDF del Reglamento de Saneamiento de EMASESA antes de
       escribir la landing normativa.
@@ -62,5 +64,6 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 
 ## Nota sobre indexacion
 
-`public/robots.txt` **bloquea todo el sitio a proposito**. Se abre en la Fase M6,
-con el dominio propio ya conectado y la auditoria M5.6 pasada. No tocarlo antes.
+`public/robots.txt` **bloquea todo el sitio a proposito**, y las 48 paginas
+llevan ademas `meta robots noindex`. Se abren los dos a la vez en la Fase M6.
+El listado completo de lo que falta esta en [`_docs/PENDIENTES_M6.md`](_docs/PENDIENTES_M6.md).

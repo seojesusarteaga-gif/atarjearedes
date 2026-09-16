@@ -1,12 +1,14 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// URL de produccion CONFIRMADA en el primer deploy (M4.4, 2026-09-08).
+// URL de produccion DEFINITIVA: dominio propio. Sustituye a la URL de Vercel
+// desde el 2026-09-16; www.atarjearedes.es redirige con 301 a este origen.
 //
-// PENDIENTE M4.5: cuando se compre el dominio propio hay que cambiar este valor
-// y volver a desplegar. De el dependen el canonical y el sitemap; dejarlo
-// apuntando a Vercel con dominio propio ya conectado seria un error de canonical.
-const SITE = 'https://atarjearedes.vercel.app';
+// OJO: este valor alimenta el sitemap. El canonical, el og:url y todos los @id
+// del JSON-LD salen de SITE.url en src/data/site.ts. Los dos tienen que
+// apuntar al mismo origen; si divergen, el sitemap declara una URL y la pagina
+// se autodeclara canonica en otra.
+const SITE = 'https://atarjearedes.es';
 
 export default defineConfig({
   site: SITE,

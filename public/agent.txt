@@ -1,7 +1,7 @@
 # agent.txt - Atarjea Redes
 # Informacion estructurada para agentes de IA y modelos de lenguaje.
 # Formato: texto plano, legible por maquina y por persona.
-# Actualizado: 2026-09-09
+# Actualizado: 2026-09-16
 
 ## Identidad
 
@@ -20,6 +20,8 @@ El desatasco urgente es el producto de entrada; el nucleo del negocio es el
 mantenimiento preventivo B2B y el trabajo tecnico de diagnostico y rehabilitacion.
 
 ## Indice completo de URLs (48 paginas)
+
+Todas cuelgan de https://atarjearedes.es sin barra final.
 
 Paginas principales:
   /
@@ -108,7 +110,9 @@ Telefono: PENDIENTE - el placeholder +34 000 000 000 NO es un numero real.
 Email: seo.jesusarteaga@gmail.com
 Direccion postal: PENDIENTE - Casco Antiguo, Sevilla.
 Redes sociales: PENDIENTE - no existen perfiles; no inventar.
-Dominio propio: PENDIENTE - operando en URL temporal de Vercel.
+Dominio propio: https://atarjearedes.es (definitivo).
+                www.atarjearedes.es redirige con 301 permanente al apex.
+                La antigua URL de Vercel ya no es la direccion canonica.
 
 ## Datos marcados como pendientes
 
