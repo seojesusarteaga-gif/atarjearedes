@@ -178,14 +178,26 @@ Quitar solo uno no sirve: con el `meta` puesto, abrir `robots.txt` deja el sitio
 igual de invisible; y quitar el `meta` con `robots.txt` cerrado impide que Google
 llegue a leerlo.
 
-**Requisito previo: cerrar el duplicado de Vercel.**
-`https://atarjearedes.vercel.app` sigue sirviendo el sitio completo con 200
-(comprobado el 16/09). Hoy no molesta: lleva el `noindex` y su canonical ya
-apunta a `atarjearedes.es`. Pero en cuanto se quite el `noindex` pasa a ser una
-copia íntegra e indexable, y el canonical es una indicación para Google, no una
-orden. Hay que redirigirla con 301 al dominio propio, en este mismo despliegue o
-antes: una regla `redirects` en `vercel.json` condicionada por host (`has` de
-tipo `host` con valor `atarjearedes.vercel.app`).
+**Duplicado de Vercel: resuelto el 16/09.** `https://atarjearedes.vercel.app`
+redirige con 301 a la misma ruta de `https://atarjearedes.es`, raíz incluida,
+con la regla `redirects` de [`vercel.json`](../vercel.json) condicionada por
+host. Los demás alias de Vercel (la URL de cada despliegue, el alias del team y
+el de la rama `main`) ya estaban detrás del login de Vercel: no son públicos.
+Al abrir la indexación basta con volver a comprobarlo:
+
+```bash
+curl -sI https://atarjearedes.vercel.app/particulares
+```
+
+Tiene que devolver `301` con `Location: https://atarjearedes.es/particulares`.
+
+Dos detalles de esa regla que no admiten comentario dentro del JSON:
+
+- **`source` es `/:path(.*)` y no `/:path*` a propósito.** Vercel compila
+  `/:path*` en modo estricto y la expresión resultante no captura la raíz:
+  `https://atarjearedes.vercel.app/` seguiría sirviendo la home con 200.
+- **Lleva `statusCode: 301` y no `permanent: true`**, que en Vercel devuelve
+  308. Los dos campos no se pueden combinar.
 
 Verificación después, sobre producción:
 
