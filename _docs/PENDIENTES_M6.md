@@ -58,6 +58,16 @@ Al desplegar con el ID real, comprobar en el HTML de producción que aparece
 **Ojo:** el archivo se queda en `public/` para siempre. Si se borra, Google
 revoca la verificación en la siguiente comprobación.
 
+**Comportamiento esperado, no es un error:** `vercel.json` tiene
+`cleanUrls: true`, así que cualquier `.html` de `public/` responde con un 308 a
+su versión sin extensión (`/google1a2b3c.html` → `/google1a2b3c`, que sí da 200
+con el contenido íntegro). Comprobado con el propio placeholder. La ayuda de
+Search Console indica que, con los archivos de verificación, Google no sigue
+redirecciones a otro dominio pero sí dentro del mismo, así que no debería
+bloquear. Si aun así la verificación fallara, **no tocar `cleanUrls`**, que
+afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
+`Base.astro` o al registro TXT del punto 3.
+
 ---
 
 ## 3. Verificar la propiedad y enviar el sitemap
@@ -167,6 +177,15 @@ Son dos candados y hay que quitar los dos **en el mismo despliegue**:
 Quitar solo uno no sirve: con el `meta` puesto, abrir `robots.txt` deja el sitio
 igual de invisible; y quitar el `meta` con `robots.txt` cerrado impide que Google
 llegue a leerlo.
+
+**Requisito previo: cerrar el duplicado de Vercel.**
+`https://atarjearedes.vercel.app` sigue sirviendo el sitio completo con 200
+(comprobado el 16/09). Hoy no molesta: lleva el `noindex` y su canonical ya
+apunta a `atarjearedes.es`. Pero en cuanto se quite el `noindex` pasa a ser una
+copia íntegra e indexable, y el canonical es una indicación para Google, no una
+orden. Hay que redirigirla con 301 al dominio propio, en este mismo despliegue o
+antes: una regla `redirects` en `vercel.json` condicionada por host (`has` de
+tipo `host` con valor `atarjearedes.vercel.app`).
 
 Verificación después, sobre producción:
 
