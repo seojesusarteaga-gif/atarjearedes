@@ -46,17 +46,26 @@ Al desplegar con el ID real, comprobar en el HTML de producción que aparece
 
 **Quién:** Jesús. **Bloquea a:** puntos 3 y 7.
 
+**Estado (16/09): archivo publicado, falta pulsar «Verificar».**
+[`public/google27674563e2f594f1.html`](../public/google27674563e2f594f1.html) está
+desplegado, copiado byte a byte del que entregó Google (53 bytes, sin salto de
+línea final). El placeholder que marcaba el hueco ya se ha retirado.
+
 1. `search.google.com/search-console` → Añadir propiedad → **Prefijo de URL**,
-   con `https://atarjearedes.es` (no la versión `www`: esa redirige).
-2. Método de verificación: **archivo HTML**.
+   con `https://atarjearedes.es` (no la versión `www`: esa redirige). Hecho.
+2. Método de verificación: **archivo HTML**. Hecho.
 3. Copiar el archivo que da Google **tal cual** en `public/`, sin renombrarlo ni
-   editarlo. Google comprueba nombre y contenido exactos. Desplegar.
-4. El hueco está marcado en
-   [`public/google-verification-placeholder.html`](../public/google-verification-placeholder.html),
-   que se borra en cuanto el archivo real esté en su sitio.
+   editarlo, y desplegar. Hecho.
+4. Pulsar **Verificar** en Search Console. Pendiente.
 
 **Ojo:** el archivo se queda en `public/` para siempre. Si se borra, Google
-revoca la verificación en la siguiente comprobación.
+revoca la verificación en la siguiente comprobación. No editarlo: con
+`core.autocrlf` activo en este equipo no le afecta porque no tiene saltos de
+línea, pero añadirle uno cambiaría su contenido.
+
+`robots.txt` no estorba: según la documentación de Google, el verificador
+(`Google-Site-Verification/1.0`) es un *user-triggered fetcher*, y esos en
+general ignoran `robots.txt`.
 
 **Comportamiento esperado, no es un error:** `vercel.json` tiene
 `cleanUrls: true`, así que cualquier `.html` de `public/` responde con un 308 a
