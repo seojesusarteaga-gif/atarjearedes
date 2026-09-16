@@ -67,44 +67,130 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
 
           <div class="aviso">
             <strong>Sitio en construcción.</strong> Los datos marcados como provisionales
-            no son información de contacto real todavía. El formulario de esta página está
-            maquetado pero <strong>no envía</strong>: la integración se activa en la
-            siguiente fase del proyecto.
+            no son información de contacto real todavía. El formulario, en cambio, sí
+            funciona: lo que nos escribas nos llega al momento.
           </div>
         </div>
 
         <div>
           <h2 style="margin-top:0">Escríbenos</h2>
-          <form class="formulario" method="post" action="#" aria-describedby="aviso-form">
-            <p id="aviso-form" class="pendiente" style="margin-bottom:1rem">
-              Formulario no operativo: pendiente de integración
+          <form
+            id="form-contacto"
+            class="formulario"
+            method="post"
+            action="/api/contact"
+            aria-describedby="form-nota"
+          >
+            <p id="form-nota" class="formulario__nota">
+              Todos los campos son obligatorios salvo el servicio y la zona.
             </p>
 
             <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" type="text" autocomplete="name" required disabled />
+            <input
+              id="nombre"
+              name="nombre"
+              type="text"
+              autocomplete="name"
+              required
+              minlength="2"
+              maxlength="120"
+            />
 
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" autocomplete="tel" required disabled />
+            <label for="telefono">
+              Teléfono <span class="formulario__ayuda">(al menos 9 cifras)</span>
+            </label>
+            <input
+              id="telefono"
+              name="telefono"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required
+              maxlength="30"
+              pattern={'[0-9 +.\\(\\)\\-]{9,30}'}
+            />
 
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" disabled />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              maxlength="160"
+            />
 
-            <label for="asunto">¿Qué necesitas?</label>
-            <select id="asunto" name="asunto" disabled>
-              <option>Selecciona una opción</option>
-              {asuntos.map((a) => <option value={a.slug}>{a.nombre}</option>)}
-              <option value="otro">Otra cosa</option>
+            <label for="tipoServicio">
+              ¿Qué necesitas? <span class="formulario__ayuda">(opcional)</span>
+            </label>
+            <select id="tipoServicio" name="tipoServicio">
+              <option value="">Selecciona una opción</option>
+              {asuntos.map((a) => <option value={a.nombre}>{a.nombre}</option>)}
+              <option value="Otra cosa">Otra cosa</option>
             </select>
 
-            <label for="zona">Municipio o barrio</label>
-            <input id="zona" name="zona" type="text" disabled />
+            <label for="zona">
+              Municipio o barrio <span class="formulario__ayuda">(opcional)</span>
+            </label>
+            <input
+              id="zona"
+              name="zona"
+              type="text"
+              autocomplete="address-level2"
+              maxlength="120"
+            />
 
             <label for="mensaje">Cuéntanos el caso</label>
-            <textarea id="mensaje" name="mensaje" rows="5" disabled></textarea>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="5"
+              required
+              minlength="3"
+              maxlength="3000"
+            ></textarea>
 
+            {/* Honeypot: invisible para las personas. Si llega relleno, es un bot
+                y el endpoint lo descarta en silencio. */}
+            <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            {/* Deshabilitado en el HTML: lo activa el script. Sin JavaScript el
+                envio no funcionaria, y asi no se pierde ningun mensaje en silencio. */}
             <button class="boton boton--claro" type="submit" disabled style="margin-top:1rem">
-              Enviar (no operativo)
+              Enviar mensaje
             </button>
+
+            <noscript>
+              <p class="formulario__nota" style="margin-top:.8rem">
+                Para enviar el formulario hace falta JavaScript. También puedes
+                escribirnos a <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+              </p>
+            </noscript>
+
+            <p
+              id="form-ok"
+              class="formulario__estado formulario__estado--ok"
+              role="status"
+              tabindex="-1"
+              hidden
+            >
+              <strong>Mensaje enviado.</strong> Lo hemos recibido y te contestamos por
+              teléfono o por email.
+            </p>
+            <p
+              id="form-error"
+              class="formulario__estado formulario__estado--error"
+              role="alert"
+              tabindex="-1"
+              hidden
+            >
+              {/* Astro borra el espacio entre elementos en linea separados por un
+                  salto de linea: por eso el {' '} explicito y el espacio final que
+                  anade el script al motivo del error. */}
+              <strong>No se ha podido enviar.</strong>{' '}
+              <span id="form-error-detalle"></span>Inténtalo de nuevo en un momento o
+              escríbenos a <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+            </p>
           </form>
         </div>
       </div>
@@ -172,5 +258,108 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
       opacity: 0.55;
       cursor: not-allowed;
     }
+    /* global.css no trae regla para [hidden]: sin esto, cualquier display de
+       una clase podria mostrar los mensajes de estado antes de tiempo. */
+    .formulario [hidden] {
+      display: none !important;
+    }
+    .formulario__nota {
+      margin: 0 0 0.4rem;
+      font-size: 0.85rem;
+      color: var(--texto-sec);
+    }
+    .formulario__ayuda {
+      font-weight: 400;
+      color: var(--texto-sec);
+    }
+    .formulario__estado {
+      margin: 1rem 0 0;
+      padding: 0.8rem 1rem;
+      border: 1px solid;
+      border-radius: var(--radio);
+      font-size: 0.92rem;
+    }
+    .formulario__estado--ok {
+      background: #eaf4ee;
+      border-color: #2f7a4f;
+      color: #1e5235;
+    }
+    .formulario__estado--error {
+      background: #fbecea;
+      border-color: #b3412f;
+      color: #7a2a1e;
+    }
+    .formulario__estado a {
+      color: inherit;
+    }
   </style>
+
+  <script is:inline>
+    // Envio del formulario de contacto (Fase RR3). Inline, como el menu: son
+    // pocos bytes y el sitio no carga ningun JavaScript externo.
+    (function () {
+      var f = document.getElementById('form-contacto');
+      if (!f || !window.fetch) return;
+      var boton = f.querySelector('button[type="submit"]');
+      var ok = document.getElementById('form-ok');
+      var ko = document.getElementById('form-error');
+      var detalle = document.getElementById('form-error-detalle');
+      var textoBoton = boton.textContent;
+      var campos = ['nombre', 'telefono', 'email', 'mensaje', 'tipoServicio', 'zona', 'botcheck'];
+      var enviando = false;
+
+      boton.disabled = false;
+
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (enviando) return;
+        enviando = true;
+        ok.hidden = true;
+        ko.hidden = true;
+        detalle.textContent = '';
+        boton.disabled = true;
+        boton.textContent = 'Enviando…';
+
+        var d = new FormData(f);
+        var datos = {};
+        campos.forEach(function (k) {
+          datos[k] = String(d.get(k) || '');
+        });
+
+        fetch(f.getAttribute('action'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos),
+        })
+          .then(function (r) {
+            return r
+              .json()
+              .catch(function () {
+                return {};
+              })
+              .then(function (j) {
+                if (!r.ok) {
+                  // Solo los errores de validacion traen un motivo util para el usuario.
+                  if (r.status === 400 && j.error) detalle.textContent = j.error + '. ';
+                  throw new Error('HTTP ' + r.status);
+                }
+              });
+          })
+          .then(function () {
+            f.reset();
+            ok.hidden = false;
+            ok.focus();
+          })
+          .catch(function () {
+            ko.hidden = false;
+            ko.focus();
+          })
+          .then(function () {
+            enviando = false;
+            boton.disabled = false;
+            boton.textContent = textoBoton;
+          });
+      });
+    })();
+  </script>
 </Base>

@@ -87,35 +87,32 @@ afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
 
 ---
 
-## 4. Integrar Telegram y Resend en `/api/contact`
+## 4. Formulario de `/contacto` con Telegram y Resend
 
-**Quién:** Jesús aporta el token del bot y la API key. **Bloquea a:** nada del SEO.
+**Estado: hecho en la Fase RR3 (16/09).** Endpoint en `src/pages/api/contact.ts`,
+lógica en `src/lib/leads.ts` y variables de entorno en Vercel (Production,
+marcadas como *sensitive*). El detalle técnico está en el README.
 
-Estado real hoy: **la ruta `/api/contact` no existe**. El formulario de
-[`/contacto`](../src/pages/contacto/index.astro) está con `action="#"` y los
-campos deshabilitados, con su aviso visible. No hay ningún endpoint que escribir
-encima: hay que crearlo.
+Queda pendiente, y esto sí bloquea la apertura:
 
-Antes de escribir código hay una decisión técnica. El proyecto es
-`output: 'static'` y no tiene adaptador:
+- **Política de privacidad y consentimiento.** El formulario ya recoge datos
+  personales (nombre, teléfono y email). Antes de abrir la indexación hace falta
+  una página de privacidad que identifique al responsable del tratamiento y una
+  casilla de aceptación que la enlace. El responsable (razón social, NIF y
+  dirección) es un dato que todavía no existe, así que no se puede redactar
+  inventándolo.
+- **Dominio verificado en Resend.** Hoy los avisos salen del remitente compartido
+  `onboarding@resend.dev`. Para enviar desde `@atarjearedes.es` hay que añadir en
+  el DNS de Banahosting los registros SPF y DKIM que indique Resend (y DMARC), y
+  después cambiar `LEADS.remitente` en `src/data/site.ts`.
 
-| Opción | Qué implica |
-|---|---|
-| **Función de Vercel suelta** en `api/contact.js`, en la raíz del repo | El sitio sigue 100% estático. No toca la build de Astro. **Recomendada.** |
-| Adaptador `@astrojs/vercel` con renderizado por ruta | Más integrado, pero cambia el modelo de build de las 48 páginas por un único endpoint. Desproporcionado. |
+Conviene tener en cuenta:
 
-Secretos: **nunca en el repo.** Van como variables de entorno del proyecto en
-Vercel (`vercel env add`). El `.gitignore` ya excluye `.env*`.
-
-- `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` → aviso instantáneo del lead.
-- `RESEND_API_KEY` → copia por correo y acuse a quien rellena el formulario.
-
-Resend exige **dominio verificado** para enviar desde `@atarjearedes.es`:
-registros SPF, DKIM y DMARC en el DNS de Banahosting. Eso es otro ticket al
-proveedor, conviene pedirlo con antelación.
-
-Al activar el formulario hay que publicar además política de privacidad y
-casilla de consentimiento: se recogen datos personales.
+- **No hay límite de envíos.** El honeypot frena a los bots simples, pero uno
+  dirigido puede mandar muchos leads falsos. Si ocurre, las salidas baratas son un
+  límite por IP o un captcha sin fricción, como Cloudflare Turnstile.
+- **Cambiar una variable de entorno obliga a volver a desplegar.** En Vercel, los
+  cambios de variables solo se aplican a los despliegues nuevos.
 
 ---
 

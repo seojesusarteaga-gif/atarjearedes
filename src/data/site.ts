@@ -78,6 +78,21 @@ export const GA4_ID: string = 'G-XXXXXXXXX';
  */
 export const GA4_ACTIVO = /^G-[A-Z0-9]{10}$/.test(GA4_ID) && !GA4_ID.includes('XXX');
 
+/**
+ * Notificaciones de leads del formulario de /contacto (Fase RR3).
+ *
+ * Separado de SITE.email a proposito: en Rank & Rent el lead le llega primero a
+ * quien gestiona la web, y cambiar el email publico no debe desviar los avisos.
+ *
+ * El remitente es el compartido de Resend para dominios sin verificar. Cuando
+ * atarjearedes.es este verificado en Resend (SPF y DKIM en Banahosting), se
+ * cambia por una direccion propia del dominio.
+ */
+export const LEADS = {
+  destinatario: 'seo.jesusarteaga@gmail.com',
+  remitente: 'Atarjea Redes <onboarding@resend.dev>',
+} as const;
+
 /** Municipios donde se compite en Maps + los que solo se cubren. Alimenta areaServed. */
 export const AREA_SERVIDA_EXTRA = [
   'Espartinas',

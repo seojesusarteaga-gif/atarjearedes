@@ -1,0 +1,26 @@
+# El CLI de Vercel NO usa .gitignore para decidir que sube en `vercel deploy`.
+# Comprobado el 2026-09-16 en la lista de archivos de un despliegue: habian
+# subido _auditoria/, dist/, .astro/ y .claude/. Todo lo que no deba salir de
+# esta maquina hacia Vercel tiene que estar aqui, aunque ya este en .gitignore.
+#
+# Las carpetas van SIN barra final: con `carpeta/` el CLI no las excluye
+# (comprobado en un despliegue de preview el mismo dia).
+
+# Secretos: nunca
+.env
+.env.*
+!.env.example
+
+# Estrategia y documentacion interna: no hacen falta para compilar
+_auditoria
+_docs
+
+# Artefactos locales: Vercel compila desde cero
+dist
+.astro
+.vercel
+node_modules
+
+# Configuracion local de herramientas
+.claude
+*.log

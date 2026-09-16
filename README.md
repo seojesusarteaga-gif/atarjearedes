@@ -35,9 +35,18 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 
 ## Stack
 
-- Astro 5, `output: static`
-- Despliegue en Vercel (`cleanUrls: true`, `trailingSlash: false`)
-- Sin dependencias de runtime
+- Astro 7, `output: static` con el adaptador `@astrojs/vercel`. Las 48 páginas
+  se prerenderizan; la única ruta bajo demanda es `/api/contact`
+  (`export const prerender = false`).
+- Despliegue en Vercel (`cleanUrls: true`, `trailingSlash: false`). **Un push a
+  `main` no despliega**: el proyecto no tiene Git conectado en Vercel. Se
+  despliega con `vercel deploy --prod --yes`.
+- Formulario de `/contacto`: `src/pages/api/contact.ts` y `src/lib/leads.ts`.
+  Aviso por Telegram y por email (Resend) en paralelo; si falla uno, el otro
+  sigue. Los secretos son variables de entorno de Vercel (`TELEGRAM_BOT_TOKEN`,
+  `TELEGRAM_CHAT_ID`, `RESEND_API_KEY`), declaradas con `astro:env`. Para probar
+  en local, un `.env` en la raíz (ignorado por git).
+- Cero JavaScript externo: el menú y el envío del formulario son scripts inline.
 
 ## Comandos
 
