@@ -1,21 +1,15 @@
 # Atarjea Redes
 #
-# ESTADO: PRE-INDEXACION. Bloqueo total deliberado.
+# Rastreo ABIERTO a proposito. El sitio sigue fuera del indice de Google, pero
+# lo que lo impide es el meta robots "noindex, nofollow" de las paginas, no
+# este archivo.
 #
-# El dominio propio ya esta conectado (https://atarjearedes.es), pero el sitio
-# sigue con placeholders sin cerrar: telefono, direccion, capacidades tecnicas
-# y articulado de EMASESA. Indexar antes de cerrarlos significa que la primera
-# version que Google rastrea y cachea es la incompleta.
-#
-# ESTE ARCHIVO SE CAMBIA EN LA FASE M6 (indexacion en Search Console),
-# a la vez que se quita el meta robots noindex de Base.astro. Los dos a la
-# vez o ninguno: abrir robots con el meta puesto deja el sitio igual de
-# invisible, y quitar el meta con robots cerrado impide que Google lo lea.
+# No volver a poner "Disallow: /" para reforzar el bloqueo: produce lo
+# contrario. Con el rastreo cerrado Google no puede leer el noindex y, si
+# encuentra la URL enlazada, la indexa igual ("Indexed, though blocked by
+# robots.txt"). Paso con la home en septiembre de 2026.
 
 User-agent: *
-Disallow: /
+Allow: /
 
-# Al abrir en M6, sustituir por:
-#   User-agent: *
-#   Allow: /
-#   Sitemap: https://atarjearedes.es/sitemap-index.xml
+Sitemap: https://atarjearedes.es/sitemap-index.xml

@@ -73,6 +73,13 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 
 ## Nota sobre indexacion
 
-`public/robots.txt` **bloquea todo el sitio a proposito**, y las 48 paginas
-llevan ademas `meta robots noindex`. Se abren los dos a la vez en la Fase M6.
-El listado completo de lo que falta esta en [`_docs/PENDIENTES_M6.md`](_docs/PENDIENTES_M6.md).
+Las 48 páginas llevan `meta robots noindex, nofollow` a propósito, desde
+`src/layouts/Base.astro`: es el **único** bloqueo de indexación y se quita en la
+Fase M6. `public/robots.txt` está **abierto** (`Allow: /`) precisamente para que
+Google pueda rastrear las páginas y leer ese noindex.
+
+**No volver a cerrarlo con `Disallow: /`.** Con el rastreo bloqueado Google no ve
+el noindex y puede indexar la URL igualmente si la encuentra enlazada: pasó con
+la home en septiembre de 2026 («Indexed, though blocked by robots.txt»).
+
+El listado completo de lo que falta está en [`_docs/PENDIENTES_M6.md`](_docs/PENDIENTES_M6.md).

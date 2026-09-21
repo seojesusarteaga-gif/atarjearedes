@@ -59,7 +59,13 @@ const og = `${SITE.url}${imagen ?? '/img/paginas/home.svg'}`;
     <meta name="description" content={meta} />
     <link rel="canonical" href={canonical} />
 
-    <!-- Bloqueo de indexacion deliberado hasta la Fase M6 (ver public/robots.txt) -->
+    {/*
+      UNICO bloqueo de indexacion del sitio, deliberado hasta la Fase M6 (ver
+      _docs/PENDIENTES_M6.md, punto 6). robots.txt esta abierto a proposito:
+      Google tiene que poder rastrear la pagina para leer este noindex. Con
+      "Disallow: /" no lo ve, y en septiembre de 2026 indexo la home igualmente.
+      Comentario JSX y no HTML, para que no se publique en las 48 paginas.
+    */}
     <meta name="robots" content="noindex, nofollow" />
 
     <meta property="og:type" content={entrada ? 'article' : 'website'} />

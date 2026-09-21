@@ -1,14 +1,43 @@
 # Fase M6 — Pendientes antes de abrir a indexación
 
-Estado a 16 de septiembre de 2026.
+Estado a 21 de septiembre de 2026.
 
-El sitio está **desplegado y cerrado a buscadores a propósito**, con doble
-candado: `public/robots.txt` con `Disallow: /` y `meta robots noindex, nofollow`
-en las 48 páginas. Nada de lo que sigue está activo todavía.
+El sitio está **desplegado y fuera del índice a propósito**. El único bloqueo es
+el `meta robots noindex, nofollow` de las 48 páginas, que sale de
+[`src/layouts/Base.astro`](../src/layouts/Base.astro). `public/robots.txt` está
+abierto (`Allow: /`) para que Google pueda rastrear las páginas y leer ese
+noindex.
 
 **Regla de orden:** los puntos 1 a 5 se pueden hacer en cualquier momento y en
-cualquier orden. El punto 6 es la puerta: hasta que no se abra, el 7 no puede
-funcionar. La dependencia está explicada en el punto 3.
+cualquier orden. El punto 6, quitar el noindex, es la apertura real de M6 y solo
+se hace con tres frentes cerrados: RGPD, datos y operador. El 7 va detrás.
+
+---
+
+## Por qué robots.txt está abierto
+
+Hasta el 21/09 tenía `Disallow: /` además del noindex, y Google indexó la home
+igualmente: Search Console la mostraba como «Indexed, though blocked by
+robots.txt». `robots.txt` impide rastrear, no indexar: si Google encuentra la URL
+enlazada puede indexarla sin haberla leído, y con el rastreo cerrado nunca llega
+a ver el noindex. La documentación de Google lo dice expresamente: para que
+`noindex` funcione, la página no puede estar bloqueada en `robots.txt`.
+
+**No volver a cerrarlo para «reforzar» el bloqueo: produce justo lo contrario.**
+
+Para que la home salga del índice cuanto antes:
+
+1. [Informe de robots.txt](https://search.google.com/search-console/settings/robots-txt)
+   de Search Console → solicitar un nuevo rastreo del archivo. Google guarda
+   `robots.txt` en caché hasta 24 horas.
+2. Inspección de URL sobre `https://atarjearedes.es/` → **Probar URL publicada**:
+   tiene que salir el rastreo permitido y el noindex detectado. Después,
+   **Solicitar indexación**: es la vía que indica Google para que vuelva a
+   rastrear la página y lea el noindex. Si Search Console rechaza la solicitud
+   precisamente por el noindex, no hay que hacer nada más: la home se volverá a
+   rastrear sola, ahora que nada lo impide.
+3. **No usar la retirada temporal de URLs.** Oculta la home unos seis meses y
+   habría que acordarse de cancelarla al abrir en M6, o seguiría oculta.
 
 ---
 
@@ -46,26 +75,23 @@ Al desplegar con el ID real, comprobar en el HTML de producción que aparece
 
 **Quién:** Jesús. **Bloquea a:** puntos 3 y 7.
 
-**Estado (16/09): archivo publicado, falta pulsar «Verificar».**
+**Estado: verificada** (el 21/09 Search Console ya mostraba el estado de
+indexación de la home).
 [`public/google27674563e2f594f1.html`](../public/google27674563e2f594f1.html) está
 desplegado, copiado byte a byte del que entregó Google (53 bytes, sin salto de
-línea final). El placeholder que marcaba el hueco ya se ha retirado.
+línea final).
 
 1. `search.google.com/search-console` → Añadir propiedad → **Prefijo de URL**,
    con `https://atarjearedes.es` (no la versión `www`: esa redirige). Hecho.
 2. Método de verificación: **archivo HTML**. Hecho.
 3. Copiar el archivo que da Google **tal cual** en `public/`, sin renombrarlo ni
    editarlo, y desplegar. Hecho.
-4. Pulsar **Verificar** en Search Console. Pendiente.
+4. Pulsar **Verificar** en Search Console. Hecho.
 
 **Ojo:** el archivo se queda en `public/` para siempre. Si se borra, Google
 revoca la verificación en la siguiente comprobación. No editarlo: con
 `core.autocrlf` activo en este equipo no le afecta porque no tiene saltos de
 línea, pero añadirle uno cambiaría su contenido.
-
-`robots.txt` no estorba: según la documentación de Google, el verificador
-(`Google-Site-Verification/1.0`) es un *user-triggered fetcher*, y esos en
-general ignoran `robots.txt`.
 
 **Comportamiento esperado, no es un error:** `vercel.json` tiene
 `cleanUrls: true`, así que cualquier `.html` de `public/` responde con un 308 a
@@ -79,18 +105,16 @@ afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
 
 ---
 
-## 3. Verificar la propiedad y enviar el sitemap
+## 3. Sitemap y propiedad de dominio
 
-**Depende de:** punto 2. **El envío del sitemap depende además del punto 6.**
+**Depende de:** punto 2.
 
-- Verificar en Search Console. Esto sí funciona con el sitio bloqueado: la
-  comprobación del archivo HTML no pasa por `robots.txt`.
-- **El envío del sitemap no funciona todavía.** Con `Disallow: /`, Googlebot no
-  puede descargar `https://atarjearedes.es/sitemap-index.xml`, porque el propio
-  sitemap está dentro de lo bloqueado: Search Console devuelve error de lectura.
-  Por eso el envío real está en el punto 7, después de abrir. Enviarlo antes no
-  adelanta nada y deja un error registrado en la propiedad.
-- Lo que sí conviene hacer aquí: dar de alta también la propiedad de **dominio**
+- **El sitemap no se envía todavía en Search Console.** Ya es legible:
+  `robots.txt` lo anuncia y Google puede descargarlo, lo que además le ayuda a
+  volver a rastrear las páginas y leer el noindex. Lo que se deja para M6 es
+  *enviarlo*: hacerlo con las 48 URLs en noindex solo llenaría el informe de
+  páginas excluidas. Se envía en el punto 7, después de quitar el noindex.
+- Lo que sí conviene hacer ya: dar de alta también la propiedad de **dominio**
   (verificación por registro TXT en el DNS de Banahosting), que agrega `www`,
   subdominios y ambos protocolos en una sola vista.
 
@@ -163,26 +187,28 @@ Si el operador no lo confirma, se queda como pendiente.
 
 ---
 
-## 6. Abrir la indexación: `robots.txt` y el `meta noindex`
+## 6. Quitar el `meta noindex`: la apertura real de M6
 
-**Depende de:** punto 5. **Bloquea a:** punto 7.
+**Depende de:** los tres frentes cerrados. **Bloquea a:** punto 7.
 
-Son dos candados y hay que quitar los dos **en el mismo despliegue**:
+Se quita solo cuando estén cerrados los tres:
 
-1. [`public/robots.txt`](../public/robots.txt): sustituir `Disallow: /` por
-   `Allow: /` y añadir la línea `Sitemap:`. El bloque de reemplazo ya está
-   escrito como comentario al final del propio archivo.
-2. [`src/layouts/Base.astro`](../src/layouts/Base.astro): borrar la línea
+1. **RGPD.** Política de privacidad con el responsable del tratamiento
+   identificado y casilla de consentimiento en el formulario (punto 4).
+2. **Datos.** Placeholders de `src/data/` sustituidos por datos verificados:
+   poblaciones del SIMA y articulado del Reglamento de EMASESA (punto 5).
+3. **Operador.** Teléfono, dirección, capacidades técnicas y precios confirmados
+   por el operador (punto 5).
+
+Es un único cambio: borrar en [`src/layouts/Base.astro`](../src/layouts/Base.astro)
+la línea
 
    ```astro
    <meta name="robots" content="noindex, nofollow" />
    ```
 
-   Está en el layout, así que esa única línea cubre las 48 páginas.
-
-Quitar solo uno no sirve: con el `meta` puesto, abrir `robots.txt` deja el sitio
-igual de invisible; y quitar el `meta` con `robots.txt` cerrado impide que Google
-llegue a leerlo.
+junto con el comentario que la precede. Está en el layout, así que cubre las 48
+páginas. **`robots.txt` no se toca:** está abierto desde el 21/09 y así se queda.
 
 **Duplicado de Vercel: resuelto el 16/09.** `https://atarjearedes.vercel.app`
 redirige con 301 a la misma ruta de `https://atarjearedes.es`, raíz incluida,
@@ -208,20 +234,16 @@ Dos detalles de esa regla que no admiten comentario dentro del JSON:
 Verificación después, sobre producción:
 
 ```bash
-curl -s https://atarjearedes.es/robots.txt
-```
-
-```bash
 curl -s https://atarjearedes.es/ | grep -c noindex
 ```
 
-El segundo tiene que devolver `0`.
+Tiene que devolver `0`.
 
 ---
 
 ## 7. Enviar el sitemap y solicitar indexación de la home
 
-**Depende de:** puntos 2, 3 y 6. Este es el último.
+**Depende de:** punto 6. Este es el último.
 
 1. Search Console → Sitemaps → enviar `sitemap-index.xml`.
 2. Inspección de URL sobre `https://atarjearedes.es/` → Solicitar indexación.

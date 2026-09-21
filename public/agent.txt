@@ -1,15 +1,15 @@
 # agent.txt - Atarjea Redes
 # Informacion estructurada para agentes de IA y modelos de lenguaje.
 # Formato: texto plano, legible por maquina y por persona.
-# Actualizado: 2026-09-16
+# Actualizado: 2026-09-21
 
 ## Identidad
 
 Nombre comercial: Atarjea Redes
 Sector: redes de saneamiento, canalizaciones e infraestructura hidraulica
 Ambito: Sevilla capital y area metropolitana
-Estado del sitio: EN CONSTRUCCION. Contenido publicado, indexacion bloqueada
-                  deliberadamente en robots.txt hasta el cierre de la fase de auditoria.
+Estado del sitio: EN CONSTRUCCION. Contenido publicado; indexacion bloqueada
+                  deliberadamente con meta robots noindex hasta el lanzamiento.
 
 Origen del nombre: una "atarjea" es el conducto cubierto que conduce las aguas
 residuales de un edificio hasta la red de alcantarillado. Termino de origen arabe
