@@ -12,23 +12,23 @@ const anio = new Date().getFullYear();
     <div class="rejilla rejilla--4">
       <div>
         <h2>Atarjea Redes</h2>
-        <p>Redes de saneamiento y canalizaciones en Sevilla y su area metropolitana.</p>
+        <p>Redes de saneamiento y canalizaciones en Sevilla y su área metropolitana.</p>
         <ul>
           <li>
             <a href={SITE.telefonoHref}>{SITE.telefono}</a>
-            {SITE.telefonoPendiente && <span class="pendiente">Telefono provisional</span>}
+            {SITE.telefonoPendiente && <span class="pendiente">Teléfono provisional</span>}
           </li>
           <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
           <li>{SITE.direccion.barrio}, {SITE.direccion.localidad}</li>
-          {SITE.direccion.pendiente && <li><span class="pendiente">Direccion pendiente</span></li>}
+          {SITE.direccion.pendiente && <li><span class="pendiente">Dirección pendiente</span></li>}
         </ul>
       </div>
 
       <div>
-        <h3>Quien eres</h3>
+        <h3>Quién eres</h3>
         <ul>
           {SEGMENTOS.map((s) => <li><a href={s.href}>{s.nombre}</a></li>)}
-          <li><a href="/por-que-nosotros">Por que nosotros</a></li>
+          <li><a href="/por-que-nosotros">Por qué nosotros</a></li>
           <li><a href="/contacto">Contacto</a></li>
         </ul>
       </div>
@@ -53,9 +53,10 @@ const anio = new Date().getFullYear();
 
     <div class="pie__legal">
       <p>
-        &copy; {anio} {SITE.nombre}. Sitio en construccion: los datos marcados como
-        provisionales o pendientes no son informacion de contacto real.
+        &copy; {anio} {SITE.nombre}. Los datos marcados como provisionales o pendientes
+        no son información de contacto real todavía.
       </p>
+      <p><a href="/privacidad">Política de privacidad</a></p>
     </div>
   </div>
 </footer>

@@ -154,6 +154,13 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
                 y el endpoint lo descarta en silencio. */}
             <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
+            <div class="formulario__consentimiento">
+              <input id="consentimiento" name="consentimiento" type="checkbox" required />
+              <label for="consentimiento">
+                He leído y acepto la <a href="/privacidad">política de privacidad</a>.
+              </label>
+            </div>
+
             {/* Deshabilitado en el HTML: lo activa el script. Sin JavaScript el
                 envio no funcionaria, y asi no se pierde ningun mensaje en silencio. */}
             <button class="boton boton--claro" type="submit" disabled style="margin-top:1rem">
@@ -192,6 +199,11 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
               escríbenos a <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
             </p>
           </form>
+
+          <p class="formulario__nota" style="margin-top:.9rem">
+            Los datos que facilites se tratarán conforme a nuestra
+            <a href="/privacidad">política de privacidad</a>.
+          </p>
         </div>
       </div>
 
@@ -268,6 +280,23 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
       font-size: 0.85rem;
       color: var(--texto-sec);
     }
+    /* La casilla hereda width:100% de `.formulario input` si no se corrige. */
+    .formulario__consentimiento {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+    .formulario__consentimiento input {
+      width: auto;
+      flex: 0 0 auto;
+      margin-top: 0.15rem;
+    }
+    .formulario__consentimiento label {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
     .formulario__ayuda {
       font-weight: 400;
       color: var(--texto-sec);
@@ -325,6 +354,8 @@ const zonasDestacadas = MUNICIPIOS_NUCLEO.slice(0, 8);
         campos.forEach(function (k) {
           datos[k] = String(d.get(k) || '');
         });
+        // Booleano de verdad: el servidor exige consentimiento === true.
+        datos.consentimiento = f.consentimiento.checked;
 
         fetch(f.getAttribute('action'), {
           method: 'POST',

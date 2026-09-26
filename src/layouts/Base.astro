@@ -60,13 +60,15 @@ const og = `${SITE.url}${imagen ?? '/img/paginas/home.svg'}`;
     <link rel="canonical" href={canonical} />
 
     {/*
-      UNICO bloqueo de indexacion del sitio, deliberado hasta la Fase M6 (ver
-      _docs/PENDIENTES_M6.md, punto 6). robots.txt esta abierto a proposito:
-      Google tiene que poder rastrear la pagina para leer este noindex. Con
-      "Disallow: /" no lo ve, y en septiembre de 2026 indexo la home igualmente.
-      Comentario JSX y no HTML, para que no se publique en las 48 paginas.
+      Indexacion ABIERTA desde la Fase M6 (2026-09-26). robots.txt tambien esta
+      abierto: los dos tienen que decir lo mismo. Los directivos max-* son los
+      que ya usan los demas sitios del manual y autorizan miniatura grande y
+      fragmento completo en resultados.
     */}
-    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
     <meta property="og:type" content={entrada ? 'article' : 'website'} />
     <meta property="og:title" content={title} />

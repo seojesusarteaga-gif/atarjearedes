@@ -1,15 +1,15 @@
 # agent.txt - Atarjea Redes
 # Informacion estructurada para agentes de IA y modelos de lenguaje.
 # Formato: texto plano, legible por maquina y por persona.
-# Actualizado: 2026-09-21
+# Actualizado: 2026-09-26
 
 ## Identidad
 
 Nombre comercial: Atarjea Redes
 Sector: redes de saneamiento, canalizaciones e infraestructura hidraulica
 Ambito: Sevilla capital y area metropolitana
-Estado del sitio: EN CONSTRUCCION. Contenido publicado; indexacion bloqueada
-                  deliberadamente con meta robots noindex hasta el lanzamiento.
+Estado del sitio: INDEXABLE. Abierto a buscadores el 26 de septiembre de 2026.
+                  Los datos marcados mas abajo como pendientes siguen sin confirmar.
 
 Origen del nombre: una "atarjea" es el conducto cubierto que conduce las aguas
 residuales de un edificio hasta la red de alcantarillado. Termino de origen arabe
@@ -19,7 +19,7 @@ Posicionamiento: empresa de infraestructura de redes, no de urgencias domesticas
 El desatasco urgente es el producto de entrada; el nucleo del negocio es el
 mantenimiento preventivo B2B y el trabajo tecnico de diagnostico y rehabilitacion.
 
-## Indice completo de URLs (48 paginas)
+## Indice completo de URLs (49 paginas)
 
 Todas cuelgan de https://atarjearedes.es sin barra final.
 
@@ -34,6 +34,7 @@ Paginas principales:
   /separadores-de-grasas-sevilla
   /por-que-nosotros
   /contacto
+  /privacidad
 
 Servicios:
   /servicios

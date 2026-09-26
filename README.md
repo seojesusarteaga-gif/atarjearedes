@@ -35,7 +35,7 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 
 ## Stack
 
-- Astro 7, `output: static` con el adaptador `@astrojs/vercel`. Las 48 páginas
+- Astro 7, `output: static` con el adaptador `@astrojs/vercel`. Las 49 páginas
   se prerenderizan; la única ruta bajo demanda es `/api/contact`
   (`export const prerender = false`).
 - Despliegue en Vercel (`cleanUrls: true`, `trailingSlash: false`). **Un push a
@@ -73,13 +73,13 @@ niveles, el sitio comunica que es una web de desatascos baratos.
 
 ## Nota sobre indexacion
 
-Las 48 páginas llevan `meta robots noindex, nofollow` a propósito, desde
-`src/layouts/Base.astro`: es el **único** bloqueo de indexación y se quita en la
-Fase M6. `public/robots.txt` está **abierto** (`Allow: /`) precisamente para que
-Google pueda rastrear las páginas y leer ese noindex.
+**Sitio abierto a buscadores desde el 26 de septiembre de 2026 (Fase M6).** Las
+49 páginas emiten `index, follow` desde `src/layouts/Base.astro`, y
+`public/robots.txt` permite el rastreo (`Allow: /`) con el `Sitemap:` enlazado.
 
-**No volver a cerrarlo con `Disallow: /`.** Con el rastreo bloqueado Google no ve
-el noindex y puede indexar la URL igualmente si la encuentra enlazada: pasó con
-la home en septiembre de 2026 («Indexed, though blocked by robots.txt»).
+**Si alguna vez hay que volver a ocultar el sitio, se hace solo con `noindex`.**
+Nunca con `Disallow: /`: con el rastreo bloqueado Google no llega a leer el
+noindex y puede indexar la URL igualmente si la encuentra enlazada. Pasó con la
+home en septiembre de 2026 («Indexed, though blocked by robots.txt»).
 
-El listado completo de lo que falta está en [`_docs/PENDIENTES_M6.md`](_docs/PENDIENTES_M6.md).
+Lo que queda pendiente está en [`_docs/PENDIENTES_M6.md`](_docs/PENDIENTES_M6.md).

@@ -1,16 +1,16 @@
 # Fase M6 — Pendientes antes de abrir a indexación
 
-Estado a 21 de septiembre de 2026.
+Estado a 26 de septiembre de 2026.
 
-El sitio está **desplegado y fuera del índice a propósito**. El único bloqueo es
-el `meta robots noindex, nofollow` de las 48 páginas, que sale de
-[`src/layouts/Base.astro`](../src/layouts/Base.astro). `public/robots.txt` está
-abierto (`Allow: /`) para que Google pueda rastrear las páginas y leer ese
-noindex.
+**M6 ejecutada: el sitio está abierto a buscadores.** Las 49 páginas emiten
+`index, follow` y `robots.txt` permite el rastreo con el `Sitemap:` enlazado.
+Lo que queda está en [Post-M6](#post-m6-pendientes).
 
-**Regla de orden:** los puntos 1 a 5 se pueden hacer en cualquier momento y en
-cualquier orden. El punto 6, quitar el noindex, es la apertura real de M6 y solo
-se hace con tres frentes cerrados: RGPD, datos y operador. El 7 va detrás.
+La apertura se hizo con el frente de RGPD cerrado (política de privacidad y
+casilla de consentimiento) pero **con los placeholders de datos todavía
+puestos**, por decisión de Jesús: el teléfono visible sigue siendo
+`+34 000 000 000`, marcado como provisional, y las imágenes siguen siendo los
+SVG de marca. Es la primera versión que Google va a rastrear y cachear.
 
 ---
 
@@ -23,21 +23,13 @@ enlazada puede indexarla sin haberla leído, y con el rastreo cerrado nunca lleg
 a ver el noindex. La documentación de Google lo dice expresamente: para que
 `noindex` funcione, la página no puede estar bloqueada en `robots.txt`.
 
-**No volver a cerrarlo para «reforzar» el bloqueo: produce justo lo contrario.**
+**No volver a cerrarlo para «reforzar» un bloqueo: produce justo lo contrario.**
+Si algún día hay que ocultar el sitio, se hace solo con `noindex` y con el
+rastreo abierto.
 
-Para que la home salga del índice cuanto antes:
-
-1. [Informe de robots.txt](https://search.google.com/search-console/settings/robots-txt)
-   de Search Console → solicitar un nuevo rastreo del archivo. Google guarda
-   `robots.txt` en caché hasta 24 horas.
-2. Inspección de URL sobre `https://atarjearedes.es/` → **Probar URL publicada**:
-   tiene que salir el rastreo permitido y el noindex detectado. Después,
-   **Solicitar indexación**: es la vía que indica Google para que vuelva a
-   rastrear la página y lea el noindex. Si Search Console rechaza la solicitud
-   precisamente por el noindex, no hay que hacer nada más: la home se volverá a
-   rastrear sola, ahora que nada lo impide.
-3. **No usar la retirada temporal de URLs.** Oculta la home unos seis meses y
-   habría que acordarse de cancelarla al abrir en M6, o seguiría oculta.
+El incidente se cerró el 21/09 abriendo el rastreo, y el 26/09 se quitó el
+`noindex`: la home ya no tiene que salir del índice, tiene que entrar bien. Eso
+es el punto 7.
 
 ---
 
@@ -100,7 +92,7 @@ con el contenido íntegro). Comprobado con el propio placeholder. La ayuda de
 Search Console indica que, con los archivos de verificación, Google no sigue
 redirecciones a otro dominio pero sí dentro del mismo, así que no debería
 bloquear. Si aun así la verificación fallara, **no tocar `cleanUrls`**, que
-afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
+afecta al enrutado de las 49 páginas: pasar al método de etiqueta HTML en
 `Base.astro` o al registro TXT del punto 3.
 
 ---
@@ -109,11 +101,8 @@ afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
 
 **Depende de:** punto 2.
 
-- **El sitemap no se envía todavía en Search Console.** Ya es legible:
-  `robots.txt` lo anuncia y Google puede descargarlo, lo que además le ayuda a
-  volver a rastrear las páginas y leer el noindex. Lo que se deja para M6 es
-  *enviarlo*: hacerlo con las 48 URLs en noindex solo llenaría el informe de
-  páginas excluidas. Se envía en el punto 7, después de quitar el noindex.
+- **El sitemap ya se puede enviar.** Con el `noindex` retirado el 26/09, las 49
+  URLs son indexables. El envío en Search Console es el punto 7.
 - Lo que sí conviene hacer ya: dar de alta también la propiedad de **dominio**
   (verificación por registro TXT en el DNS de Banahosting), que agrega `www`,
   subdominios y ambos protocolos en una sola vista.
@@ -126,14 +115,14 @@ afecta al enrutado de las 48 páginas: pasar al método de etiqueta HTML en
 lógica en `src/lib/leads.ts` y variables de entorno en Vercel (Production,
 marcadas como *sensitive*). El detalle técnico está en el README.
 
-Queda pendiente, y esto sí bloquea la apertura:
+**RGPD cerrado el 26/09.** [`/privacidad`](../src/pages/privacidad.astro)
+identifica al responsable con su NIF, y el formulario tiene casilla de
+consentimiento obligatoria, validada también en el servidor (400 si no llega
+`consentimiento: true`). La aceptación queda registrada con su fecha en el propio
+aviso del lead: no hay base de datos donde guardarla.
 
-- **Política de privacidad y consentimiento.** El formulario ya recoge datos
-  personales (nombre, teléfono y email). Antes de abrir la indexación hace falta
-  una página de privacidad que identifique al responsable del tratamiento y una
-  casilla de aceptación que la enlace. El responsable (razón social, NIF y
-  dirección) es un dato que todavía no existe, así que no se puede redactar
-  inventándolo.
+Queda pendiente:
+
 - **Dominio verificado en Resend.** Hoy los avisos salen del remitente compartido
   `onboarding@resend.dev`. Para enviar desde `@atarjearedes.es` hay que añadir en
   el DNS de Banahosting los registros SPF y DKIM que indique Resend (y DMARC), y
@@ -151,11 +140,12 @@ Conviene tener en cuenta:
 
 ## 5. Sustituir los placeholders de `src/data/`
 
-**Quién:** Jesús y el operador. **Bloquea a:** el punto 6, de facto.
+**Quién:** Jesús y el operador. **Estado:** pendiente; ya no bloquea.
 
-Esto es lo que de verdad decide cuándo se abre el sitio. Abrir con el teléfono
-falso significa que la primera versión que Google rastrea y cachea es la
-incompleta, y que la ficha de GBP y la web no cuadran en el NAP.
+El 26/09 se abrió la indexación sin esperar a estos datos, por decisión de Jesús.
+La consecuencia asumida: la primera versión que Google rastrea y cachea es la
+incompleta, y el teléfono visible no es real hasta que llegue la SIM. Cuanto
+antes se cierren, menos tiempo con esa versión indexada.
 
 | Dato | Dónde | Estado |
 |---|---|---|
@@ -187,28 +177,19 @@ Si el operador no lo confirma, se queda como pendiente.
 
 ---
 
-## 6. Quitar el `meta noindex`: la apertura real de M6
+## 6. Quitar el `meta noindex` — HECHO el 26/09
 
-**Depende de:** los tres frentes cerrados. **Bloquea a:** punto 7.
-
-Se quita solo cuando estén cerrados los tres:
-
-1. **RGPD.** Política de privacidad con el responsable del tratamiento
-   identificado y casilla de consentimiento en el formulario (punto 4).
-2. **Datos.** Placeholders de `src/data/` sustituidos por datos verificados:
-   poblaciones del SIMA y articulado del Reglamento de EMASESA (punto 5).
-3. **Operador.** Teléfono, dirección, capacidades técnicas y precios confirmados
-   por el operador (punto 5).
-
-Es un único cambio: borrar en [`src/layouts/Base.astro`](../src/layouts/Base.astro)
-la línea
+[`src/layouts/Base.astro`](../src/layouts/Base.astro) emite ahora
 
    ```astro
-   <meta name="robots" content="noindex, nofollow" />
+   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
    ```
 
-junto con el comentario que la precede. Está en el layout, así que cubre las 48
-páginas. **`robots.txt` no se toca:** está abierto desde el 21/09 y así se queda.
+en las 49 páginas. Los directivos `max-*` son los que ya usan los demás sitios
+del manual. `robots.txt` no se tocó: sigue abierto desde el 21/09.
+
+Se abrió con el frente de RGPD cerrado (punto 4) y con los puntos 5 pendientes,
+por decisión de Jesús.
 
 **Duplicado de Vercel: resuelto el 16/09.** `https://atarjearedes.vercel.app`
 redirige con 301 a la misma ruta de `https://atarjearedes.es`, raíz incluida,
@@ -231,30 +212,76 @@ Dos detalles de esa regla que no admiten comentario dentro del JSON:
 - **Lleva `statusCode: 301` y no `permanent: true`**, que en Vercel devuelve
   308. Los dos campos no se pueden combinar.
 
-Verificación después, sobre producción:
+Verificación sobre producción, comprobada el 26/09:
 
 ```bash
 curl -s https://atarjearedes.es/ | grep -c noindex
 ```
 
-Tiene que devolver `0`.
+Devuelve `0`.
 
 ---
 
 ## 7. Enviar el sitemap y solicitar indexación de la home
 
-**Depende de:** punto 6. Este es el último.
+**Listo para ejecutar: le toca a Jesús en Search Console.** El código ya está
+desplegado; esto son cuatro clics en la interfaz, no hay nada que programar.
 
 1. Search Console → Sitemaps → enviar `sitemap-index.xml`.
 2. Inspección de URL sobre `https://atarjearedes.es/` → Solicitar indexación.
 3. Repetir con las páginas de dinero, sin quemar la cuota diaria de golpe:
    `/inspeccion-camara-tuberias`, `/rehabilitacion-tuberias-sin-obra`,
    `/administradores-de-fincas`.
-4. A los 3-4 días, revisar Páginas: que las 48 salgan rastreadas y que no quede
+4. A los 3-4 días, revisar Páginas: que las 49 salgan rastreadas y que no quede
    ninguna excluida por `noindex` residual.
 
 El sitemap se genera solo con `@astrojs/sitemap` a partir de las rutas reales del
 build. No hay archivo estático que mantener.
+
+---
+
+## Post-M6 pendientes
+
+Nada de esto bloquea la indexación, pero cuanto antes se cierre, mejor.
+
+### 1. Sustituir los placeholders cuando lleguen los datos del operador
+
+Todo el detalle está en el punto 5. Resumen de lo que sigue publicado como
+provisional: teléfono `+34 000 000 000`, dirección exacta, caudal del hidrojet,
+capacidad de cuba, diámetros de cámara, número de gestor de residuos, precios,
+poblaciones del SIMA de 10 municipios y articulado del Reglamento de EMASESA.
+**Es lo más urgente:** el teléfono visible no es un número real y el sitio ya
+está indexándose.
+
+### 2. Revocar y rotar las credenciales del formulario
+
+El token del bot de Telegram y la API key de Resend se pegaron en una
+conversación, así que hay que darlos por comprometidos:
+
+1. Telegram: `/revoke` en BotFather y copiar el token nuevo.
+2. Resend: crear una API key nueva **con permiso solo de envío** (la actual
+   también puede leer los correos enviados) y borrar la antigua.
+3. `vercel env rm` y `vercel env add` para las dos variables en Production.
+4. **Volver a desplegar**: en Vercel, las variables solo se aplican a los
+   despliegues nuevos.
+5. Comprobar con un envío de prueba desde el formulario que siguen llegando los
+   dos avisos.
+
+### 3. Verificar el dominio en Resend
+
+Ver punto 4. Hoy los avisos salen de `onboarding@resend.dev`.
+
+### 4. Completar el domicilio en la política de privacidad
+
+La LSSI pide el domicilio del responsable; hoy figura solo «Estepa (Sevilla)».
+Si Jesús quiere, se pone la dirección completa.
+
+### 5. Otros
+
+- Decidir la analítica (punto 1) y, con ella, el consentimiento de cookies.
+- Límite de envíos del formulario si aparece spam dirigido (punto 4).
+- Imágenes reales en lugar de los 36 SVG de marca (Fase RR2).
+- Espacios pegados entre elementos en línea: hay una tarea aparte abierta.
 
 ---
 
@@ -266,7 +293,7 @@ Si algún día cambia el dominio, hay que tocar **los dos**:
 - [`src/data/site.ts`](../src/data/site.ts) → `SITE.url`, alimenta el canonical,
   el `og:url` y todos los `@id` del JSON-LD.
 
-Cambiar solo el primero deja el sitemap declarando un dominio y las 48 páginas
+Cambiar solo el primero deja el sitemap declarando un dominio y las 49 páginas
 declarándose canónicas en otro.
 
 ---

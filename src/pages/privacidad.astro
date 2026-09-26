@@ -1,0 +1,195 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+
+/**
+ * Politica de privacidad (Fase M6).
+ *
+ * Datos del responsable facilitados por Jesus el 26/09/2026. NIF verificado
+ * con el digito de control. NO tocar sin su confirmacion: es el documento que
+ * identifica al responsable del tratamiento ante la AEPD.
+ */
+const RESPONSABLE = {
+  nombre: 'Jesús Arteaga',
+  marca: 'Arteaga Leads',
+  nif: '74910974C',
+  domicilio: 'Estepa (Sevilla), España',
+  email: SITE.email,
+};
+
+const ACTUALIZADO = '26 de septiembre de 2026';
+---
+
+<Base
+  title="Política de privacidad | Atarjea Redes"
+  meta="Política de privacidad de Atarjea Redes: quién trata tus datos, con qué finalidad y base legal, cuánto se conservan, a quién se comunican y cómo ejercer tus derechos."
+  ruta="/privacidad"
+  imagen="/img/paginas/contacto.svg"
+  migas={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Política de privacidad', href: '/privacidad' }]}
+>
+  <section class="seccion">
+    <div class="contenedor estrecho">
+      <h1>Política de privacidad</h1>
+      <p>
+        Esta página explica qué datos personales recogemos a través de este sitio web,
+        para qué los usamos, durante cuánto tiempo los guardamos y qué puedes hacer en
+        cualquier momento para controlarlos. Está redactada conforme al Reglamento (UE)
+        2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).
+      </p>
+      <p class="formulario__nota">Última actualización: {ACTUALIZADO}.</p>
+
+      <h2>1. Quién es el responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> {RESPONSABLE.nombre}, persona física que opera como autónomo bajo la marca {RESPONSABLE.marca}.</li>
+        <li><strong>NIF:</strong> {RESPONSABLE.nif}</li>
+        <li><strong>Domicilio:</strong> {RESPONSABLE.domicilio}</li>
+        <li><strong>Correo de contacto en materia de protección de datos:</strong> <a href={`mailto:${RESPONSABLE.email}`}>{RESPONSABLE.email}</a></li>
+        <li><strong>Sitio web:</strong> {SITE.url}</li>
+      </ul>
+      <p>
+        <strong>{SITE.nombre}</strong> es la marca comercial con la que se presta el
+        servicio de saneamiento y canalizaciones que se describe en este sitio.
+      </p>
+
+      <h2>2. Qué datos recogemos</h2>
+      <p>Solo los que tú nos facilitas en el formulario de contacto:</p>
+      <ul>
+        <li><strong>Nombre.</strong> Para saber con quién hablamos.</li>
+        <li><strong>Teléfono.</strong> Para poder llamarte, que es la vía más rápida en una avería.</li>
+        <li><strong>Email.</strong> Para responderte por escrito y enviarte el presupuesto.</li>
+        <li><strong>Mensaje.</strong> La descripción del caso que nos escribes.</li>
+        <li><strong>Servicio y zona</strong> (opcionales). Para dirigir la solicitud a quien corresponde.</li>
+      </ul>
+      <p>
+        No recogemos categorías especiales de datos (salud, ideología, biometría) y te
+        pedimos que no los incluyas en el mensaje. Tampoco hay registro de usuarios ni
+        perfilado: no tomamos decisiones automatizadas sobre ti.
+      </p>
+      <p>
+        Además, nuestro proveedor de alojamiento registra datos técnicos de la conexión,
+        como la dirección IP y la fecha de la petición, con el único fin de mantener el
+        servicio y su seguridad.
+      </p>
+
+      <h2>3. Para qué los usamos</h2>
+      <ul>
+        <li>Atender tu solicitud de presupuesto o de información.</li>
+        <li>Ponernos en contacto contigo, por teléfono o por email, sobre ese servicio.</li>
+        <li>Coordinar con el operador la visita o el trabajo, si decides contratarlo.</li>
+      </ul>
+      <p>
+        No usamos tus datos para enviarte publicidad de terceros, ni los incorporamos a
+        listas de correo comerciales, ni los vendemos.
+      </p>
+
+      <h2>4. Con qué base legal</h2>
+      <ul>
+        <li>
+          <strong>Tu consentimiento</strong> (artículo 6.1.a del RGPD), que prestas al
+          marcar la casilla de aceptación antes de enviar el formulario. Puedes retirarlo
+          cuando quieras, sin que eso afecte al tratamiento anterior a la retirada.
+        </li>
+        <li>
+          <strong>El interés legítimo</strong> (artículo 6.1.f del RGPD) en gestionar y
+          dar seguimiento comercial a la solicitud que tú mismo has iniciado, algo que
+          puedes esperar razonablemente al pedir un presupuesto.
+        </li>
+      </ul>
+
+      <h2>5. Cuánto tiempo los conservamos</h2>
+      <p>
+        <strong>Doce meses desde el último contacto contigo.</strong> Pasado ese plazo se
+        suprimen. Si llegamos a prestarte el servicio, los datos asociados a la
+        facturación se conservan el tiempo que exijan las obligaciones fiscales y
+        mercantiles.
+      </p>
+
+      <h2>6. A quién se los comunicamos</h2>
+      <ul>
+        <li>
+          <strong>Al operador subcontratado</strong> que ejecuta materialmente el
+          servicio de saneamiento, para que pueda atender tu solicitud. Es la única
+          comunicación de datos con una finalidad propia del servicio.
+        </li>
+        <li>
+          <strong>A proveedores tecnológicos que actúan como encargados del
+          tratamiento</strong>, únicamente para que el sitio y los avisos funcionen:
+          Vercel (alojamiento del sitio web), Resend (envío del aviso por correo
+          electrónico) y Telegram (aviso instantáneo de la solicitud).
+        </li>
+      </ul>
+      <p>
+        Algunos de estos proveedores están ubicados fuera del Espacio Económico Europeo.
+        En esos casos, las transferencias se amparan en las garantías previstas en el
+        capítulo V del RGPD, como las cláusulas contractuales tipo de la Comisión Europea
+        o los marcos de adecuación aplicables.
+      </p>
+
+      <h2>7. Tus derechos</h2>
+      <p>Puedes ejercer en cualquier momento los siguientes derechos:</p>
+      <ul>
+        <li><strong>Acceso:</strong> saber qué datos tuyos tratamos.</li>
+        <li><strong>Rectificación:</strong> corregir los que sean inexactos.</li>
+        <li><strong>Supresión:</strong> pedir que los borremos.</li>
+        <li><strong>Oposición:</strong> oponerte a que los tratemos.</li>
+        <li><strong>Limitación:</strong> pedir que los conservemos sin usarlos mientras se resuelve una reclamación.</li>
+        <li><strong>Portabilidad:</strong> recibirlos en un formato estructurado y de uso común.</li>
+        <li><strong>Retirada del consentimiento</strong>, en cualquier momento.</li>
+      </ul>
+      <p>
+        Para ejercerlos, escribe a
+        <a href={`mailto:${RESPONSABLE.email}`}>{RESPONSABLE.email}</a> indicando qué
+        derecho quieres ejercer y adjuntando una copia de un documento que acredite tu
+        identidad. Responderemos en el plazo máximo de un mes. Ejercer cualquiera de
+        estos derechos es gratuito.
+      </p>
+
+      <h2>8. Reclamación ante la autoridad de control</h2>
+      <p>
+        Si consideras que no hemos atendido correctamente tus derechos, puedes presentar
+        una reclamación ante la Agencia Española de Protección de Datos,
+        <a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>. Te agradeceríamos
+        que antes nos escribieras a nosotros: casi todo se resuelve en un correo.
+      </p>
+
+      <h2>9. Cookies</h2>
+      <p>
+        <strong>Este sitio no utiliza cookies</strong>, ni propias ni de terceros. No hay
+        analítica instalada (Google Analytics no está activo), ni píxeles de seguimiento,
+        ni publicidad comportamental. Por eso no verás ningún aviso de cookies: no hay
+        nada que consentir.
+      </p>
+      <p>
+        Si en el futuro se activa alguna herramienta de medición, se actualizará esta
+        página y se te pedirá el consentimiento previo, con opción real de rechazarlo.
+      </p>
+
+      <h2>10. Seguridad</h2>
+      <p>
+        El sitio se sirve íntegramente por HTTPS y los avisos de las solicitudes viajan
+        cifrados hasta los proveedores indicados. Aplicamos medidas técnicas y
+        organizativas razonables para evitar accesos no autorizados, aunque ningún
+        sistema conectado a internet puede garantizar una seguridad absoluta.
+      </p>
+
+      <h2>11. Cambios en esta política</h2>
+      <p>
+        Si cambian los tratamientos descritos, actualizaremos esta página y modificaremos
+        la fecha de la última actualización. La versión vigente es siempre la publicada
+        en <a href="/privacidad">{SITE.url}/privacidad</a>.
+      </p>
+
+      <p style="margin-top:2rem">
+        <a class="boton boton--claro" href="/contacto">Volver al formulario de contacto</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .formulario__nota {
+    margin: 0 0 1.4rem;
+    font-size: 0.85rem;
+    color: var(--texto-sec);
+  }
+</style>
